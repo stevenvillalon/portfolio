@@ -1,6 +1,5 @@
 ---
 title: "Python Projects"
-pagetitle: "Steven Villalon - Python Projects"
 ---
 
 ```{=html}

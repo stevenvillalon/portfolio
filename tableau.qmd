@@ -1,16 +1,8 @@
 ---
 title: "Tableau Projects"
-pagetitle: "Steven Villalon - Tableau Projects"
 ---
 
-
-<a href="https://public.tableau.com/views/sv_cruises_workbook2/Dashboard" target="_blank">
-  <img src="https://public.tableau.com/static/images/sv/sv_cruises_workbook2/Dashboard/1.png" 
-       alt="SV Cruises Executive Summary Thumbnail"
-       style="width: 350px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);" />
-</a>
-
-
+<a href="https://public.tableau.com/views/sv_cruises_workbook2/Dashboard" target="_blank"> <img src="https://public.tableau.com/static/images/sv/sv_cruises_workbook2/Dashboard/1.png" alt="SV Cruises Executive Summary Thumbnail" style="width: 350px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);"/> </a>
 
 ## 1. SV Cruises
 

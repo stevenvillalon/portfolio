@@ -1,6 +1,5 @@
 ---
-title: "Steve's Data Science Portfolio"
-pagetitle: "Steven Villalon - Data Science Portfolio"
+title: ""
 ---
 
 ![*McKenna Hall at the University of Notre Dame*](assets/headshot.jpeg){width="75%" fig-align="left" fig-alt="Photo of Steven Villalon"}

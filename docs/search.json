@@ -23,15 +23,15 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Steve’s Data Science Portfolio",
+    "title": "Steve's Data Science Portfolio",
     "section": "",
     "text": "McKenna Hall at the University of Notre Dame"
   },
   {
-    "objectID": "index.html#about-me-test",
-    "href": "index.html#about-me-test",
-    "title": "Steve’s Data Science Portfolio",
-    "section": "About Me TEST",
-    "text": "About Me TEST\nI have worked in marketing for over 15 years, including 9 at AT&T. I love all aspects of marketing: advertising, pricing, events, creative development, product strategy. But no matter what area of marketing I have worked in, it always comes back to the data. What happened when we ran that promo? How did traffic change when we implemented the website design? How many people tuned into our show? You can’t answer these questions without understanding your data.\nMarketing and data are intricately connected, which is why I am pursuing a Master’s degree in Data Science at the University of Notre Dame.\nThis site is intended to showcase some of the new skills I am developing. My primary interests:\n\nCoding: SQL, R, Python\nData Visualization: ggplot, matplotlib, seaborn\nDashboarding: Tableau, Shiny, Streamlit\nModeling: Linear Regression, Logistic Regression, Random Forests\nTime Series and Forecasting: ARIMA, ETS\n\n\n\nEducation\n\nDuke University: B.A., Psychology\nGeorgia Institute of Technology: M.B.A., Marketing\nUniversity of Notre Dame: M.S., Data Science (expected May 2026)\n\n\n\n\nCertifications\n\nUdacity: Data Analyst Nanodegree\nCoursera: Google Digital Marketing & Ecommerce\n\n\n\n\nPersonal\nI live in Miami with my wife Alejandra and my dog Albert. I’m a huge fan of the Miami Heat (and all the South Florida sports teams), so you will certainly see a few basketball related projects."
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Steve's Data Science Portfolio",
+    "section": "About Me",
+    "text": "About Me\nI have worked in marketing for over 15 years, including 9 at AT&T. I love all aspects of marketing: advertising, pricing, events, creative development, product strategy. But no matter what area of marketing I have worked in, it always comes back to the data. What happened when we ran that promo? How did traffic change when we implemented the website design? How many people tuned into our show? You can’t answer these questions without understanding your data.\nMarketing and data are intricately connected, which is why I am pursuing a Master’s degree in Data Science at the University of Notre Dame.\nThis site is intended to showcase some of the new skills I am developing. My primary interests:\n\nCoding: SQL, R, Python\nData Visualization: ggplot, matplotlib, seaborn\nDashboarding: Tableau, Shiny, Streamlit\nModeling: Linear Regression, Logistic Regression, Random Forests\nTime Series and Forecasting: ARIMA, ETS\n\n\n\nEducation\n\nDuke University: B.A., Psychology\nGeorgia Institute of Technology: M.B.A., Marketing\nUniversity of Notre Dame: M.S., Data Science (expected May 2026)\n\n\n\n\nCertifications\n\nUdacity: Data Analyst Nanodegree\nCoursera: Google Digital Marketing & Ecommerce\n\n\n\n\nPersonal\nI live in Miami with my wife Alejandra and my dog Albert. I’m a huge fan of the Miami Heat (and all the South Florida sports teams), so you will certainly see a few basketball related projects."
   }
 ]

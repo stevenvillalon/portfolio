@@ -1,6 +1,5 @@
 ---
 title: "Tidy Tuesday Projects"
-pagetitle: "Steven Villalon - Tidy Tuesday"
 ---
 
 Coming soon...

@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Steven Villalon"
+  title: "Steve's Data Science Portfolio"
   favicon: assets/favicon/favicon_for_sv_portfolio.png
   navbar:
     left:
