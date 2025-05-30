@@ -1,6 +1,8 @@
 project:
   type: website
 
+output-dir: docs
+
 website:
   title: "Steven Villalon"
   favicon: assets/favicon/favicon_for_sv_portfolio.png
