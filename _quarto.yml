@@ -6,6 +6,7 @@ website:
   title: "Steve's Data Science Portfolio"
   favicon: assets/favicon/favicon_for_sv_portfolio.png
   navbar:
+    logo: "assets/logos/sv_logo_blue_on_white.png"
     left:
       - href: index.qmd
         text: Home
