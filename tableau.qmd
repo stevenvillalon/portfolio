@@ -1,0 +1,21 @@
+---
+title: "Tableau Projects"
+pagetitle: "Steven Villalon - Tableau Projects"
+---
+
+
+<a href="https://public.tableau.com/views/sv_cruises_workbook2/Dashboard" target="_blank">
+  <img src="https://public.tableau.com/static/images/sv/sv_cruises_workbook2/Dashboard/1.png" 
+       alt="SV Cruises Executive Summary Thumbnail"
+       style="width: 350px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);" />
+</a>
+
+
+
+## 1. SV Cruises
+
+I recently walked the Camino de Santiago in northern Spain, where I met a fellow pilgrim from Denmark who shared stories about his home and travels through Europe. Ever since, I’ve been dreaming of taking a Scandinavian cruise. For fun, I decided to simulate data for a fictitious cruise company and build an interactive dashboard in Tableau to practice my data visualization skills.
+
+This project involved designing relationships using Tableau’s logical data model, developing calculated fields and Level of Detail (LOD) expressions, and creating dynamic KPIs with contextual breakdowns. Along the way, I tackled common data aggregation challenges and improved my ability to structure metrics clearly for executive-level dashboards.
+
+Hopefully, I’ll get to turn this dream vacation into a reality soon!

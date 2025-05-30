@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to my Data Science Portfolio",
+    "section": "",
+    "text": "McKenna Hall at the University of Notre Dame"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Welcome to my Data Science Portfolio",
+    "section": "About Me",
+    "text": "About Me\nI have worked in marketing for over 15 years, including 9 at AT&T. I love all aspects of marketing: advertising, pricing, events, creative development, product strategy. But no matter what area of marketing I have worked in, it always comes back to the data. What happened when we ran that promo? How did traffic change when we implemented the website design? How many people tuned into our show? You can’t answer these questions without understanding your data.\nMarketing and data are intricately connected, which is why I am pursuing a Master’s degree in Data Science at the University of Notre Dame.\nThis site is intended to showcase some of the new skills I am developing. My primary interests:\n\nCoding: SQL, R, Python\nData Visualization: ggplot, matplotlib, seaborn\nDashboarding: Tableau, Shiny, Streamlit\nModeling: Linear Regression, Logistic Regression, Random Forests\nTime Series and Forecasting: ARIMA, ETS\n\n\n\nEducation\n\nDuke University: B.A., Psychology\nGeorgia Institute of Technology: M.B.A., Marketing\nUniversity of Notre Dame: M.S., Data Science (expected May 2026)\n\n\n\n\nCertifications\n\nUdacity: Data Analyst Nanodegree\nCoursera: Google Digital Marketing & Ecommerce\n\n\n\n\nPersonal\nI live in Miami with my wife Alejandra and my dog Albert. I’m a huge fan of the Miami Heat (and all the South Florida sports teams), so you will certainly see a few basketball related projects."
+  },
+  {
+    "objectID": "tableau.html",
+    "href": "tableau.html",
+    "title": "Tableau Projects",
+    "section": "",
+    "text": "&lt;div class='tableauPlaceholder' id='viz1748634956402' style='position: relative'&gt;\n\n  &lt;!-- Static fallback image for no-JS browsers --&gt;\n  &lt;noscript&gt;\n    &lt;a href='#'&gt;\n      &lt;img \n        alt='SV Cruises Executive Summary' \n        src='https://public.tableau.com/static/images/sv/sv_cruises_workbook2/Dashboard/1_rss.png' \n        style='border: none' \n      /&gt;\n    &lt;/a&gt;\n  &lt;/noscript&gt;\n\n  &lt;!-- Tableau object (dashboard will appear here) --&gt;\n  &lt;object class='tableauViz' style='display:none;'&gt;\n    &lt;param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /&gt; \n    &lt;param name='embed_code_version' value='3' /&gt; \n    &lt;param name='site_root' value='' /&gt;\n    &lt;param name='name' value='sv_cruises_workbook2/Dashboard' /&gt;\n    &lt;param name='tabs' value='no' /&gt;\n    &lt;param name='toolbar' value='yes' /&gt;\n    &lt;param name='static_image' value='https://public.tableau.com/static/images/sv/sv_cruises_workbook2/Dashboard/1.png' /&gt;\n    &lt;param name='animate_transition' value='yes' /&gt;\n    &lt;param name='display_static_image' value='yes' /&gt;\n    &lt;param name='display_spinner' value='yes' /&gt;\n    &lt;param name='display_overlay' value='yes' /&gt;\n    &lt;param name='display_count' value='yes' /&gt;\n    &lt;param name='language' value='en-US' /&gt;\n  &lt;/object&gt;\n&lt;/div&gt;\n\n&lt;!-- Tableau loader script: dynamically resizes and loads dashboard --&gt;\n&lt;script type='text/javascript'&gt;\n  var divElement = document.getElementById('viz1748634956402');\n  var vizElement = divElement.getElementsByTagName('object')[0];\n\n  if (divElement.offsetWidth &gt; 800) {\n    vizElement.style.width = '1300px';\n    vizElement.style.height = '1196px';\n  } else if (divElement.offsetWidth &gt; 500) {\n    vizElement.style.width = '1300px';\n    vizElement.style.height = '1196px';\n  } else {\n    vizElement.style.width = '100%';\n    vizElement.style.height = '2227px';\n  }\n\n  var scriptElement = document.createElement('script');\n  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';\n  vizElement.parentNode.insertBefore(scriptElement, vizElement);\n&lt;/script&gt;"
+  },
+  {
+    "objectID": "python.html",
+    "href": "python.html",
+    "title": "Python Projects",
+    "section": "",
+    "text": "1. Histograms & Hoops\nDuring the Fall 2024 semester, I took courses in Probability & Statistics and Python programming. I wanted to come up with a project that would help me apply the concepts I was learning in both classes. In Statistics, we covered topics like histograms, probability distributions, and random variables. One day, while watching a basketball game with friends, I realized that the abundance of available basketball data would be a great resource to apply these techniques.\nThis app, built with Python and Streamlit, uses data from the NBA API, and focuses on box scores for all players in the 2023-2024 NBA season. It allows users to explore histograms of various player statistics and also estimate the probability of a player reaching a specific performance threshold, like scoring 30 points in a game. In a future version, I plan to expand the app by adding more variables and using regression models to improve prediction accuracy."
+  },
+  {
+    "objectID": "tidytuesday.html",
+    "href": "tidytuesday.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#about-me-stupid",
+    "href": "index.html#about-me-stupid",
+    "title": "Welcome to my Data Science Portfolio",
+    "section": "About Me stupid",
+    "text": "About Me stupid\nI’m a marketing professional with 9 years of experience working for AT&T. Marketing and data science are intricately connected, which is why I am currently pursuing a Master’s degree in Data Science at the University of Notre Dame. I love helping people answer questions about what’s going on with their business.\nI live in Miami, FL with my wife Alejandra and my dog Albert.\n\nEducation\n\nDuke University - B.A. Psychology\nGeorgia Institute of Technology - M.B.A. Marketing\nUniversity of Notre Dame - M.S. Data Science (expected May 2026)"
+  },
+  {
+    "objectID": "python.html#histograms-hoops",
+    "href": "python.html#histograms-hoops",
+    "title": "Python Projects",
+    "section": "1. Histograms & Hoops",
+    "text": "1. Histograms & Hoops\nDuring the Fall 2024 semester, I took courses in Probability & Statistics and Python programming. I wanted to come up with a project that would help me apply the concepts I was learning in both classes. In Statistics, we covered topics like histograms, probability distributions, and random variables. One day, while watching a basketball game with friends, I realized that the abundance of available basketball data would be a great resource to apply these techniques.\nThis app, built with Python and Streamlit, uses data from the NBA API, and focuses on box scores for all players in the 2023-2024 NBA season. It allows users to explore histograms of various player statistics and also estimate the probability of a player reaching a specific performance threshold, like scoring 30 points in a game. In a future version, I plan to expand the app by adding more variables and using regression models to improve prediction accuracy."
+  },
+  {
+    "objectID": "tableau.html#sv-cruises",
+    "href": "tableau.html#sv-cruises",
+    "title": "Tableau Projects",
+    "section": "1. SV Cruises",
+    "text": "1. SV Cruises\nI recently walked the Camino de Santiago in northern Spain, where I met a fellow pilgrim from Denmark who shared stories about his home and travels through Europe. Ever since, I’ve been dreaming of taking a Scandinavian cruise. For fun, I decided to simulate data for a fictitious cruise company and build an interactive dashboard in Tableau to practice my data visualization skills.\nThis project involved designing relationships using Tableau’s logical data model, developing calculated fields and Level of Detail (LOD) expressions, and creating dynamic KPIs with contextual breakdowns. Along the way, I tackled common data aggregation challenges and improved my ability to structure metrics clearly for executive-level dashboards.\nHopefully, I’ll get to turn this dream vacation into a reality soon!"
+  }
+]

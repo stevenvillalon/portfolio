@@ -1,0 +1,46 @@
+project:
+  type: website
+
+website:
+  title: "Steven Villalon"
+  favicon: assets/favicon/favicon_for_sv_portfolio.png
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: tidytuesday.qmd
+        text: Tidy Tuesday
+      - href: python.qmd
+        text: Python Projects
+      - href: tableau.qmd
+        text: Tableau Projects
+    tools:
+      - icon: envelope
+        href: "mailto:steven.villalon@gmail.com"
+      - icon: github
+        href: https://github.com/stevenvillalon
+      - icon: linkedin
+        href: https://www.linkedin.com/in/steven-villalon/
+  page-footer:
+    background: dark
+    left: "©Copyright 2025, Steven Villalon"
+    right:
+      - icon: envelope
+        href: "mailto:steven.villalon@gmail.com"
+      - icon: github
+        href: https://github.com/stevenvillalon
+      - icon: linkedin
+        href: https://www.linkedin.com/in/steven-villalon/
+
+
+format:
+  html:
+    respect-user-color-scheme: true
+    theme: yeti
+    fontsize: 1.1em
+    linestretch: 1.7
+    css: styles.css
+    toc: true
+
+editor: visual
+
