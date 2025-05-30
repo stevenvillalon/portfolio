@@ -5,7 +5,7 @@ pagetitle: "Steven Villalon - Data Science Portfolio"
 
 ![*McKenna Hall at the University of Notre Dame*](assets/headshot.jpeg){width="75%" fig-align="left" fig-alt="Photo of Steven Villalon"}
 
-## About Me TEST
+## About Me
 
 I have worked in marketing for over 15 years, including 9 at AT&T. I love all aspects of marketing: advertising, pricing, events, creative development, product strategy. But no matter what area of marketing I have worked in, it always comes back to the data. What happened when we ran that promo? How did traffic change when we implemented the website design? How many people tuned into our show? You can't answer these questions without understanding your data.
 
