@@ -1,17 +1,31 @@
 [
   {
-    "objectID": "tableau.html#sv-cruises",
-    "href": "tableau.html#sv-cruises",
-    "title": "Tableau Projects",
-    "section": "1. SV Cruises",
-    "text": "1. SV Cruises\nI recently walked the Camino de Santiago in northern Spain, where I met a fellow pilgrim from Denmark who shared stories about his home and travels through Europe. Ever since, I’ve been dreaming of taking a Scandinavian cruise. For fun, I decided to simulate data for a fictitious cruise company and build an interactive dashboard in Tableau to practice my data visualization skills.\nThis project involved designing relationships using Tableau’s logical data model, developing calculated fields and Level of Detail (LOD) expressions, and creating dynamic KPIs with contextual breakdowns. Along the way, I tackled common data aggregation challenges and improved my ability to structure metrics clearly for executive-level dashboards.\nHopefully, I’ll get to turn this dream vacation into a reality soon!"
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Steven Villalon Data Science Portfolio",
+    "section": "",
+    "text": "McKenna Hall at the University of Notre Dame"
   },
   {
-    "objectID": "tidytuesday.html",
-    "href": "tidytuesday.html",
-    "title": "Tidy Tuesday Projects",
+    "objectID": "about.html#about-me",
+    "href": "about.html#about-me",
+    "title": "Steven Villalon Data Science Portfolio",
+    "section": "About Me",
+    "text": "About Me\nI have worked in marketing for over 15 years, including 9 at AT&T. I love all aspects of marketing: advertising, pricing, events, creative development, product strategy. But no matter what area of marketing I have worked in, it always comes back to the data. What happened when we ran that promo? How did traffic change when we implemented the website design? How many people tuned into our show? You can’t answer these questions without understanding your data.\nMarketing and data are intricately connected, which is why I am pursuing a Master’s degree in Data Science at the University of Notre Dame.\nThis site is intended to showcase some of the new skills I am developing.\n\n\nEducation\n\nDuke University: B.A., Psychology\nGeorgia Institute of Technology: M.B.A., Marketing\nUniversity of Notre Dame: M.S., Data Science (expected May 2026)\n\n\n\n\nCertifications\n\nUdacity: Data Analyst Nanodegree\nCoursera: Google Digital Marketing & Ecommerce\n\n\n\n\nPersonal\nI live in Miami with my wife Alejandra and my dog Albert. I’m a huge fan of the Miami Heat (and all the South Florida sports teams), so you will certainly see a few basketball related projects!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Steven Villalon, MBA",
     "section": "",
-    "text": "Coming soon…"
+    "text": "I’m a former Product Marketing Manager at AT&T. Currently studying data science at the University of Notre Dame.\nCreated this site to share my Tidy Tuesday work and other data projects.\nBased in Miami, FL.\n#DataScience #RStats #Python #Marketing #Analytics"
+  },
+  {
+    "objectID": "index.html#interests",
+    "href": "index.html#interests",
+    "title": "Steven Villalon, MBA",
+    "section": "Interests",
+    "text": "Interests\n\nMarketing\nPricing, Email/SMS, Product\n\n\nCoding\nSQL, R, Python\n\n\nData Visualization\nggplot, matplotlib, seaborn\n\n\nDashboarding\nTableau, Shiny, Streamlit\n\n\nModeling\nLinear Regression, Logistic Regression, Random Forests\n\n\nTime Series and Forecasting\nARIMA, ETS"
   },
   {
     "objectID": "python.html#histograms-hoops",
@@ -21,17 +35,17 @@
     "text": "1. Histograms & Hoops\nDuring the Fall 2024 semester, I took courses in Probability & Statistics and Python programming. I wanted to come up with a project that would help me apply the concepts I was learning in both classes. In Statistics, we covered topics like histograms, probability distributions, and random variables. One day, while watching a basketball game with friends, I realized that the abundance of available basketball data would be a great resource to apply these techniques.\nThis app, built with Python and Streamlit, uses data from the NBA API, and focuses on box scores for all players in the 2023-2024 NBA season. It allows users to explore histograms of various player statistics and also estimate the probability of a player reaching a specific performance threshold, like scoring 30 points in a game. In a future version, I plan to expand the app by adding more variables and using regression models to improve prediction accuracy."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Steve's Data Science Portfolio",
+    "objectID": "tidytuesday.html",
+    "href": "tidytuesday.html",
+    "title": "Tidy Tuesday Projects",
     "section": "",
-    "text": "McKenna Hall at the University of Notre Dame"
+    "text": "Coming soon…\n\n\n\n Back to top"
   },
   {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Steve's Data Science Portfolio",
-    "section": "About Me",
-    "text": "About Me\nI have worked in marketing for over 15 years, including 9 at AT&T. I love all aspects of marketing: advertising, pricing, events, creative development, product strategy. But no matter what area of marketing I have worked in, it always comes back to the data. What happened when we ran that promo? How did traffic change when we implemented the website design? How many people tuned into our show? You can’t answer these questions without understanding your data.\nMarketing and data are intricately connected, which is why I am pursuing a Master’s degree in Data Science at the University of Notre Dame.\nThis site is intended to showcase some of the new skills I am developing. My primary interests:\n\nCoding: SQL, R, Python\nData Visualization: ggplot, matplotlib, seaborn\nDashboarding: Tableau, Shiny, Streamlit\nModeling: Linear Regression, Logistic Regression, Random Forests\nTime Series and Forecasting: ARIMA, ETS\n\n\n\nEducation\n\nDuke University: B.A., Psychology\nGeorgia Institute of Technology: M.B.A., Marketing\nUniversity of Notre Dame: M.S., Data Science (expected May 2026)\n\n\n\n\nCertifications\n\nUdacity: Data Analyst Nanodegree\nCoursera: Google Digital Marketing & Ecommerce\n\n\n\n\nPersonal\nI live in Miami with my wife Alejandra and my dog Albert. I’m a huge fan of the Miami Heat (and all the South Florida sports teams), so you will certainly see a few basketball related projects."
+    "objectID": "tableau.html#sv-cruises",
+    "href": "tableau.html#sv-cruises",
+    "title": "Tableau Projects",
+    "section": "1. SV Cruises",
+    "text": "1. SV Cruises\nI recently walked the Camino de Santiago in northern Spain, where I met a fellow pilgrim from Denmark who shared stories about his home and travels through Europe. Ever since, I’ve been dreaming of taking a Scandinavian cruise. For fun, I decided to simulate data for a fictitious cruise company and build an interactive dashboard in Tableau to practice my data visualization skills.\nThis project involved designing relationships using Tableau’s logical data model, developing calculated fields and Level of Detail (LOD) expressions, and creating dynamic KPIs with contextual breakdowns. Along the way, I tackled common data aggregation challenges and improved my ability to structure metrics clearly for executive-level dashboards.\nHopefully, I’ll get to turn this dream vacation into a reality soon!"
   }
 ]

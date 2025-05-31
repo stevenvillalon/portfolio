@@ -1,0 +1,37 @@
+---
+pagetitle: "About Me"
+---
+
+![*McKenna Hall at the University of Notre Dame*](assets/headshot_notre_dame.jpeg){fig-align="left" fig-alt="Photo of Steven Villalon" width="100%"}
+
+## About Me
+
+I have worked in marketing for over 15 years, including 9 at AT&T. I love all aspects of marketing: advertising, pricing, events, creative development, product strategy. But no matter what area of marketing I have worked in, it always comes back to the data. What happened when we ran that promo? How did traffic change when we implemented the website design? How many people tuned into our show? You can't answer these questions without understanding your data.
+
+Marketing and data are intricately connected, which is why I am pursuing a Master’s degree in Data Science at the University of Notre Dame.
+
+This site is intended to showcase some of the new skills I am developing.
+
+<br>
+
+### Education
+
+-   [Duke University:]{.bullet-label} B.A., Psychology
+
+-   [Georgia Institute of Technology:]{.bullet-label} M.B.A., Marketing
+
+-   [University of Notre Dame:]{.bullet-label} M.S., Data Science (expected May 2026)
+
+<br>
+
+### Certifications
+
+-   [Udacity:]{.bullet-label} Data Analyst Nanodegree
+
+-   [Coursera:]{.bullet-label} Google Digital Marketing & Ecommerce
+
+<br>
+
+### Personal
+
+I live in Miami with my wife Alejandra and my dog Albert. I'm a huge fan of the Miami Heat (and all the South Florida sports teams), so you will certainly see a few basketball related projects!

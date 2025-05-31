@@ -1,1 +1,17 @@
 /* css styles */
+
+/* Prevents website title from appearing in the navbar but keeps in browser tabs */
+.navbar-brand .navbar-title {
+  display: none !important;
+}
+
+/* Reduces space betwen title and subtitle */
+.subtitle.lead {
+  padding-top: 0 !important;
+}
+
+/* Makes keyword for bullets blue */
+.bullet-label {
+  color: #008cba;   /* or any color you want */
+  font-weight: bold; /* optional, if you want it bolder */
+}

@@ -1,47 +1,44 @@
 ---
-title: ""
+title: "Steven Villalon, MBA"
+pagetitle: "Home"
+image: assets/headshot.jpeg
+about:
+  template: jolla
+format:
+  html:
+    toc: false
 ---
 
-![*McKenna Hall at the University of Notre Dame*](assets/headshot.jpeg){width="75%" fig-align="left" fig-alt="Photo of Steven Villalon"}
+I'm a former Product Marketing Manager at AT&T. Currently studying data science at the University of Notre Dame.
 
-## About Me
+Created this site to share my Tidy Tuesday work and other data projects.
 
-I have worked in marketing for over 15 years, including 9 at AT&T. I love all aspects of marketing: advertising, pricing, events, creative development, product strategy. But no matter what area of marketing I have worked in, it always comes back to the data. What happened when we ran that promo? How did traffic change when we implemented the website design? How many people tuned into our show? You can't answer these questions without understanding your data.
+Based in Miami, FL.
 
-Marketing and data are intricately connected, which is why I am pursuing a Master’s degree in Data Science at the University of Notre Dame.
+#DataScience #RStats #Python #Marketing #Analytics
 
-This site is intended to showcase some of the new skills I am developing. My primary interests:
+## Interests
 
--   **Coding:** SQL, R, Python
+#### [Marketing]{.bullet-label}
 
--   **Data Visualization:** ggplot, matplotlib, seaborn
+Pricing, Email/SMS, Product
 
--   **Dashboarding:** Tableau, Shiny, Streamlit
+#### [Coding]{.bullet-label}
 
--   **Modeling:** Linear Regression, Logistic Regression, Random Forests
+SQL, R, Python
 
--   **Time Series and Forecasting:** ARIMA, ETS
+#### [Data Visualization]{.bullet-label}
 
-<br>
+ggplot, matplotlib, seaborn
 
-### Education
+#### [Dashboarding]{.bullet-label}
 
--   **Duke University**: B.A., Psychology
+Tableau, Shiny, Streamlit
 
--   **Georgia Institute of Technology**: M.B.A., Marketing
+#### [Modeling]{.bullet-label}
 
--   **University of Notre Dame:** M.S., Data Science (expected May 2026)
+Linear Regression, Logistic Regression, Random Forests
 
-<br>
+#### [Time Series and Forecasting]{.bullet-label}
 
-### Certifications
-
--   **Udacity:** Data Analyst Nanodegree
-
--   **Coursera:** Google Digital Marketing & Ecommerce
-
-<br>
-
-### Personal
-
-I live in Miami with my wife Alejandra and my dog Albert. I'm a huge fan of the Miami Heat (and all the South Florida sports teams), so you will certainly see a few basketball related projects.
+ARIMA, ETS

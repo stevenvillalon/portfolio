@@ -3,8 +3,9 @@ project:
   output-dir: docs
 
 website:
-  title: "Steve's Data Science Portfolio"
+  title: "Steven Villalon Data Science Portfolio"
   favicon: assets/favicon/favicon_for_sv_portfolio.png
+  google-analytics: G-TREEKW9YP3
   navbar:
     logo: "assets/logos/sv_logo_blue_on_white.png"
     left:
@@ -16,6 +17,8 @@ website:
         text: Python Projects
       - href: tableau.qmd
         text: Tableau Projects
+      - href: about.qmd
+        text: About Me
     tools:
       - icon: envelope
         href: "mailto:steven.villalon@gmail.com"
@@ -33,6 +36,7 @@ website:
         href: https://github.com/stevenvillalon
       - icon: linkedin
         href: https://www.linkedin.com/in/steven-villalon/
+  back-to-top-navigation: true
 
 
 format:
