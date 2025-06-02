@@ -1,5 +1,13 @@
 ---
 title: "Tidy Tuesday Projects"
+listing:
+  id: tidytuesday23
+  contents: TIDYTUESDAY
+  sort: "date desc"
+  page-size: 10
+  categories: numbered
+  grid-columns: 4
+  fields: [image, title, date, categories]
 ---
 
-Coming soon...
+Below are some of my Tidy Tuesday projects!
