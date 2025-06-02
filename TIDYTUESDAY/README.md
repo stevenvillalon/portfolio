@@ -1,3 +1,3 @@
 # Steve's Tidy Tuesday Repository
 
-Having fun playing with data and sharing with my classmates.
+Quarto notebooks for my Tidy Tuesday projects.
