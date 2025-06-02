@@ -1,0 +1,320 @@
+---
+title: "Water Quality at Sydney Beaches"
+author: "Steven Villalon"
+date: 2025-05-20
+categories: ["Lollipop Plot", "R"]
+image: output/tidy_tuesday_sydney_beaches_lollipop_plot.png
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    toc: true
+    toc-location: left
+editor: visual
+---
+
+```{r message = FALSE}
+#Load dependencies
+library(tidyverse)
+library(tidytuesdayR)
+```
+
+# Load Data
+
+```{r message = FALSE}
+# Load data
+tuesdata <- tidytuesdayR::tt_load(2025, week = 20)
+water_quality <- tuesdata$water_quality
+weather <- tuesdata$weather
+rm(tuesdata)
+
+#View(water_quality)
+#View(weather)
+```
+
+# Cleaning
+
+The variable I am most interested in is enterococci level since conductivity has a lot of nulls.
+
+```{r}
+# Get summary stats
+summary(water_quality)
+summary(weather)
+```
+
+```{r}
+# Value counts
+table(water_quality$region)
+table(water_quality$council)
+table(water_quality$swim_site)
+```
+
+```{r}
+# Set locations as factors
+water_quality <- water_quality  |> 
+  mutate(
+    region = as.factor(region),
+    swim_site = as.factor(swim_site),
+    council = as.factor(council)
+  )
+
+# Sort levels
+region_levels <- sort(unique(water_quality$region))
+water_quality$region <- factor(water_quality$region, levels = region_levels)
+```
+
+The variable I am most interested in is enterococci level since conductivity has a lot of nulls.
+
+## Outliers
+
+```{r}
+# High enterococci
+head(water_quality[water_quality$enterococci_cfu_100ml > 500, ], 10)
+```
+
+```{r}
+# High water temp
+head(water_quality[water_quality$water_temperature_c > 100, ], 10)
+```
+
+These last few code lines indicate that there are quite a few NAs in the dataset.
+
+```{r}
+# Remove NAs in enterococci
+water_quality_clean <- water_quality |> 
+  filter(!is.na(enterococci_cfu_100ml))
+water_quality_clean
+```
+
+The summary table does not indicate there were any unusual outliers in the weather dataset.
+
+Joining the weather dataset to the clean water quality dataset.
+
+```{r}
+# Join datasets
+df <- left_join(water_quality_clean, weather, by = "date")
+
+# Get column names
+#colnames(df)
+
+start_date <- as.Date("2015-01-01")
+end_date <- as.Date("2024-12-31") 
+
+# Rename and Remove duplicate columns
+# Remove outliers on water temperature (under 0 is freezing, over 100 is boiling)
+# Limit data to last 10 years
+df <- df |> 
+  select("region", "council", "swim_site", "date", "time", "enterococci_cfu_100ml", "water_temperature_c", "conductivity_ms_cm", "latitude.x","longitude.x", "max_temp_C", "min_temp_C", "precipitation_mm") |> 
+  rename(latitude = latitude.x, longitude = longitude.x) |> 
+  filter(between(water_temperature_c, 0, 100),
+         between(date, start_date, end_date))
+
+head(df)
+```
+
+# Explore Data
+
+```{r message = FALSE}
+# Boxplot by region of enterococci
+ggplot(data = df, aes(x = region, y = enterococci_cfu_100ml)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.2, alpha = 0.5) +
+  labs(title = "Enterococci")
+
+# Boxplot by region of water temp
+ggplot(data = df, aes(x = region, y = water_temperature_c)) +
+  geom_boxplot() +
+  labs(title = "Water Temperature")
+
+```
+
+The median water temp for Sydney harbor and Western Sydney was slightly higher across all observations. Western Sydney also had a wider range.
+
+Let's look at some scatterplots
+
+```{r}
+# Scatterplot of water_temperature and enterococci
+ggplot(data = df, aes(x = water_temperature_c, y = enterococci_cfu_100ml)) +
+  geom_point() +
+  labs(title = "Water Temperature vs Enterococci Level")
+
+# Scatterplot of precipitation and enterococci
+ggplot(data = df, aes(x = precipitation_mm, y = enterococci_cfu_100ml)) +
+  geom_point() +
+  labs(title = "Precipitation vs Enterococci Level")
+
+# Scatterplot of conductivity and enterococci
+ggplot(data = df, aes(x = conductivity_ms_cm, y = enterococci_cfu_100ml)) +
+  geom_point() +
+  labs(title = "Conductivity vs Enterococci Level")
+```
+
+Surprised that precipitation level does not have a strong relationship with enterococci level.
+
+```{r}
+# Time series plot
+ggplot(df, aes(x = date, y = enterococci_cfu_100ml, color = region))+
+  geom_line()
+```
+
+```{r}
+# Add floor date columns
+df <- df |> 
+  mutate(month = floor_date(date, "month"),
+         year = floor_date(date, "year"),
+         quarter = floor_date(date, "quarter"))
+```
+
+```{r}
+# Time series by month
+mean_enterococci_by_month <- df |> 
+  group_by(region, month) |> 
+  summarize(avg_enterococci = mean(enterococci_cfu_100ml), .groups = "drop") |> 
+  ungroup()
+mean_enterococci_by_month
+
+# Time series by quarter
+mean_enterococci_by_quarter <- df |> 
+  group_by(region, quarter) |> 
+  summarize(avg_enterococci = mean(enterococci_cfu_100ml), .groups = "drop") |> 
+  ungroup()
+mean_enterococci_by_quarter
+
+# Time series by year
+mean_enterococci_by_year <- df |> 
+  group_by(region, year) |> 
+  summarize(avg_enterococci = mean(enterococci_cfu_100ml), .groups = "drop") |> 
+  ungroup()
+mean_enterococci_by_year
+```
+
+```{r}
+# Plot time series by year
+ggplot(mean_enterococci_by_year, aes(x = year, y = avg_enterococci, color = region))+
+  geom_line()
+```
+
+For the most part, enterococci levels are stable, although Western Sydney has been increasing. As expected, Western Sydney and Sydney Harbor have the highest average levels as these areas do not have clear access to the Pacific Ocean, causing water to stagnate after heavy rains.
+
+# Modeling
+
+```{r}
+# Linear model
+model1 <- lm(df$enterococci_cfu_100ml ~ df$water_temperature_c + df$conductivity_ms_cm + df$max_temp_C + df$precipitation_mm)
+summary(model1)
+```
+
+Model does a very poor job of explaining the variation in enterococci levels.
+
+I'm going to further refine my df to look just at the variable of interest and keep the region columns. I would like to see which sites had the most readings above 70, which is the threshold for dangerous levels of enteroccoci in the water.
+
+```{r}
+# Remove unused columns
+df2 <- df |> select(region, swim_site, date, enterococci_cfu_100ml)
+summary(df2)
+```
+
+```{r}
+# Compute % of readings that were above 70 and remove beaches with <120 readings
+min_readings <- 120
+
+rankings <- df2 |> 
+  group_by(region, swim_site) |> 
+  summarize(
+    readings_over_70 = sum(enterococci_cfu_100ml > 70, na.rm = TRUE),
+    readings = n(),
+    pct = round(sum(enterococci_cfu_100ml > 70, na.rm = TRUE) / n(), 4),
+    .groups = "drop"
+  ) |> 
+  filter(readings >= min_readings) |> 
+  mutate(rank = rank(pct, ties.method = "min")) |> 
+  arrange(desc(rank)) |> 
+  ungroup()
+
+rankings
+```
+
+```{r}
+# Define "best" and "worst" groups (top/bottom 10)
+worst <- rankings |> filter(rank >= max(rank) - 10 & rank <= max(rank))
+best  <- rankings |> filter(rank >= 1 & rank <= 10)
+```
+
+# Visualization
+
+This plot uses patchwork to put two lollipop plots side by side. The theme section below controls many of the finer details of the plot.
+
+```{r fig.height=7.5, fig.width=10}
+library(patchwork)
+library(scales)
+library(showtext)
+
+# Load Lato font
+font_add_google("Lato", "lato")
+showtext_auto()
+
+# Set x axis limits
+xlim_min <- 0
+xlim_max <- 0.45
+
+
+# Left Plot (Bottom 10)
+plot_worst <- ggplot(worst, aes(x = pct, y = reorder(swim_site, pct), color = region)) +
+  geom_segment(aes(x = 0, xend = pct, y = reorder(swim_site, pct), yend = reorder(swim_site, pct)), linewidth = 1.5) +
+  geom_point(size = 10) +
+  geom_text(aes(x = pct, y = reorder(swim_site, pct), label = percent(pct, accuracy = 1)),
+            color = "white", fontface = "bold", size = 3.5, vjust = 0.5, hjust = 0.5) +
+  geom_text(aes(label = paste0(readings_over_70, " / ", readings)),
+            hjust = -0.4, vjust = 0.5, size = 3.5, color = "black") +
+  labs(
+    title = "Bottom 10",
+    x = NULL,
+    y = "Swim Site",
+    color = NULL
+  ) +
+  scale_x_continuous(labels = percent_format(accuracy = 1), limits = c(xlim_min, xlim_max)) + theme_minimal()
+
+
+# Right Plot (Top 10)
+plot_best <- ggplot(best, aes(x = pct, y = reorder(swim_site, -pct), color = region)) +
+  geom_segment(aes(x = 0, xend = pct, y = reorder(swim_site, -pct), yend = reorder(swim_site, pct)), linewidth = 1.5) +
+  geom_point(size = 10) +
+  geom_text(aes(x = pct, y = reorder(swim_site, pct), label = percent(pct, accuracy = 1)),
+            color = "white", fontface = "bold", size = 3.5, vjust = 0.5, hjust = 0.5) +
+  geom_text(aes(label = paste0(readings_over_70, " / ", readings)),
+            hjust = -0.4, vjust = 0.5, size = 3.5, color = "black") +
+  labs(
+    title = "Top 10",
+    x = NULL,
+    y = NULL,
+    color = NULL
+  ) +
+  scale_x_continuous(labels = percent_format(accuracy = 1), limits = c(xlim_min, xlim_max)) + theme_minimal() +
+  theme(legend.position = "none")
+
+
+# Combine plots with patchwork
+plot_worst + plot_best +
+  plot_layout(guides = "collect") &
+  theme(text = element_text(family = "lato"),
+        plot.caption = element_text(hjust = 0),
+        plot.title = element_text(size = 16, face = "bold"),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        legend.position = "top",
+        legend.justification = "left",
+        legend.box.just = "left",
+        legend.margin = margin(t = 10, b = 10),
+        axis.text.y = element_text(size = 11)
+) & plot_annotation(
+  title = "Water Quality at Sydney Beaches Over the Past 10 Years (2015-2024)",
+  subtitle = "Water contamination is determined by assessing Enterococci bacteria levels, which are measured in colony forming units (CFUs) per 100 ml of\nwater. 70 CFUs is considered the threshold for unsafe bacteria levels. The percentages below represent how many observations over the past 10 \nyears were over 70 by location. Measurements were taken weekly for most beaches.\n",
+  caption = "\n\nChart produced by Steven Villalon for Tidy Tuesday exercise on May 20, 2025"
+)
+```
+
+```{r}
+# Filter data
+#water_quality[water_quality$swim_site == "Shelly Beach (Sutherland)", ]
+```

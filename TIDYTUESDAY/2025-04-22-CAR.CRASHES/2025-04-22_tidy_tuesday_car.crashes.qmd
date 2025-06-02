@@ -1,0 +1,248 @@
+---
+title: "Fatal Car Crashes on 4/20"
+author: "Steven Villalon"
+date: 2025-04-22
+categories: ["Barplot", "R"]
+image: output/fatal_car_crashes_by_holiday.png
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    toc: true
+    toc-location: left
+---
+
+```{r message = FALSE}
+# Load dependencies
+library(tidyverse)
+library(tidytuesdayR)
+```
+
+```{r message = FALSE}
+# Load data
+tuesdata <- tidytuesdayR::tt_load('2025-04-22')
+names(tuesdata)
+
+# Extract tt_data
+accidents <- tuesdata$daily_accidents
+accidents.420 <- tuesdata$daily_accidents_420
+
+head(accidents)
+```
+
+# Cleaning
+
+```{r}
+# Pull all 4/20 rows
+accidents.420[month(accidents.420$date) == 4 & day(accidents.420$date) == 20, ]
+
+# Check for NAs in e420
+accidents.420[is.na(accidents.420$e420), ]
+
+# Pull all rows where e420 is true
+accidents.420[which(accidents.420$e420 == TRUE), ]
+```
+
+For 4/20 specifically, the accidents.420 dataframe has multiple rows. FALSE is before 4:20pm and TRUE is after. Strange to see NAs in this column.
+
+There are 13 rows where e420 is NA. I will remove because it's unclear what they mean. In practice, would go to whomever created the dataset and ask why this is happening.
+
+Limiting to e420 = TRUE is misleading because there were other fatalities prior to 4:20pm and I don't think all the people who "celebrate" 4/20 are waiting until 4pm to get high.
+
+For simplicity, I'm going to focus on the accidents dataset which only includes fatalities by day.
+
+# Exploration
+
+```{r}
+# Summary stats
+summary(accidents)
+print(paste("Standard deviation of fatalities = ", sd(accidents$fatalities_count)))
+```
+
+```{r}
+# Histogram of Fatalities
+ggplot(accidents, aes(x = fatalities_count)) +
+  geom_histogram(binwidth = 25, fill = "lightblue", color = "black")
+```
+
+Slightly right skewed with a mean of 145 fatalities per day. Range of 47 to 299 fatalities.
+
+```{r}
+# Time series plot
+ggplot(accidents, aes(x = date, y = fatalities_count)) +
+  geom_line()
+
+# Group by month
+accidents$week <- floor_date(accidents$date, "week")
+accidents$month <- floor_date(accidents$date, "month")
+accidents$year <- floor_date(accidents$date, "year")
+
+head(accidents)
+```
+
+420 is interesting on its own, but I'd like to extend the analysis to look at other "party" holidays to see if fatalities are higher. I can also compare the rate of fatalities to national holidays and non-holiday weekdays and weekends.
+
+Party Holidays:
+
+1.  Super Bowl Sunday
+
+2.  Mardi Gras
+
+3.  St. Patty's
+
+4.  4/20
+
+5.  Cinco de Mayo
+
+6.  Halloween
+
+7.  Thanksgiving Eve
+
+8.  New Year's Eve
+
+National Holidays:
+
+1.  New Year's Day
+
+2.  MLK Day
+
+3.  President's Day
+
+4.  Memorial Day
+
+5.  Independence Day
+
+6.  Labor Day
+
+7.  Columbus Day
+
+8.  Veterans Day
+
+9.  Thanksgiving Day
+
+10. Christmas Day
+
+Let's bring in a dataset I made using ChatGPT. This dataset has indicators for the holiday. This is not a good practice because I can't replicate the creation of that dataset. Will look for a more programmatic solution for future projects.
+
+Note that in the code below, I am converting "National Holiday (Observed)" to "National Holiday". Some National Holidays fall on different dates every year (floating), and sometimes the holiday is observed on a Friday or Monday when the actual day falls on Saturday/Sunday. This is an imperfect solution but makes for a cleaner visualization.
+
+```{r}
+# Load holiday data
+holidays <- read_csv("data/holidays.csv",
+                     col_types = cols(date = col_date(format = "%m/%d/%y")))
+
+# Join to accidents dataset
+accidents_with_holidays <- left_join(accidents, holidays, by = "date")
+
+# Change "National Holiday (Observed)" to "National Holiday"
+accidents_with_holidays <- accidents_with_holidays |> 
+  mutate(day_type = case_when(
+    day_type == "National Holiday (Observed)" ~ "National Holiday",
+    TRUE ~ day_type  # Keep the rest unchanged
+  ))
+
+# Convert day_type and holiday to factors
+accidents_with_holidays <- accidents_with_holidays |> 
+  mutate(
+    across(c(day_type, holiday), as.factor),
+    day_of_week = factor(day_of_week, 
+                         levels = c("Sunday", "Monday", "Tuesday", "Wednesday", 
+                                    "Thursday", "Friday", "Saturday"))
+  )
+
+head(accidents_with_holidays)
+```
+
+```{r}
+# Summary table of Day Type
+avg_fatalities_day_type <- accidents_with_holidays |> 
+  group_by(day_type) |> 
+  summarize(avg_fatalities = round(mean(fatalities_count),1)) |> 
+  arrange(desc(avg_fatalities))
+avg_fatalities_day_type
+
+# Summary table of Holiday
+avg_fatalities_holiday <- accidents_with_holidays |> 
+  group_by(holiday) |> 
+  summarize(
+        day_type = first(day_type),
+        avg_fatalities = round(mean(fatalities_count), 1)
+  ) |>
+  na.omit(holiday) |> # removes non-holiday weekdays/weekends
+  arrange(desc(avg_fatalities))
+avg_fatalities_holiday
+```
+
+# Visualization
+
+```{r message = FALSE}
+# Create side by side Bar Plot
+library(patchwork)
+library(showtext)
+
+# Load font
+family <- "Lato"
+font_add(family = family, 
+         regular = "Lato-Regular.ttf",
+         bold = "Lato-Bold.ttf")
+showtext_auto()
+showtext_opts(dpi = 300)
+
+# Colors
+my_colors <- c(
+  "Non-Holiday Weekday" = "#76B7B2",
+  "Non-Holiday Weekend" = "#F28E2B",
+  "National Holiday"     = "#4E79A7",
+  "Party Holiday"        = "#E15759"
+)
+
+# Reorder factor levels in descending order
+avg_fatalities_day_type <- avg_fatalities_day_type |> 
+  mutate(day_type = reorder(day_type, avg_fatalities))
+
+avg_fatalities_holiday <- avg_fatalities_holiday |> 
+  mutate(holiday = reorder(holiday, avg_fatalities))
+
+# Plot 1
+p1 <- ggplot(avg_fatalities_day_type, aes(x = avg_fatalities, y = day_type, fill = day_type)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = sprintf("%.1f", avg_fatalities)), hjust = 1.1, color = "white", size = 3.5, family = family) +
+  labs(title = "By Day Type", x = NULL, y = NULL) +
+  scale_fill_manual(values = my_colors) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    text = element_text(family = family)
+  )
+
+# Plot 2
+p2 <- ggplot(avg_fatalities_holiday, aes(x = avg_fatalities, y = holiday, fill = day_type)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = sprintf("%.1f", avg_fatalities)), hjust = 1.1, color = "white", size = 3.5, family = family) +
+  labs(title = "By Holiday", x = NULL, y = NULL) +
+  scale_fill_manual(values = my_colors) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    text = element_text(family = family)
+  )
+
+# Plot Title, Subtitle, and Caption
+plot_title <- plot_annotation(
+  title = "Daily Fatal Car Crashes in the U.S. (1992-2016)",
+  subtitle = "As a whole, holidays that are associated with heavy drug/alcohol use (like 4/20) did not result in \nthe highest rate of fatal car crashes. As the authors found in the original study, Independence Day is \na particularly dangerous day to drive.",
+  caption = "Source: Originally studied by Harper S, Palayew A \"The annual cannabis holiday and fatal traffic crashes.\"\nChart produced by Steven Villalon for Tidy Tuesday exercise on April 22, 2025",
+  theme = theme(text = element_text(family = family),
+                plot.caption.position = "plot",
+                plot.caption = element_text(hjust = 0),
+                plot.title = element_text(face = "bold"))
+)
+
+p1 + p2 + plot_title
+```

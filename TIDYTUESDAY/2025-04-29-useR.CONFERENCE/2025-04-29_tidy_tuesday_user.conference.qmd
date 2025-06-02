@@ -1,0 +1,250 @@
+---
+title: "Use R! Conference"
+author: "Steven Villalon"
+date: 2025-04-29
+categories: ["Barplot", "Text Analysis", "LDA", "R"]
+image: output/tidy_tuesday_lda_plot.png
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    toc: true
+    toc-location: left
+---
+
+```{r message = FALSE}
+#Load dependencies
+library(tidyverse)
+library(tidytuesdayR)
+```
+
+The materials at the following link were very helpful for learning about text analysis, topic modeling, and LDA. <https://www.tidytextmining.com/topicmodeling#per-document>
+
+# Load Data
+
+```{r message = FALSE}
+# Load data
+tuesdata <- tidytuesdayR::tt_load('2025-04-29')
+user2025 <- tuesdata$user2025
+
+#View(user2025)
+```
+
+# Explore Data
+
+```{r}
+summary(user2025)
+```
+
+```{r}
+# Look for particular strings
+user2025 |> 
+  filter(str_detect(content, "clinical trial"))
+```
+
+# LDA Topic Model
+
+```{r}
+library(tidytext)
+library(textdata)
+library(textstem)
+
+# Unnest words from session keywords
+tidy_words <- user2025 |>  
+  unnest_tokens(word, keywords) |>  
+  select(id, title, word)
+
+# Load stopwords and add custom stopwords
+custom_stop_words <- bind_rows(
+  tidytext::stop_words,
+  tibble(word = c("http", "https", "1", "data", "package", "packages"))
+)
+
+# Remove stop words and lemmatize remaining words (removes plurals, suffixes, etc)
+tidy_words_nostop <- tidy_words |>
+  anti_join(custom_stop_words, by = "word") |> 
+  mutate(word = lemmatize_words(word))
+
+head(tidy_words_nostop)
+```
+
+```{r}
+# LDA model
+library(topicmodels)
+
+# Create document-term matrix (DTM)
+dtm <- tidy_words_nostop |> 
+  count(id, word) |>
+  cast_dtm(document = id, term = word, value = n)
+
+# Fit LDA model
+user2025_lda <- LDA(dtm, k = 3, control = list(seed = 1234))
+
+# Pull betas (probabilities) for each word in each topic
+user2025_topics <- tidy(user2025_lda, matrix = "beta")
+
+head(user2025_topics)
+```
+
+```{r}
+# Get top 10 words per topic
+user_top_terms <- user2025_topics |> 
+  group_by(topic) |> 
+  slice_max(beta, n = 10) |>  
+  ungroup() |> 
+  arrange(topic, -beta)
+user_top_terms
+
+# Simple visualization
+user_top_terms %>%
+  mutate(term = reorder_within(term, beta, topic)) |> 
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+```
+
+# Output
+
+```{r}
+library(showtext)
+library(ggthemes)
+
+# Load Lato font
+font_add_google("Lato", "lato")
+showtext_auto()
+
+# Define colors
+my_colors <- c("#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e")
+
+# Plot
+user_top_terms |> 
+  mutate(term = reorder_within(term, beta, topic)) |> 
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free_y") +
+  scale_y_reordered() +
+  scale_fill_manual(values = my_colors) +
+  labs(
+    title = "Uncovering the 3 main topics at useR! Conference 2025",
+    subtitle = "LDA method used to fit a topic model on session descriptions.",
+    x = "Probability of Term Being in Topic",
+    y = "Term",
+    caption = "\nChart produced by Steven Villalon for Tidy Tuesday exercise on April 29, 2025"
+  ) +
+  theme_minimal(
+    base_size = 14, 
+    base_family = "lato") +
+  theme(
+    plot.title.position = "plot",
+    plot.caption.position = "plot",
+    plot.title = element_text(face = "bold", size = 18, hjust = 0),
+    plot.subtitle = element_text(size = 14, margin = margin(b = 10), hjust = 0),
+    plot.caption = element_text(
+      size = 10,
+      color = "gray40",
+      hjust = 0,
+      face = "plain"),
+    strip.text = element_text(face = "bold", size = 14),
+    axis.text.y = element_text(size = 12),
+    axis.text.x = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+# Other Analyses
+
+## TF-IDF
+
+```{r}
+# Pull the gammas (propensity score for which topic each document id belongs to)
+doc_topic_gammas <- tidy(user2025_lda, matrix = "gamma")
+doc_topic_gammas
+
+# Get the top topic for each document id
+assigned_topics <- doc_topic_gammas |> 
+  group_by(document) |> 
+  slice_max(gamma, n = 1, with_ties = FALSE) |> 
+  mutate(document = as.double(document)) |> 
+  ungroup()
+assigned_topics
+
+# Join back to original dataset
+user2025_with_topics <- user2025 |> 
+  left_join(assigned_topics, by = c("id" = "document"))
+```
+
+```{r}
+# Unnest words from session descriptions (column = content)
+tidy_words_with_topics <- user2025_with_topics  |>  
+  unnest_tokens(word, content) |> 
+  select(id, topic, title, word)
+
+# Remove stop words and lemmatize remaining words (remove plurals, suffixes, etc)
+tidy_words_with_topics_nostop <- tidy_words_with_topics |>
+  anti_join(custom_stop_words, by = "word") |> 
+  mutate(word = lemmatize_words(word))
+
+head(tidy_words_with_topics_nostop)
+```
+
+```{r}
+# Get counts by word and topic
+word_counts <- tidy_words_with_topics_nostop |> 
+  count(topic, word, sort = TRUE)
+word_counts
+
+# Compute tf-idfs
+tfidf_words <- word_counts |> 
+  bind_tf_idf(word, topic, n)
+tfidf_words
+
+# Filter to top 10 tf-idfs for each topic
+top_tfidf_words <- tfidf_words |> 
+  group_by(topic) |> 
+  arrange(desc(tf_idf)) |> 
+  slice_head(n = 10) |> 
+  ungroup()
+
+top_tfidf_words
+```
+
+## Bigrams
+
+```{r}
+library(tidytext)
+library(dplyr)
+library(ggplot2)
+
+# Assuming your dataset is called 'talks' and the text column is 'description'
+
+# Step 1: Tokenize into bigrams
+talks_bigrams <- user2025 %>%
+  unnest_tokens(bigram, content, token = "ngrams", n = 2)
+
+# Step 2: Separate the bigrams into two words
+talks_bigrams_separated <- talks_bigrams %>%
+  separate(bigram, into = c("word1", "word2"), sep = " ")
+
+# Step 3: Remove stopwords
+data("stop_words")
+talks_bigrams_filtered <- talks_bigrams_separated %>%
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word)
+
+# Step 4: Count the bigrams
+bigram_counts <- talks_bigrams_filtered %>%
+  count(word1, word2, sort = TRUE)
+
+# Step 5: Visualize Top 15 Bigrams
+bigram_counts %>%
+  top_n(15) %>%
+  mutate(bigram = paste(word1, word2, sep = " ")) %>%
+  ggplot(aes(x = reorder(bigram, n), y = n)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Top 15 Bigrams in Talks",
+       x = "Bigram",
+       y = "Frequency")
+```

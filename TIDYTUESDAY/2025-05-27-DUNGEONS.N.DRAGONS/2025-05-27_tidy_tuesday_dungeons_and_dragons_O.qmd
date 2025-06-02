@@ -1,0 +1,237 @@
+---
+title: "Dungeons and Dragons Monsters"
+author: "Steven Villalon"
+date: 2025-05-31
+categories: ["Facet grid", "Barplot", "R"]
+image: output/tidy_tuesday_dungeons_&_dragons_barplots.png
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-summary: "Show Code"
+---
+
+```{r message = FALSE}
+#Load dependencies
+library(tidyverse)
+library(tidytuesdayR)
+```
+
+# Load Data
+
+```{r message = FALSE}
+# Load data
+tuesdata <- tidytuesdayR::tt_load(2025, week = 21)
+monsters <- tuesdata$monsters
+rm(tuesdata)
+
+#View(monsters)
+```
+
+# Examine Data
+
+```{r}
+summary(monsters)
+```
+
+```{r}
+# Check for Unique Values
+unique(monsters$type)
+unique(monsters$size)
+unique(monsters$alignment)
+```
+
+# Tidy
+
+```{r}
+# Remove columns that won't be necessary
+monsters_clean <- monsters |> 
+  select(-c(descriptive_tags, hp, speed, skills, resistances, vulnerabilities, immunities, gear, senses, languages, full_text))
+
+#View(monsters_clean)
+```
+
+```{r}
+library(fastDummies)
+
+# One-hot encode Size
+monsters_clean <- dummy_cols(monsters_clean, select_columns = "size", remove_first_dummy = TRUE, remove_selected_columns = TRUE)
+
+# One-hot encode Alignment
+monsters_clean <- dummy_cols(monsters_clean, select_columns = "alignment", remove_first_dummy = TRUE, remove_selected_columns = TRUE)
+
+#View(monsters_clean)
+```
+
+```{r message = FALSE}
+# Clean column names
+library(janitor)
+monsters_clean <- janitor::clean_names(monsters_clean)
+```
+
+```{r}
+# Get means of various attributes grouped by monster type
+monster_means <- monsters_clean |> 
+  group_by(type) |> 
+  summarize('Challenge Rating' = mean(cr, na.rm = TRUE),
+            Armor = mean(ac, na.rm = TRUE),
+            'Hit Points' = mean(hp_number, na.rm = TRUE),
+            Speed = mean(speed_base_number, na.rm = TRUE),
+            Strength = mean(str, na.rm = TRUE),
+            Dexterity = mean(dex, na.rm = TRUE),
+            Constitution = mean(con, na.rm = TRUE),
+            Intelligence = mean(int, na.rm = TRUE),
+            Wisdom = mean(wis, na.rm = TRUE),
+            Charisma = mean(cha, na.rm = TRUE),
+  )
+
+monster_means
+```
+
+```{r message = FALSE}
+# Rescale means from 0 to 10
+library(scales)
+monster_means_rescaled <- monster_means |> 
+  mutate(across(where(is.numeric), ~ scales::rescale(., to = c(0, 10))))
+
+monster_means_rescaled
+```
+
+```{r}
+# Get list of types
+#types <- unique(monster_means_rescaled$type)
+#cat(paste0('"', types, '"', collapse = ", "))
+
+# Lookup table for monster icons
+icon_lookup <- tibble(
+  type = c("Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Ooze", "Plant", "Swarm of Tiny Beasts", "Swarm of Tiny Undead", "Undead"),
+  icon = c(
+    "<img src='misc/images/aberration.jpg' width='25'/>",
+    "<img src='misc/images/beast.jpg' width='25'/>",
+    "<img src='misc/images/celestial.jpg' width='25'/>",
+    "<img src='misc/images/construct.jpg' width='25'/>",
+    "<img src='misc/images/dragon.jpg' width='25'/>",
+    "<img src='misc/images/elemental.jpg' width='25'/>",
+    "<img src='misc/images/fey.jpg' width='25'/>",
+    "<img src='misc/images/fiend.jpg' width='25'/>",
+    "<img src='misc/images/giant.jpg' width='25'/>",
+    "<img src='misc/images/humanoid.jpg' width='25'/>",
+    "<img src='misc/images/monstrosity.jpg' width='25'/>",
+    "<img src='misc/images/ooze.jpg' width='25'/>",
+    "<img src='misc/images/plant.jpg' width='25'/>",
+    "<img src='misc/images/swarm_of_beasts.jpg' width='25'/>",
+    "<img src='misc/images/swarm_of_undead.jpg' width='25'/>",
+    "<img src='misc/images/undead.jpg' width='25'/>"
+  )
+)
+
+icon_lookup
+```
+
+```{r}
+# Pivot longer
+monster_long <- monster_means_rescaled |> 
+  pivot_longer(
+    cols = -type,
+    names_to = "attribute",
+    values_to = "score"
+  )
+
+# Left join location of icon images
+monster_long <- left_join(monster_long, icon_lookup, by = "type") |> 
+  mutate(type_label = paste0(icon, " ", type))
+
+# Convert type to factor
+monster_long$type <- factor(monster_long$type)
+
+head(monster_long)
+```
+
+# Visualization
+
+```{r fig.height = 10, fig.width = 10, message = FALSE}
+library(ggtext)
+library(showtext)
+
+# Load font
+font_add_google("Lato", "lato")
+showtext_opts(dpi = 300)
+
+# Make bar plots faceted by type
+monster_plot <- ggplot(monster_long, aes(x = attribute, y = score, fill = attribute)) +
+  geom_col(width = 0.7) +
+  facet_wrap(
+    ~ type_label,
+    ncol = 4, nrow = 4
+  ) +
+  scale_fill_viridis_d(option = "viridis") +
+  labs(
+    title = "An attribute profile of the Monsters in Dungeons and Dragons",
+    subtitle = "Given the name of the game, Dragons are unsurprisingly the most powerful Monsters in the game. Celestials and \nFiends are also strong across all attributes.",
+    x = NULL,
+    y = "Scaled Score (0–10)",
+    caption = "\n\nChart produced by Steven Villalon for Tidy Tuesday exercise on May 27, 2025"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(size = 20, face = "bold"),
+    plot.caption = element_text(hjust = 0),
+    strip.text = ggtext::element_markdown(size = 13, face = "bold"),
+    legend.position = "top",
+    legend.title = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    panel.border = element_rect(colour = "black", fill = NA, linewidth = 1),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+  )
+
+monster_plot
+```
+
+```{r}
+# Save plot
+ggsave("output/tidy_tuesday_dungeons_&_dragons_barplots.png", plot = monster_plot, bg = "white", width = 10, height = 10, dpi = 300)
+```
+
+# Modeling
+
+Tried principal components and factor analysis to get the number of predictors to a more manageable number. The first few principal components only described 50% of the variation. It would have taken a lot more components to get an explainable chart. Likewise, factor analysis gave warnings that the datapoints were likely to correlated with one another.
+
+Leaving these below for future reference.
+
+```{r}
+# Remove non-numerical columns
+predictors <- monsters_clean  |> 
+  select(-c(name, category, type))
+
+# Run PCA
+pca <- prcomp(predictors, center = TRUE, scale. = TRUE)
+summary(pca)
+#pca$rotation
+
+# Sort contributing variables in decreasing order for PC1 and PC2
+top_PC1 <- sort(abs(pca$rotation[, "PC1"]), decreasing = TRUE)
+top_PC2 <- sort(abs(pca$rotation[, "PC2"]), decreasing = TRUE)
+
+# View top 10 contributors
+head(top_PC1, 10)
+head(top_PC2, 10)
+```
+
+```{r message = FALSE}
+# Factor Analysis - calculate optimal # of factors
+library(psych)
+fa.parallel(predictors, fa = "fa")
+```
+
+```{r}
+# Factor analysis scores
+fa_result <- fa(predictors, nfactors = 6, rotate = "varimax", scores = TRUE)
+print(fa_result$loadings, cutoff = 0.3)
+```

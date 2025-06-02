@@ -1,0 +1,52 @@
+state_nm,state,electoral_votes,winner,population
+Alabama,AL,9,Trump,5074296
+Alaska,AK,3,Trump,733391
+Arizona,AZ,11,Trump,7359191
+Arkansas,AR,6,Trump,3025891
+California,CA,54,Harris,38813000
+Colorado,CO,10,Harris,5844823
+Connecticut,CT,7,Harris,3605597
+Delaware,DE,3,Harris,1027617
+Florida,FL,30,Trump,22878150
+Georgia,GA,16,Trump,10912876
+Hawaii,HI,4,Harris,1441553
+Idaho,ID,4,Trump,1925622
+Illinois,IL,19,Harris,12671452
+Indiana,IN,11,Trump,6848293
+Iowa,IA,6,Trump,3193079
+Kansas,KS,6,Trump,2937880
+Kentucky,KY,8,Trump,4541412
+Louisiana,LA,8,Trump,4623367
+Maine,ME,4,Harris,1395632
+Maryland,MD,10,Harris,6287735
+Massachusetts,MA,11,Harris,6934036
+Michigan,MI,15,Trump,10199581
+Minnesota,MN,10,Harris,5818605
+Mississippi,MS,6,Trump,2939220
+Missouri,MO,10,Trump,6169270
+Montana,MT,4,Trump,1135317
+Nebraska,NE,5,Trump,1965790
+Nevada,NV,6,Trump,3176100
+New Hampshire,NH,4,Harris,1372234
+New Jersey,NJ,14,Harris,9267130
+New Mexico,NM,5,Harris,2115872
+New York,NY,28,Harris,19835985
+North Carolina,NC,16,Trump,10698973
+North Dakota,ND,3,Trump,779261
+Ohio,OH,17,Trump,11780017
+Oklahoma,OK,7,Trump,4068703
+Oregon,OR,8,Harris,4237206
+Pennsylvania,PA,19,Trump,13002700
+Rhode Island,RI,4,Harris,1095659
+South Carolina,SC,9,Trump,5332037
+South Dakota,SD,3,Trump,925232
+Tennessee,TN,11,Trump,7216795
+Texas,TX,40,Trump,30029558
+Utah,UT,6,Trump,3431873
+Vermont,VT,3,Harris,647156
+Virginia,VA,13,Harris,8780707
+Washington,WA,12,Harris,7881070
+Wisconsin,WI,10,Trump,5927317
+West Virginia,WV,4,Trump,1766101
+Wyoming,WY,3,Trump,586485
+District of Columbia,DC,3,Harris,670050

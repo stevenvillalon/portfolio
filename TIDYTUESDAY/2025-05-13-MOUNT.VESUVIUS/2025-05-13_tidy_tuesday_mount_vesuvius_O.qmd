@@ -1,0 +1,176 @@
+---
+title: "Seismic Events at Mount Vesuvius"
+author: "Steven Villalon"
+date: 2025-05-13
+categories: ["Heatmap", "R"]
+image: output/tidy_tuesday_vesuvius_heatmap.png
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    toc: true
+    toc-location: left
+---
+
+```{r message = FALSE}
+#Load dependencies
+library(tidyverse)
+library(tidytuesdayR)
+```
+
+# Load Data
+
+```{r message = FALSE}
+# Load data
+tuesdata <- tidytuesdayR::tt_load(2025, week = 19)
+vesuvius <- tuesdata$vesuvius
+rm(tuesdata)
+
+#View(vesuvius)
+```
+
+# Cleaning
+
+```{r}
+# Get summary stats
+summary(vesuvius)
+```
+
+```{r}
+# Value counts
+table(vesuvius$area)
+table(vesuvius$type)
+table(vesuvius$review_level)
+```
+
+Magnitude and depth are the variables of interest. There are many null values and it's unclear what it means when there was an earthquake event but no magnitude/depth information so I will remove them.
+
+```{r}
+# Drop NAs in columns of interest
+vesuvius_clean <- drop_na(vesuvius, c(duration_magnitude_md, depth_km))
+
+vesuvius_clean <- vesuvius_clean |> 
+  filter(year >= 2015)
+
+#View(vesuvius_clean)
+```
+
+# Explore Data
+
+## Univariate
+
+```{r}
+ggplot(data = vesuvius_clean, aes(x = depth_km)) +
+  geom_histogram(binwidth = 0.1)
+
+ggplot(data = vesuvius_clean, aes(x = duration_magnitude_md)) +
+  geom_histogram(binwidth = 0.1)
+
+```
+
+## Multivariate
+
+```{r}
+# Create scatterplot
+ggplot(data = vesuvius_clean, aes(x = depth_km, y = duration_magnitude_md)) +
+  geom_point()
+```
+
+```{r}
+# Cross-tab of events per year
+vesuvius_events_per_year <- vesuvius_clean |> 
+  group_by(year) |> 
+  summarize(event_cnt = n(), .groups = "drop")
+
+vesuvius_events_per_year
+
+# Mean events per year
+mean(vesuvius_events_per_year$event_cnt)
+
+```
+
+```{r}
+# Cross-tab of events per month
+vesuvius_events_per_mo <- vesuvius_clean |> 
+  group_by(year, month(vesuvius_clean$time, label = TRUE, abbr = TRUE)) |> 
+  summarize(event_cnt = n(), .groups = "drop")
+
+colnames(vesuvius_events_per_mo) <- c("year", "month", "event_cnt")
+
+vesuvius_events_per_mo
+
+```
+
+```{r}
+# Compute mean events by month
+mean_events_per_mo <- vesuvius_events_per_mo |> 
+  group_by(month) |> 
+  summarize(avg_events = mean(event_cnt))
+
+mean_events_per_mo
+
+```
+
+# Modeling
+
+```{r}
+attach(vesuvius)
+model1 <- lm(duration_magnitude_md ~ depth_km, vesuvius)
+summary(model1)
+```
+
+Model has utility and depth has a significant p-value so there does appear to be a relationship between depth and magnitude. However, the $R^2_a$ is low, indicating that depth is only explaining about 8% of the variability in magnitude.
+
+# Visualization
+
+```{r}
+# Make bar plot
+ggplot(vesuvius_events_per_mo, aes(x = factor(month), y = event_cnt)) +
+  geom_col(fill = "steelblue") +
+  facet_wrap(~ year, ncol = 2) +
+  labs(
+    title = "Monthly Event Counts by Year",
+    x = "Month",
+    y = "Event Count"
+  ) +
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 12, face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+```
+
+```{r}
+library(viridis)
+library(showtext)
+
+# Load Lato font
+font_add_google("Lato", "lato")
+showtext_auto()
+
+# Make plot
+ggplot(vesuvius_events_per_mo, aes(x = factor(month), y = factor(year, levels = sort(unique(year), decreasing = TRUE)), fill = event_cnt)) +
+  geom_tile(color = "white") +
+  scale_fill_viridis(option = "plasma", direction = -1) +
+  
+  # Labels
+  labs(
+    title = "Micro-Earthquakes at Mount Vesuvius 2015-2024",
+    subtitle = "2024 was the most active year for seismic events in the past decade (1.1k vs mean of 0.8k)",
+    caption = "\nChart produced by Steven Villalon for Tidy Tuesday exercise on May 13, 2025",
+    x = "Month",
+    y = "Year",
+    fill = "Seismic Events"
+  ) +
+  
+    # Fine details
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title = element_text(size = 12),
+    text = element_text(family = "lato"),
+    legend.position = "right",
+    plot.caption = element_text(hjust = 0))
+
+```

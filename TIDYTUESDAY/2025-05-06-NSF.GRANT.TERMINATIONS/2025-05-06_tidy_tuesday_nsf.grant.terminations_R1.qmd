@@ -1,0 +1,193 @@
+---
+title: "NSF Grant Terminations"
+author: "Steven Villalon"
+date: 2025-05-06
+categories: ["Map", "R"]
+image: output/tidy_tuesday_map_of_nsf_terminations.png
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    toc: true
+    toc-location: left
+---
+
+```{r message = FALSE}
+#Load dependencies
+library(tidyverse)
+library(tidytuesdayR)
+```
+
+# Load Data
+
+```{r message = FALSE}
+# Load data
+tuesdata <- tidytuesdayR::tt_load(2025, week = 18)
+nsf_terminations <- tuesdata$nsf_terminations
+
+#View(nsf_terminations)
+```
+
+# Explore Data
+
+```{r}
+# Get summary states for each variable
+summary(nsf_terminations)
+```
+
+```{r}
+# Count terminations by state
+table(nsf_terminations$org_state)
+
+# Count unique states
+length(unique(nsf_terminations$org_state))
+```
+
+In the dataset provided by TidyTuesday, there were no awards cancelled in Wyoming or South Dakota. The list includes Puerto Rico and Washington D.C., which is why the total is 50.
+
+**I suspect that blue states were disproportionately affected by these orders. Let's see if that is true.**
+
+```{r message = FALSE}
+# Convert table to dataframe
+cancelled_awards <- as.data.frame(table(nsf_terminations$org_state))
+cancelled_awards <- cancelled_awards |> 
+  rename(state = Var1,
+         cancelled_awards_cnt = Freq)
+head(cancelled_awards)
+
+# Bring in additional data
+election <- read_csv("data/election_results.csv")
+awards_by_state <- read_csv("data/awards_by_state.csv")
+
+head(election)
+head(awards_by_state)
+```
+
+```{r}
+# Join datasets
+df <- left_join(election, awards_by_state, by = "state")
+df <- left_join(df, cancelled_awards, by = "state")
+df <- df |> 
+  select("state_nm.x", "state", "electoral_votes", "winner", "population", "cancelled_awards_cnt", "awards_funded") |> 
+  rename("state_nm" = "state_nm.x") |> 
+  mutate(cancelled_awards_cnt = replace_na(cancelled_awards_cnt, 0))
+
+#View(df)
+```
+
+```{r}
+# Calculate % of awards cancelled and the index
+df <- df |> 
+  mutate(
+    defund_rate = round(cancelled_awards_cnt / awards_funded, digits = 4),
+    defund_index = round(defund_rate / mean(defund_rate, na.rm = TRUE) * 100, digits = 1))
+
+# Add red/blue flag for winner of each state
+df <- df |> 
+  mutate(state_color = case_when(
+    winner == "Trump" ~ "red",
+    winner == "Harris" ~ "blue"),
+    defund_flag = ifelse(defund_index >= 100, "Over Index", "Under Index")
+  )
+
+# Bring in centroids
+state_centroids <- usmapdata::centroid_labels("states")
+
+# Join centroids to df
+df <- left_join(df, state_centroids, by = c("state" = "abbr"))
+
+# Create a sf object for mapping purposes
+library(sf)
+df_sf <- st_as_sf(df)
+
+#View(df)
+#View(df_sf)
+```
+
+```{r}
+# Cross tab of how many states over/under indexed
+df |> 
+  group_by(state_color, defund_flag) |> 
+  summarize(cnt = n(), .groups = "drop")
+
+mean(df$defund_rate)
+```
+
+# Plot
+
+```{r}
+library(usmap)
+library(sf)
+library(showtext)
+
+# Load Lato font
+font_add_google("Lato", "lato")
+showtext_auto()
+
+# Extract the Coordinate Reference System (CRS) for usmap and apply it to the df_sf
+usmap_proj <- usmap_crs()
+df_sf <- st_set_crs(df_sf, st_crs(usmap_proj))
+
+# Convert defund_flag to a factor
+df_sf$defund_flag <- factor(df_sf$defund_flag)
+
+# Plot map of U.S.
+plot_usmap(
+  regions = "states",
+  data = df_sf,
+  values = "state_color") +
+
+  # Plot the over/under index bubbles by explicitly mapping the 'geom' column to the 'geometry' aesthetic
+  geom_sf(data = df_sf,
+          aes(geometry = geom, size = defund_flag),
+          color = "black",
+          alpha = 0.6,
+          inherit.aes = FALSE) +
+
+  # Fill colors for election results
+  scale_fill_manual(
+    name = "2024 Election Winner",
+    values = c("blue" = "#3498db","red" = "#e74c3c"),
+    labels = c("Harris", "Trump")) +
+
+  # Define bubble sizes
+  scale_size_manual(
+      name = "% of Grants Terminated", # Legend title
+      values = c("Over Index" = 4, "Under Index" = 1),
+      labels = c("Over Index", "Under Index")
+      ) +
+
+    # Plot labels
+  labs(title = "Were NSF grants more likely to be terminated in blue states in April 2025?",
+       subtitle = "Average grant terminations per state was ~9%, so over index states are those where 9% or \nmore of active NSF grants were defunded.",
+       caption = "Chart produced by Steven Villalon for Tidy Tuesday exercise on May 6, 2025") +
+
+  # Finer details
+  theme(
+    text = element_text(family = "lato"),
+    plot.title = element_text(face = "bold"),
+    legend.position = "right",
+    plot.caption = element_text(hjust = 0))
+```
+
+This is a clean bit of code to get a usmap object and fill the states with a color for future use.
+
+```{r}
+# Clean map plot example
+library(usmap)
+plot_usmap(
+  regions = "states",
+  data = df,
+  values = "state_color") +
+  
+  # Fill colors for election results
+  scale_fill_manual(
+    name = "2024 Election Winner",
+    values = c("blue" = "#3498db","red" = "#e74c3c"),
+    labels = c("Harris", "Trump")) +
+    
+  # Format election results legend
+  theme(
+    legend.position = "right",
+    plot.caption = element_text(hjust = 0))
+```

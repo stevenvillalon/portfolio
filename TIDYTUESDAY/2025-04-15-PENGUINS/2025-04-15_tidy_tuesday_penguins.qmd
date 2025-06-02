@@ -1,0 +1,191 @@
+---
+title: "Base R Penguins"
+author: "Steven Villalon"
+date: 2025-04-15
+categories: ["Scatterplot", "Decision Tree", "R"]
+image: output/penguin_plot.png
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    toc: true
+    toc-location: left
+---
+
+```{r message = FALSE}
+# Load dependencies
+library(tidyverse)
+```
+
+```{r message = FALSE}
+# Load data
+penguins <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-15/penguins.csv')
+```
+
+# Cleaning
+
+```{r}
+# Check for NAs
+colSums(is.na(penguins))
+
+# Remove 11 NAs
+penguins <- na.omit(penguins)
+
+# Convert categorical variables to factors
+penguins <- penguins |> 
+  mutate(across(c(species, island, sex), as.factor))
+
+# Add column with filename of penguin image
+penguins <- penguins |> 
+  mutate(image = case_when(
+    species == "Adelie" ~ "misc/adelie.jpg",
+    species == "Chinstrap" ~ "misc/chinstrap.jpg",
+    species == "Gentoo" ~ "misc/gentoo.jpg"
+  ))
+
+head(penguins)
+```
+
+# Exploration
+
+```{r}
+# Summary stats
+summary(penguins)
+```
+
+```{r}
+# Get counts by year
+penguins |> 
+  group_by(year) |> 
+  summarize(count = n(), .groups = "drop")
+
+# Get counts by species and island
+penguins |> 
+  group_by(species, island) |> 
+  summarize(count = n(), .groups = "drop")
+
+# Get counts by species, island, and year
+penguins |> 
+  group_by(year, species, island) |> 
+  summarize(count = n(), .groups = "drop")
+
+# Get counts by species and sex
+penguins |> 
+  group_by(species, sex) |> 
+  summarize(count = n(), .groups = "drop")
+
+# Get avgs of numeric variables
+penguins_avg <- penguins |> 
+  group_by(species) |> 
+  summarize(image = first(image),
+            avg_bill_len = mean(bill_len),
+            avg_bill_dep = mean(bill_dep),
+            avg_flipper_len = mean(flipper_len),
+            avg_body_mass = mean(body_mass))
+
+penguins_avg
+```
+
+```{r}
+# Plot of bill length and depth by species
+ggplot(penguins, aes(x = bill_len, y = bill_dep , color = species)) +
+  geom_point()
+```
+
+```{r}
+# Plot of flipper length and body mass by species
+ggplot(penguins, aes(x = flipper_len, y = body_mass , color = species)) +
+  geom_point()
+```
+
+```{r}
+# Plot of bill length and depth by sex
+ggplot(penguins, aes(x = bill_len, y = bill_dep , color = sex)) +
+  geom_point()
+```
+
+```{r}
+# Plot of flipper length and body mass by sex
+ggplot(penguins, aes(x = flipper_len, y = body_mass , color = sex)) +
+  geom_point()
+```
+
+```{r}
+# Boxplot of bodymass by sex
+ggplot(penguins, aes(x = sex, y = body_mass)) +
+  geom_boxplot()
+```
+
+# Modeling
+
+```{r}
+# Test/training split
+set.seed(123)
+n <- nrow(penguins)
+test_index <- sample.int(n, size = round(0.2 * n))
+train_data <- penguins[-test_index, ]
+test_data <- penguins[test_index, ]
+```
+
+```{r message = FALSE}
+# Fit decision tree
+library(rpart)
+library(partykit)
+tree <- rpart(species ~ bill_len + bill_dep + flipper_len + body_mass, data = train_data)
+
+# Plot tree
+plot(as.party(tree), 
+     main = "Decision Tree for Penguin Species", 
+     gp = gpar(fontsize = 6))
+```
+
+```{r}
+# Prune the tree
+plotcp(tree)
+```
+
+Since none of the simpler trees (sizes 1 or 2) fall below the dotted line, there's no obvious benefit to pruning based on the 1-SE rule.
+
+```{r message = FALSE}
+# Predict test data
+test_data$tree_preds <- predict(tree, newdata = test_data, "class")
+
+# Generate confusion matrix
+library(caret)
+cm_tree <- confusionMatrix(test_data$tree_preds, test_data$species, 
+                dnn = c("predicted", "actual"))
+cm_tree
+```
+
+```{r message = FALSE}
+# Create scatterplot with images
+
+# Load dependencies
+library(ggimage)
+library(ggrepel)
+library(showtext)
+
+# Load custom font
+font_add_google("Lato", "lato")
+showtext_auto()
+
+# Generate plot
+penguin_plot <- ggplot(penguins_avg, aes(x = avg_bill_len, y = avg_flipper_len)) +
+  geom_image(aes(image = image), size = 0.3) +
+  geom_text(aes(label = species), vjust = -5.75, hjust = 0.5, size = 4, fontface = "bold") +
+  theme_minimal(base_family = "lato") +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    plot.subtitle = element_text(face = "plain", size = 12)
+  ) +
+  labs(
+    title = "Penguin Species by Average Bill and Flipper Length", 
+    subtitle = "Decision tree model indicated that these two features were best at distinguishing \nbetween species. Tree splits showed flipper length greater than 210mm likely Gentoo.\nSmaller flippers and bill lengths less than 42mm likely Adelie.",
+    x = "Bill Length (in mm)", 
+    y = "Flipper Length (in mm)"
+  ) +
+  xlim(min(penguins_avg$avg_bill_len) - 5, max(penguins_avg$avg_bill_len) + 5) +
+  ylim(min(penguins_avg$avg_flipper_len) - 5, max(penguins_avg$avg_flipper_len) + 10)
+
+penguin_plot
+```
