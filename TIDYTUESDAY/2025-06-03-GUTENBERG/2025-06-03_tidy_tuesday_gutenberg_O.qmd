@@ -164,7 +164,7 @@ world_counts <- world_counts |>
 
 # 6. Visualization
 
-```{r fig.height = 8, fig.width = 6, dpi = 100, message = FALSE}
+```{r fig.height = 8, fig.width = 6, dpi = 300, message = FALSE}
 library(ggrepel)
 library(showtext)
 library(ggtext)
@@ -172,9 +172,10 @@ library(ggtext)
 # Load Lato font
 font_add_google("Lato", "lato")
 showtext_auto()
+showtext_opts(dpi = 300)
 
 # Make plot
-final_plot2 <- 
+final_plot <- 
   ggplot(world_counts) +
   geom_sf(color = "gray40") +
   coord_sf(
@@ -223,7 +224,7 @@ final_plot2 <-
     plot.subtitle = element_text(color = "gray90", size = 10)
     ) + 
   guides(fill = guide_legend(override.aes = list(label = ""))) # Remove "a" from legend
-
+final_plot
 ```
 
 # 7. Export Files
@@ -234,7 +235,7 @@ formats_to_export <- c("png", "svg")
 
 # Save files to the output folder
 save_tt_plots(
-  plot = final_plot2, 
+  plot = final_plot, 
   title = title, 
   date = tt_date,
   output_folder = "output", 
