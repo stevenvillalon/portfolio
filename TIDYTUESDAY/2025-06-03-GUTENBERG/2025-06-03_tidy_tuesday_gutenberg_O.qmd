@@ -1,0 +1,246 @@
+---
+title: "Project Gutenberg"
+author: "Steven Villalon"
+date: 2025-06-03
+categories: ["String Manipulation", "Maps", "R"]
+image: output/2025-06-03_tidy_tuesday_project_gutenberg.png
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-summary: "Show Code"
+---
+
+# Question of Interest
+
+How many books in Project Gutenberg have a Latin American country as one their subjects?
+
+**Goal:** make a map with the number of books as a label.
+
+![](output/2025-06-03_tidy_tuesday_project_gutenberg.svg){fig-alt="Final plot"}
+
+# 1. Packages & Dependencies
+
+```{r message = FALSE}
+# Load packages
+library(tidyverse)
+library(tidytuesdayR)
+library(here)
+
+# Load helper functions
+source(here::here("R/utils/tidy_tuesday_helpers.R"))
+
+# Set project title
+title <- "Project Gutenberg"
+tt_date <- "2025-06-03"
+
+```
+
+# 2. Load Data
+
+```{r message = FALSE}
+# Load data from tidytuesdayR package
+tuesdata <- tidytuesdayR::tt_load(tt_date)
+
+# Extract elements from tuesdata
+gutenberg_authors <- tuesdata$gutenberg_authors
+gutenberg_languages <- tuesdata$gutenberg_languages
+gutenberg_metadata <- tuesdata$gutenberg_metadata
+gutenberg_subjects <- tuesdata$gutenberg_subjects
+
+# Remove tuesdata file
+rm(tuesdata)
+
+```
+
+# 3. Examine Data
+
+```{r}
+# View data
+head(gutenberg_authors)
+head(gutenberg_languages)
+head(gutenberg_metadata)
+head(gutenberg_subjects)
+
+```
+
+# 4. Cleaning
+
+```{r}
+# Collapse subjects into 1 row per id
+pg_subjects <- gutenberg_subjects |> 
+  group_by(gutenberg_id) |> 
+  summarize(subjects = str_flatten(subject, " | "))
+head(pg_subjects)
+
+```
+
+```{r}
+# Join pg_subjects to metadata table
+pg_clean <- gutenberg_metadata |> 
+  left_join(pg_subjects, by = "gutenberg_id") |> 
+  select(c("gutenberg_id", "title", "language", "subjects" )) |> 
+  na.omit()
+head(pg_clean)
+
+```
+
+```{r}
+# List of Latin American countries
+latam_caribbean_countries <- c(
+  # South America
+  "Argentina", "Bolivia", "Brazil", "Chile", "Colombia",
+  "Ecuador", "Guyana", "Paraguay", "Peru", "Suriname", "Uruguay", "Venezuela",
+  
+  # Central America
+  "Costa Rica", "El Salvador", "Guatemala", "Honduras", "Nicaragua", "Panama",
+  
+  # Caribbean
+  "Cuba", "Dominican Republic", "Puerto Rico",
+  
+  # North America (Spanish-speaking)
+  "Mexico"
+)
+
+```
+
+```{r}
+# Initialize an empty list to collect rows
+rows <- list()
+
+# Loop over each country and compute count
+for (country in latam_caribbean_countries) {
+  count <- sum(str_detect(pg_clean$subjects, fixed(country)))
+  rows[[country]] <- data.frame(
+    country = country,
+    book_count = count
+  )
+}
+
+# Combine all rows into a single data frame and sort descending
+cnts_by_country <- bind_rows(rows) |> 
+  mutate(cnt_group = case_when(
+    book_count < 50 ~ "0 - 49",
+    book_count < 100 ~ "50 - 99",
+    book_count >= 100 ~ "100+",
+    )) |> 
+    mutate(cnt_group = factor(cnt_group, levels = c("0 - 49", "50 - 99", "100+"), ordered = TRUE)) |> 
+  arrange(desc(book_count))
+cnts_by_country
+
+```
+
+# 5. Mapping Parameters
+
+```{r}
+library(rnaturalearth)
+
+# Set lat/lon parameters for plotting area
+long_min <- -125 
+long_max <- -30
+lat_min <- -60
+lat_max <- 35
+
+# Load country shapes
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+# Join country shapes to cnts_by_country
+world_counts <- world |> 
+  inner_join(cnts_by_country, by = c("name" = "country"))
+
+# Extract lat/lon from sf object
+world_counts <- world_counts |>
+  mutate(label_point = suppressWarnings(st_point_on_surface(geometry))) |>
+  mutate(
+    lon = st_coordinates(label_point)[, 1],
+    lat = st_coordinates(label_point)[, 2]
+  )
+
+```
+
+# 6. Visualization
+
+```{r fig.height = 8, fig.width = 6, dpi = 100, message = FALSE}
+library(ggrepel)
+library(showtext)
+library(sf)
+library(ggtext)
+
+# Load Lato font
+font_add_google("Lato", "lato")
+showtext_auto()
+
+# Make plot
+final_plot2 <- 
+  ggplot(world_counts) +
+  geom_sf(color = "gray40") +
+  coord_sf(
+    xlim = c(long_min, long_max), 
+    ylim = c(lat_min, lat_max)
+    ) +
+  geom_label_repel(
+    data = world_counts |> filter(book_count >= 10),
+    aes(x = lon,
+        y = lat,
+        label = paste(name, "\n", book_count),
+        fill = cnt_group),
+    family = "lato",
+    size = 3,
+    alpha = 0.9,
+    fontface = "bold",
+    label.size = 0.2,
+    max.overlaps = 30
+    ) +
+  scale_fill_manual(values = c(
+    "0 - 49" = "white",
+    "50 - 99" = "#E6C36D",
+    "100+" = "#A8C7A1"
+)) +
+  labs(
+    title = "How many books in the Gutenberg online \nlibrary are about Latin America?",
+    subtitle = "Mexico was the sure bet to have the most books, but surprised to see so few for Puerto Rico, \nColombia, and Venezuela. Books in the library are at least 95 years old and are not currently \nunder copyright.",
+    caption = "Chart produced by Steven Villalon for Tidy Tuesday exercise on June 3, 2025.",
+    fill = "Book Counts") +
+  theme_minimal(base_family = "lato") +
+  theme(
+    plot.background = element_rect(fill = "black", color = NA),
+    panel.background = element_rect(fill = "black", color = NA),
+    legend.background = element_rect(fill = "black", color = NA),
+    legend.key = element_rect(fill = "black", color = NA),
+    legend.position = "inside",
+    legend.position.inside = c(0.15, 0.5),
+    legend.justification = c("left", "center"),
+    text = element_text(color = "white"),
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    plot.caption = element_text(color = "white", hjust = 0),
+    plot.title = element_text(color = "#E8A6A1", face = "bold", size = 20),
+    plot.subtitle = element_text(color = "gray90", size = 10)
+    ) + 
+  guides(fill = guide_legend(override.aes = list(label = ""))) # Remove "a" from legend
+
+```
+
+# 7. Export Files
+
+```{r}
+# Select file formats to export to
+formats_to_export <- c("png", "svg")
+
+# Save files to the output folder
+save_tt_plots(
+  plot = final_plot2, 
+  title = title, 
+  date = tt_date,
+  output_folder = "output", 
+  formats = formats_to_export, 
+  height = 8,
+  width = 6,
+  dpi = 300
+  )
+```
