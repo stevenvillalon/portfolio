@@ -224,7 +224,7 @@ final_plot <-
     plot.subtitle = element_text(color = "gray90", size = 10)
     ) + 
   guides(fill = guide_legend(override.aes = list(label = ""))) # Remove "a" from legend
-final_plot
+
 ```
 
 # 7. Export Files
