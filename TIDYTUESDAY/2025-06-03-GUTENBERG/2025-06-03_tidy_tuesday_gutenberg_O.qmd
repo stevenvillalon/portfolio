@@ -137,6 +137,7 @@ cnts_by_country
 
 ```{r}
 library(rnaturalearth)
+library(sf)
 
 # Set lat/lon parameters for plotting area
 long_min <- -125 
@@ -166,7 +167,6 @@ world_counts <- world_counts |>
 ```{r fig.height = 8, fig.width = 6, dpi = 100, message = FALSE}
 library(ggrepel)
 library(showtext)
-library(sf)
 library(ggtext)
 
 # Load Lato font
