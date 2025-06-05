@@ -3,10 +3,11 @@ title: "Project Gutenberg"
 author: "Steven Villalon"
 date: 2025-06-03
 categories: ["String Manipulation", "Maps", "R"]
+subtitle: "Analysis revealed that more than a thousand books in Project Gutenberg have a subject related to Latin American countries."
 image: output/2025-06-03_tidy_tuesday_project_gutenberg.png
 format:
   html:
-    df-print: paged
+    df-print: default
     embed-resources: true
     toc: true
     toc-location: left
@@ -14,21 +15,28 @@ format:
     code-summary: "Show Code"
 ---
 
+---
+
+![](output/2025-06-03_tidy_tuesday_project_gutenberg.svg){fig-alt="Final plot"}
+
 # Question of Interest
 
 How many books in Project Gutenberg have a Latin American country as one their subjects?
 
 **Goal:** make a map with the number of books as a label.
 
-![](output/2025-06-03_tidy_tuesday_project_gutenberg.svg){fig-alt="Final plot"}
+## 1. Packages & Dependencies
 
-# 1. Packages & Dependencies
-
-```{r message = FALSE}
+```{r packages, message = FALSE}
 # Load packages
 library(tidyverse)
 library(tidytuesdayR)
 library(here)
+library(rnaturalearth)
+library(sf)
+library(ggrepel)
+library(showtext)
+library(ggtext)
 
 # Load helper functions
 source(here::here("R/utils/tidy_tuesday_helpers.R"))
@@ -39,9 +47,9 @@ tt_date <- "2025-06-03"
 
 ```
 
-# 2. Load Data
+## 2. Load Data
 
-```{r message = FALSE}
+```{r data_load, message = FALSE}
 # Load data from tidytuesdayR package
 tuesdata <- tidytuesdayR::tt_load(tt_date)
 
@@ -56,9 +64,9 @@ rm(tuesdata)
 
 ```
 
-# 3. Examine Data
+## 3. Examine Data
 
-```{r}
+```{r df_heads}
 # View data
 head(gutenberg_authors)
 head(gutenberg_languages)
@@ -67,9 +75,9 @@ head(gutenberg_subjects)
 
 ```
 
-# 4. Cleaning
+## 4. Cleaning
 
-```{r}
+```{r collapse_subjects}
 # Collapse subjects into 1 row per id
 pg_subjects <- gutenberg_subjects |> 
   group_by(gutenberg_id) |> 
@@ -78,7 +86,7 @@ head(pg_subjects)
 
 ```
 
-```{r}
+```{r join_dfs}
 # Join pg_subjects to metadata table
 pg_clean <- gutenberg_metadata |> 
   left_join(pg_subjects, by = "gutenberg_id") |> 
@@ -88,7 +96,7 @@ head(pg_clean)
 
 ```
 
-```{r}
+```{r country_list}
 # List of Latin American countries
 latam_caribbean_countries <- c(
   # South America
@@ -107,7 +115,7 @@ latam_caribbean_countries <- c(
 
 ```
 
-```{r}
+```{r book_count_loop}
 # Initialize an empty list to collect rows
 rows <- list()
 
@@ -133,12 +141,12 @@ cnts_by_country
 
 ```
 
-# 5. Mapping Parameters
-
 ```{r}
-library(rnaturalearth)
-library(sf)
+```
 
+## 5. Mapping Parameters
+
+```{r mapping_parameters, message = FALSE}
 # Set lat/lon parameters for plotting area
 long_min <- -125 
 long_max <- -30
@@ -162,13 +170,9 @@ world_counts <- world_counts |>
 
 ```
 
-# 6. Visualization
+## 6. Visualization
 
-```{r fig.height = 8, fig.width = 6, dpi = 300, message = FALSE}
-library(ggrepel)
-library(showtext)
-library(ggtext)
-
+```{r visualization, fig.height = 8, fig.width = 6, dpi = 300, message = FALSE}
 # Load Lato font
 font_add_google("Lato", "lato")
 showtext_auto()
@@ -227,13 +231,13 @@ final_plot <-
 
 ```
 
-# 7. Export Files
+## 7. Export Visualization
 
-```{r}
+```{r file_export}
 # Select file formats to export to
 formats_to_export <- c("png", "svg")
 
-# Save files to the output folder
+# Save files to the output folder (uses custom R script)
 save_tt_plots(
   plot = final_plot, 
   title = title, 
@@ -245,3 +249,19 @@ save_tt_plots(
   dpi = 300
   )
 ```
+
+## 8. Session Info
+
+::: {.callout-tip collapse="true" title="Expand for Session Info"}
+```{r, echo=FALSE, eval=TRUE, warning=FALSE}
+sessionInfo()
+```
+:::
+
+## 9. Github
+
+::: {.callout-tip title="Files"}
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/d5050efd5c5f68270bd6c1df00c8380d17826126/TIDYTUESDAY/2025-06-03-GUTENBERG/2025-06-03_tidy_tuesday_gutenberg_O.qmd" target="_blank" rel="noopener noreferrer">View the notebook</a>
+
+📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
+:::
