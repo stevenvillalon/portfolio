@@ -1,9 +1,9 @@
 ---
-title: "Project Gutenberg"
+title: "U.S. Judges "
 author: "Steven Villalon"
 date: 2025-06-10
 categories: ["Sankey Diagram", "R"]
-subtitle: "Very few judges have been women, historically speaking. Judgeships are lifetime appointments and the data indicates most stay in their position 20+ years."
+subtitle: "Very few judges have been women, historically speaking. Judgeships are lifetime appointments and the data indicates that most stay in their position 20+ years."
 image: output/2025-06-10_tidy_tuesday_us_judges.png
 format:
   html:
@@ -248,7 +248,7 @@ sessionInfo()
 ## 8. Github
 
 ::: {.callout-tip title="Files"}
-📓 <a href="https://github.com/stevenvillalon/portfolio/blob/d5050efd5c5f68270bd6c1df00c8380d17826126/TIDYTUESDAY/2025-06-03-GUTENBERG/2025-06-03_tidy_tuesday_gutenberg_O.qmd" target="_blank" rel="noopener noreferrer">View the notebook</a>
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/7ca2a1ba09c2dc0ddd9a47db936504d5652b68f6/TIDYTUESDAY/2025-06-10-JUDGES/2025-06-10_tidy_tuesday_judges_O.qmd" target="_blank" rel="noopener noreferrer">View the notebook</a>
 
 📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
 :::
