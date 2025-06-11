@@ -1,0 +1,254 @@
+---
+title: "Project Gutenberg"
+author: "Steven Villalon"
+date: 2025-06-10
+categories: ["Sankey Diagram", "R"]
+subtitle: "Very few judges have been women, historically speaking. Judgeships are lifetime appointments and the data indicates most stay in their position 20+ years."
+image: output/2025-06-10_tidy_tuesday_us_judges.png
+format:
+  html:
+    df-print: default
+    embed-resources: true
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-summary: "Show Code"
+---
+
+------------------------------------------------------------------------
+
+![](output/2025-06-10_tidy_tuesday_us_judges.svg){fig-alt="Final plot"}
+
+# Question of Interest
+
+In a single chart, demonstrate the ratio of nominations that came from each party, the gender of nominees, and how long they served.
+
+**Goal:** Make a Sankey diagram showing the flow of nominations through gender and length of service.
+
+## 1. Packages & Dependencies
+
+```{r packages, message = FALSE}
+# Load packages
+library(tidyverse)
+library(tidytuesdayR)
+library(here)
+library(showtext)
+library(ggtext)
+library(ggalluvial)
+library(scales)
+
+# Load helper functions
+source(here::here("R/utils/tidy_tuesday_helpers.R"))
+
+# Set project title
+title <- "US Judges"
+tt_date <- "2025-06-10"
+
+```
+
+## 2. Load Data
+
+```{r data_load, message = FALSE}
+# Load data from tidytuesdayR package
+tuesdata <- tidytuesdayR::tt_load(tt_date)
+
+# Extract elements from tuesdata
+appointments <- tuesdata$judges_appointments
+people <- tuesdata$judges_people
+
+# Remove tuesdata file
+rm(tuesdata)
+
+```
+
+## 3. Examine Data
+
+```{r df_heads}
+# View data
+head(appointments)
+head(people)
+
+```
+
+## 4. Cleaning
+
+```{r join_tables}
+# Join tables and remove unneccesary columns
+df <- appointments |> 
+  left_join(people, by = "judge_id") |> 
+  select(judge_id, name_first, name_middle, name_last, president_party, gender, commission_date, termination_date)
+
+# Remove judges nominated by other parties (e.g., Whig, Federalist, etc.)
+df <- df |> 
+    mutate(president_party_grouped = case_when(
+      president_party == "Republican" ~ "Republican",
+      president_party == "Democratic" ~ "Democrat",
+      TRUE ~ "Other"
+  )) |> 
+  filter(president_party_grouped != "Other") |> 
+  select(-president_party)
+
+```
+
+```{r make_dates}
+# Convert dates from character to Date type and calculate service length
+df <- df |> 
+    mutate(start_date = as.Date(commission_date, format = "%m/%d/%Y"),
+           end_date = as.Date(termination_date, format = "%m/%d/%Y"),
+           end_date = if_else(
+             is.na(end_date),
+             Sys.Date(),
+             end_date),
+           length_of_service = round(as.numeric(end_date - start_date) / 365.25, 1)
+    )
+
+```
+
+```{r service_length_buckets}
+# Create service length buckets
+ df <- df |> 
+   mutate(length_of_service = case_when(
+    length_of_service < 5 ~ "0 - 5 years",
+    length_of_service < 10 ~ "5 - 10 years",
+    length_of_service < 15 ~ "10 - 15 years",
+    length_of_service < 20 ~ "15 - 20 years",
+    length_of_service >= 20 ~ "20+ years"
+    ))
+ 
+```
+
+```{r prepare_sankey}
+# Group data for the Sankey
+agg_df <- as.data.frame(table(df$president_party_grouped, 
+                              df$gender, 
+                              df$length_of_service))
+
+# Add column names
+colnames(agg_df) <- c("presidents_party", "judge_gender", "service_length", "freq")
+
+# Re-order factor levels
+agg_df$service_length <- fct_relevel(agg_df$service_length, c("0 - 5 years",
+                                                              "5 - 10 years", 
+                                                              "10 - 15 years", 
+                                                              "15 - 20 years", 
+                                                              "20+ years"))
+
+```
+
+## 5. Visualization
+
+```{r visualization, fig.height = 6, fig.width = 8, dpi = 300, message = FALSE}
+
+# Load font
+font_add_google("Merriweather", "merriweather")
+showtext_auto()
+showtext_opts(dpi = 300)
+
+# Make plot
+final_plot <- ggplot(agg_df) +
+  aes(
+    axis1 = presidents_party,
+    axis2 = judge_gender,
+    axis3 = service_length,
+    y = freq
+  ) +
+  geom_alluvium(
+    aes(fill = presidents_party),
+    width = 1 / 12
+  ) +
+  scale_fill_manual(values = c(
+    "Democrat" = "#3B77AF",
+    "Republican" = "#C43D35"
+  )) +
+  geom_stratum(
+    width = 0.4,
+    fill = "gray80"
+  ) +
+  geom_text(
+    stat = "stratum",
+    aes(label = after_stat(stratum)),
+    family = "merriweather",
+    color = "#4A4A4A"
+  ) +
+  scale_x_discrete(
+    limits = c("President's Party", "Gender", "Service Length"),
+    expand = c(0.1, 0.1)
+  ) +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal(base_family = "merriweather") +
+  labs(
+    title = "U.S. Judge Appointments Since 1789",
+    subtitle = "Federal appointments are a big deal because most judges end up serving more than 20 years. \nRepublican presidents have appointed 208 more judges than Democratic presidents. Historically, \nmost judges have been men, but women are increasingly holding these positions.",
+    y = "Appointments",
+    caption = "\nChart produced by Steven Villalon for Tidy Tuesday exercise on June 10, 2025."
+  ) +
+  theme(
+    plot.background = element_rect(fill = "#EFDECD"),
+    panel.background = element_rect(fill = "#EFDECD"),
+    panel.grid = element_blank(),
+    legend.position = "none",
+    plot.margin = margin(t = 20, r = 20, b = 20, l = 20),
+    plot.title = element_text(
+      face = "bold",
+      size = 20,
+      color = "#8A3324"
+    ),
+    plot.subtitle = element_text(
+      size = 10,
+      color = "gray30"
+    ),
+    plot.caption = element_text(
+      hjust = 0,
+      color = "gray30"
+    ),
+    axis.text.x = element_text(
+      size = 12,
+      color = "gray30"
+    ),
+    axis.title.y = element_text(
+      size = 12,
+      color = "gray30",
+      margin = margin(r = 10)
+    )
+  )
+
+final_plot
+
+```
+
+## 6. Export Visualization
+
+```{r file_export}
+# Select file formats to export to
+formats_to_export <- c("png", "svg")
+
+# Save files to the output folder (uses custom R script)
+save_tt_plots(
+  plot = final_plot, 
+  title = title, 
+  date = tt_date,
+  output_folder = "output", 
+  formats = formats_to_export, 
+  height = 6,
+  width = 8,
+  dpi = 300
+  )
+
+```
+
+## 7. Session Info
+
+::: {.callout-tip collapse="true" title="Expand for Session Info"}
+```{r, echo=FALSE, eval=TRUE, warning=FALSE}
+sessionInfo()
+
+```
+:::
+
+## 8. Github
+
+::: {.callout-tip title="Files"}
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/d5050efd5c5f68270bd6c1df00c8380d17826126/TIDYTUESDAY/2025-06-03-GUTENBERG/2025-06-03_tidy_tuesday_gutenberg_O.qmd" target="_blank" rel="noopener noreferrer">View the notebook</a>
+
+📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
+:::
