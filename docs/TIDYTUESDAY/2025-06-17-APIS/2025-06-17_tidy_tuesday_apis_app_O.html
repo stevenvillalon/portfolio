@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Made by Steven Villalon for Tidy Tuesday exercise June 17, 2025">
+
+<title>Tidy Tuesday - API Spec Explorer – Steven Villalon Data Science Portfolio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon/favicon_for_sv_portfolio.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-061a66dfc06aff5f2a9c81275e88bdd4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TREEKW9YP3"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TREEKW9YP3', { 'anonymize_ip': true});
+</script>
+<link href="../../site_libs/selectize-0.15.2/css/selectize.bootstrap3.css" rel="stylesheet">
+<script src="../../site_libs/selectize-0.15.2/js/selectize.min.js"></script>
+<script src="../../site_libs/selectize-0.15.2/accessibility/js/selectize-plugin-a11y.min.js"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logos/sv_logo_blue_on_white.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Steven Villalon Data Science Portfolio</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tidytuesday.html"> 
+<span class="menu-text">Tidy Tuesday</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../python.html"> 
+<span class="menu-text">Python Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tableau.html"> 
+<span class="menu-text">Tableau Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="mailto:steven.villalon@gmail.com" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-envelope"></i></a>
+    <a href="https://github.com/stevenvillalon" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/steven-villalon/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tidy Tuesday - API Spec Explorer</h1>
+<p class="subtitle lead">Type or select a provider name to learn more about APIs. For providers with multiple APIs, select a Service.</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Shiny</div>
+    <div class="quarto-category">R</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Made by Steven Villalon for Tidy Tuesday exercise June 17, 2025 </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- Custom styles for the API Explorer app -->
+
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech&amp;display=swap" rel="stylesheet">
+
+<style>
+  body {
+    background-color: #e6f2f0;
+    font-family: 'Share Tech', sans-serif;
+    color: #2f4f4f;
+  }
+
+  h1, h2, h3, p {
+    color: #2f4f4f;
+  }
+
+  .form-control {
+    border-radius: 20px;
+  }
+</style>
+
+<div class="cell" data-context="sidebar">
+<div class="cell-output-display no-overflow-x">
+<div class="form-group shiny-input-container">
+<label class="control-label" id="provider-label" for="provider">Provider Name</label>
+<div>
+<select id="provider" class="shiny-input-select"><option value="1forge.com">1forge.com</option>
+<option value="1password.com">1password.com</option>
+<option value="1password.local">1password.local</option>
+<option value="6-dot-authentiqio.appspot.com">6-dot-authentiqio.appspot.com</option>
+<option value="ably.io">ably.io</option>
+<option value="ably.net">ably.net</option>
+<option value="abstractapi.com">abstractapi.com</option>
+<option value="adafruit.com">adafruit.com</option>
+<option value="adobe.com">adobe.com</option>
+<option value="adyen.com">adyen.com</option>
+<option value="afterbanks.com">afterbanks.com</option>
+<option value="agco-ats.com">agco-ats.com</option>
+<option value="aiception.com">aiception.com</option>
+<option value="airbyte.local">airbyte.local</option>
+<option value="airport-web.appspot.com">airport-web.appspot.com</option>
+<option value="akeneo.com">akeneo.com</option>
+<option value="amadeus.com">amadeus.com</option>
+<option value="amazonaws.com">amazonaws.com</option>
+<option value="amentum.space">amentum.space</option>
+<option value="anchore.io">anchore.io</option>
+<option value="apache.org">apache.org</option>
+<option value="apacta.com">apacta.com</option>
+<option value="api.gov.uk">api.gov.uk</option>
+<option value="api.video">api.video</option>
+<option value="api2cart.com">api2cart.com</option>
+<option value="api2pdf.com">api2pdf.com</option>
+<option value="apicurio.local">apicurio.local</option>
+<option value="apidapp.com">apidapp.com</option>
+<option value="apideck.com">apideck.com</option>
+<option value="apigee.local">apigee.local</option>
+<option value="apigee.net">apigee.net</option>
+<option value="apimatic.io">apimatic.io</option>
+<option value="apis.guru">apis.guru</option>
+<option value="apisetu.gov.in">apisetu.gov.in</option>
+<option value="apispot.io">apispot.io</option>
+<option value="apiz.ebay.com">apiz.ebay.com</option>
+<option value="appcenter.ms">appcenter.ms</option>
+<option value="apple.com">apple.com</option>
+<option value="apptigent.com">apptigent.com</option>
+<option value="appveyor.com">appveyor.com</option>
+<option value="appwrite.io">appwrite.io</option>
+<option value="archive.org">archive.org</option>
+<option value="art19.com">art19.com</option>
+<option value="asana.com">asana.com</option>
+<option value="asuarez.dev">asuarez.dev</option>
+<option value="atlassian.com">atlassian.com</option>
+<option value="ato.gov.au">ato.gov.au</option>
+<option value="aucklandmuseum.com">aucklandmuseum.com</option>
+<option value="authentiq.io">authentiq.io</option>
+<option value="autodealerdata.com">autodealerdata.com</option>
+<option value="autotask.net">autotask.net</option>
+<option value="avaza.com">avaza.com</option>
+<option value="aviationdata.systems">aviationdata.systems</option>
+<option value="axesso.de">axesso.de</option>
+<option value="azure.com">azure.com</option>
+<option value="balldontlie.io">balldontlie.io</option>
+<option value="bandsintown.com">bandsintown.com</option>
+<option value="bbc.co.uk">bbc.co.uk</option>
+<option value="bbci.co.uk">bbci.co.uk</option>
+<option value="bclaws.ca">bclaws.ca</option>
+<option value="beanstream.com">beanstream.com</option>
+<option value="beezup.com">beezup.com</option>
+<option value="betfair.com">betfair.com</option>
+<option value="bhagavadgita.io">bhagavadgita.io</option>
+<option value="biapi.pro">biapi.pro</option>
+<option value="bigdatacloud.net">bigdatacloud.net</option>
+<option value="bigredcloud.com">bigredcloud.com</option>
+<option value="bikewise.org">bikewise.org</option>
+<option value="billbee.io">billbee.io</option>
+<option value="billingo.hu">billingo.hu</option>
+<option value="bintable.com">bintable.com</option>
+<option value="bitbucket.org">bitbucket.org</option>
+<option value="biztoc.com">biztoc.com</option>
+<option value="blazemeter.com">blazemeter.com</option>
+<option value="bluemix.net">bluemix.net</option>
+<option value="botify.com">botify.com</option>
+<option value="botschaft.local">botschaft.local</option>
+<option value="box.com">box.com</option>
+<option value="brainbi.net">brainbi.net</option>
+<option value="brandlovers.com">brandlovers.com</option>
+<option value="braze.com">braze.com</option>
+<option value="brex.io">brex.io</option>
+<option value="britbox.co.uk">britbox.co.uk</option>
+<option value="browshot.com">browshot.com</option>
+<option value="bufferapp.com">bufferapp.com</option>
+<option value="bulksms.com">bulksms.com</option>
+<option value="bungie.net">bungie.net</option>
+<option value="bunq.com">bunq.com</option>
+<option value="c19qrserver.local">c19qrserver.local</option>
+<option value="callcontrol.com">callcontrol.com</option>
+<option value="callfire.com">callfire.com</option>
+<option value="calorieninjas.com">calorieninjas.com</option>
+<option value="canada-holidays.ca">canada-holidays.ca</option>
+<option value="carbondoomsday.com">carbondoomsday.com</option>
+<option value="cdcgov.local">cdcgov.local</option>
+<option value="chaingateway.io">chaingateway.io</option>
+<option value="change.local">change.local</option>
+<option value="channel4.com">channel4.com</option>
+<option value="chompthis.com">chompthis.com</option>
+<option value="circl.lu">circl.lu</option>
+<option value="circleci.com">circleci.com</option>
+<option value="circuitsandbox.net">circuitsandbox.net</option>
+<option value="cisco.com">cisco.com</option>
+<option value="citrixonline.com">citrixonline.com</option>
+<option value="citycontext.com">citycontext.com</option>
+<option value="clarify.io">clarify.io</option>
+<option value="clearblade.com">clearblade.com</option>
+<option value="clever-cloud.com">clever-cloud.com</option>
+<option value="clever.com">clever.com</option>
+<option value="clickmeter.com">clickmeter.com</option>
+<option value="clicksend.com">clicksend.com</option>
+<option value="climate.com">climate.com</option>
+<option value="climatekuul.com">climatekuul.com</option>
+<option value="cloud-elements.com">cloud-elements.com</option>
+<option value="cloudmersive.com">cloudmersive.com</option>
+<option value="cloudrf.com">cloudrf.com</option>
+<option value="clubhouseapi.com">clubhouseapi.com</option>
+<option value="cnab-online.herokuapp.com">cnab-online.herokuapp.com</option>
+<option value="codat.io">codat.io</option>
+<option value="code-scan.com">code-scan.com</option>
+<option value="codesearch.debian.net">codesearch.debian.net</option>
+<option value="collegefootballdata.com">collegefootballdata.com</option>
+<option value="color.pizza">color.pizza</option>
+<option value="combell.com">combell.com</option>
+<option value="configcat.com">configcat.com</option>
+<option value="conjur.local">conjur.local</option>
+<option value="consumerfinance.gov">consumerfinance.gov</option>
+<option value="contract-p.fit">contract-p.fit</option>
+<option value="contribly.com">contribly.com</option>
+<option value="core.ac.uk">core.ac.uk</option>
+<option value="corrently.io">corrently.io</option>
+<option value="covid19-api.com">covid19-api.com</option>
+<option value="cowin.gov.cin">cowin.gov.cin</option>
+<option value="cpy.re">cpy.re</option>
+<option value="credas.co.uk">credas.co.uk</option>
+<option value="crediwatch.com">crediwatch.com</option>
+<option value="crossbrowsertesting.com">crossbrowsertesting.com</option>
+<option value="crucible.local">crucible.local</option>
+<option value="cybertaxonomy.eu">cybertaxonomy.eu</option>
+<option value="cycat.org">cycat.org</option>
+<option value="d7networks.com">d7networks.com</option>
+<option value="daniweb.com">daniweb.com</option>
+<option value="dataatwork.org">dataatwork.org</option>
+<option value="dataflowkit.com">dataflowkit.com</option>
+<option value="datasette.local">datasette.local</option>
+<option value="datumbox.com">datumbox.com</option>
+<option value="deeparteffects.com">deeparteffects.com</option>
+<option value="departureboard.io">departureboard.io</option>
+<option value="deutschebahn.com">deutschebahn.com</option>
+<option value="dev.to">dev.to</option>
+<option value="digitallinguistics.io">digitallinguistics.io</option>
+<option value="digitallocker.gov.in">digitallocker.gov.in</option>
+<option value="digitalnz.org">digitalnz.org</option>
+<option value="digitalocean.com">digitalocean.com</option>
+<option value="discourse.local">discourse.local</option>
+<option value="dnd5eapi.co">dnd5eapi.co</option>
+<option value="docker.com">docker.com</option>
+<option value="docusign.net">docusign.net</option>
+<option value="domainsdb.info">domainsdb.info</option>
+<option value="dracoon.team">dracoon.team</option>
+<option value="drchrono.com">drchrono.com</option>
+<option value="dropx.io">dropx.io</option>
+<option value="dweet.io">dweet.io</option>
+<option value="easypdfserver.com">easypdfserver.com</option>
+<option value="ebay.com">ebay.com</option>
+<option value="ebi.ac.uk">ebi.ac.uk</option>
+<option value="edrv.io">edrv.io</option>
+<option value="elevenlabs.io">elevenlabs.io</option>
+<option value="elmah.io">elmah.io</option>
+<option value="enode.io">enode.io</option>
+<option value="envoice.in">envoice.in</option>
+<option value="eos.local">eos.local</option>
+<option value="epa.gov">epa.gov</option>
+<option value="esgenterprise.com">esgenterprise.com</option>
+<option value="etherpad.local">etherpad.local</option>
+<option value="etmdb.com">etmdb.com</option>
+<option value="etsi.local">etsi.local</option>
+<option value="europeana.eu">europeana.eu</option>
+<option value="evemarketer.com">evemarketer.com</option>
+<option value="evetech.net">evetech.net</option>
+<option value="exavault.com">exavault.com</option>
+<option value="exchangerate-api.com">exchangerate-api.com</option>
+<option value="exlibrisgroup.com">exlibrisgroup.com</option>
+<option value="extendsclass.com">extendsclass.com</option>
+<option value="extpose.com">extpose.com</option>
+<option value="exude-api.herokuapp.com">exude-api.herokuapp.com</option>
+<option value="faceidentity-beta.azurewebsites.net">faceidentity-beta.azurewebsites.net</option>
+<option value="faretrotter.com">faretrotter.com</option>
+<option value="fec.gov">fec.gov</option>
+<option value="fecru.local">fecru.local</option>
+<option value="figshare.com">figshare.com</option>
+<option value="files.com">files.com</option>
+<option value="fire.com">fire.com</option>
+<option value="firebrowse.org">firebrowse.org</option>
+<option value="firmalyzer.com">firmalyzer.com</option>
+<option value="firstinspires.org">firstinspires.org</option>
+<option value="fisheye.local">fisheye.local</option>
+<option value="flat.io">flat.io</option>
+<option value="flickr.com">flickr.com</option>
+<option value="formapi.io">formapi.io</option>
+<option value="frankiefinancial.io">frankiefinancial.io</option>
+<option value="fraudlabspro.com">fraudlabspro.com</option>
+<option value="freesound.org">freesound.org</option>
+<option value="freetv-app.com">freetv-app.com</option>
+<option value="fulfillment.com">fulfillment.com</option>
+<option value="fungenerators.com">fungenerators.com</option>
+<option value="funtranslations.com">funtranslations.com</option>
+<option value="furkot.com">furkot.com</option>
+<option value="gambitcomm.local">gambitcomm.local</option>
+<option value="gamesparks.net">gamesparks.net</option>
+<option value="geneea.com">geneea.com</option>
+<option value="geodatasource.com">geodatasource.com</option>
+<option value="getpostman.com">getpostman.com</option>
+<option value="getsandbox.com">getsandbox.com</option>
+<option value="getthedata.com">getthedata.com</option>
+<option value="gettyimages.com">gettyimages.com</option>
+<option value="giphy.com">giphy.com</option>
+<option value="gisgraphy.com">gisgraphy.com</option>
+<option value="gitea.io">gitea.io</option>
+<option value="github.com">github.com</option>
+<option value="globalwinescore.com">globalwinescore.com</option>
+<option value="goog.io">goog.io</option>
+<option value="googleapis.com">googleapis.com</option>
+<option value="gov.bc.ca">gov.bc.ca</option>
+<option value="graphhopper.com">graphhopper.com</option>
+<option value="greenpeace.org">greenpeace.org</option>
+<option value="hackathonwatch.com">hackathonwatch.com</option>
+<option value="haloapi.com">haloapi.com</option>
+<option value="handwrytten.com">handwrytten.com</option>
+<option value="healthcare.gov">healthcare.gov</option>
+<option value="here.com">here.com</option>
+<option value="hetzner.cloud">hetzner.cloud</option>
+<option value="hhs.gov">hhs.gov</option>
+<option value="highwaysengland.co.uk">highwaysengland.co.uk</option>
+<option value="hillbillysoftware.com">hillbillysoftware.com</option>
+<option value="hsbc.com">hsbc.com</option>
+<option value="httpbin.org">httpbin.org</option>
+<option value="hubapi.com">hubapi.com</option>
+<option value="hubhopper.com">hubhopper.com</option>
+<option value="hydramovies.com">hydramovies.com</option>
+<option value="i-cue.solutions">i-cue.solutions</option>
+<option value="ibanapi.com">ibanapi.com</option>
+<option value="icons8.com">icons8.com</option>
+<option value="id4i.de">id4i.de</option>
+<option value="ideaconsult.net">ideaconsult.net</option>
+<option value="ideal-postcodes.co.uk">ideal-postcodes.co.uk</option>
+<option value="idtbeyond.com">idtbeyond.com</option>
+<option value="ijenko.net">ijenko.net</option>
+<option value="illumidesk.com">illumidesk.com</option>
+<option value="image-charts.com">image-charts.com</option>
+<option value="impala.travel">impala.travel</option>
+<option value="import.io">import.io</option>
+<option value="inboxroute.com">inboxroute.com</option>
+<option value="influxdata.com">influxdata.com</option>
+<option value="inpe.br">inpe.br</option>
+<option value="instagram.com">instagram.com</option>
+<option value="intel.com">intel.com</option>
+<option value="intellifi.nl">intellifi.nl</option>
+<option value="interactivebrokers.com">interactivebrokers.com</option>
+<option value="interzoid.com">interzoid.com</option>
+<option value="ip2location.com">ip2location.com</option>
+<option value="ip2location.io">ip2location.io</option>
+<option value="ip2proxy.com">ip2proxy.com</option>
+<option value="ip2whois.com">ip2whois.com</option>
+<option value="ipinfodb.com">ipinfodb.com</option>
+<option value="iptwist.com">iptwist.com</option>
+<option value="iqualify.com">iqualify.com</option>
+<option value="isbndb.com">isbndb.com</option>
+<option value="isendpro.com">isendpro.com</option>
+<option value="iva-api.com">iva-api.com</option>
+<option value="ix-api.net">ix-api.net</option>
+<option value="izettle.com">izettle.com</option>
+<option value="jellyfin.local">jellyfin.local</option>
+<option value="jira.local">jira.local</option>
+<option value="jirafe.com">jirafe.com</option>
+<option value="jokes.one">jokes.one</option>
+<option value="journy.io">journy.io</option>
+<option value="jumpseller.com">jumpseller.com</option>
+<option value="just-eat.co.uk">just-eat.co.uk</option>
+<option value="keycloak.local">keycloak.local</option>
+<option value="keyserv.solutions">keyserv.solutions</option>
+<option value="klarna.com">klarna.com</option>
+<option value="koomalooma.com">koomalooma.com</option>
+<option value="kubernetes.io">kubernetes.io</option>
+<option value="lambdatest.com">lambdatest.com</option>
+<option value="landregistry.gov.uk">landregistry.gov.uk</option>
+<option value="languagetool.org">languagetool.org</option>
+<option value="launchdarkly.com">launchdarkly.com</option>
+<option value="learnifier.com">learnifier.com</option>
+<option value="letmc.com">letmc.com</option>
+<option value="lgtm.com">lgtm.com</option>
+<option value="libretranslate.local">libretranslate.local</option>
+<option value="link.fish">link.fish</option>
+<option value="linode.com">linode.com</option>
+<option value="linuxfoundation.org">linuxfoundation.org</option>
+<option value="listennotes.com">listennotes.com</option>
+<option value="logoraisr.com">logoraisr.com</option>
+<option value="loket.nl">loket.nl</option>
+<option value="lotadata.com">lotadata.com</option>
+<option value="lufthansa.com">lufthansa.com</option>
+<option value="lumminary.com">lumminary.com</option>
+<option value="lyft.com">lyft.com</option>
+<option value="magento.com">magento.com</option>
+<option value="magick.nu">magick.nu</option>
+<option value="maif.local">maif.local</option>
+<option value="mailboxvalidator.com">mailboxvalidator.com</option>
+<option value="mailscript.com">mailscript.com</option>
+<option value="mandrillapp.com">mandrillapp.com</option>
+<option value="mashape.com">mashape.com</option>
+<option value="mastodon.local">mastodon.local</option>
+<option value="math.tools">math.tools</option>
+<option value="mbus.local">mbus.local</option>
+<option value="mcw.edu">mcw.edu</option>
+<option value="medcorder.com">medcorder.com</option>
+<option value="medium.com">medium.com</option>
+<option value="meraki.com">meraki.com</option>
+<option value="mercedes-benz.com">mercedes-benz.com</option>
+<option value="mercure.local">mercure.local</option>
+<option value="mermade.org.uk">mermade.org.uk</option>
+<option value="meshery.local">meshery.local</option>
+<option value="miataru.com">miataru.com</option>
+<option value="microcks.local">microcks.local</option>
+<option value="microsoft.com" selected="">microsoft.com</option>
+<option value="mist.com">mist.com</option>
+<option value="moderatecontent.com">moderatecontent.com</option>
+<option value="mon-voyage-pas-cher.com">mon-voyage-pas-cher.com</option>
+<option value="monarchinitiative.org">monarchinitiative.org</option>
+<option value="motaword.com">motaword.com</option>
+<option value="mozilla.com">mozilla.com</option>
+<option value="mtaa-api.herokuapp.com">mtaa-api.herokuapp.com</option>
+<option value="musixmatch.com">musixmatch.com</option>
+<option value="n-auth.com">n-auth.com</option>
+<option value="namsor.com">namsor.com</option>
+<option value="nasa.gov">nasa.gov</option>
+<option value="nativeads.com">nativeads.com</option>
+<option value="naviplancentral.com">naviplancentral.com</option>
+<option value="nba.com">nba.com</option>
+<option value="nbg.gr">nbg.gr</option>
+<option value="ndhm.gov.in">ndhm.gov.in</option>
+<option value="nebl.io">nebl.io</option>
+<option value="neowsapp.com">neowsapp.com</option>
+<option value="netatmo.net">netatmo.net</option>
+<option value="netbox.dev">netbox.dev</option>
+<option value="netboxdemo.com">netboxdemo.com</option>
+<option value="netlicensing.io">netlicensing.io</option>
+<option value="netlify.com">netlify.com</option>
+<option value="neutrinoapi.net">neutrinoapi.net</option>
+<option value="nfusionsolutions.biz">nfusionsolutions.biz</option>
+<option value="nic.at">nic.at</option>
+<option value="nlpcloud.io">nlpcloud.io</option>
+<option value="noosh.com">noosh.com</option>
+<option value="nordigen.com">nordigen.com</option>
+<option value="notion.com">notion.com</option>
+<option value="nowpayments.io">nowpayments.io</option>
+<option value="npr.org">npr.org</option>
+<option value="nrel.gov">nrel.gov</option>
+<option value="nrm.se">nrm.se</option>
+<option value="nsidc.org">nsidc.org</option>
+<option value="ntropy.network">ntropy.network</option>
+<option value="nytimes.com">nytimes.com</option>
+<option value="o2.cz">o2.cz</option>
+<option value="obono.at">obono.at</option>
+<option value="oceandrivers.com">oceandrivers.com</option>
+<option value="okta.local">okta.local</option>
+<option value="omdbapi.com">omdbapi.com</option>
+<option value="onsched.com">onsched.com</option>
+<option value="openai.com">openai.com</option>
+<option value="openalpr.com">openalpr.com</option>
+<option value="openapi-generator.tech">openapi-generator.tech</option>
+<option value="openapi.space">openapi.space</option>
+<option value="openaq.local">openaq.local</option>
+<option value="openbanking.org.uk">openbanking.org.uk</option>
+<option value="openbankingproject.ch">openbankingproject.ch</option>
+<option value="opendatanetwork.com">opendatanetwork.com</option>
+<option value="opendatasoft.com">opendatasoft.com</option>
+<option value="openfigi.com">openfigi.com</option>
+<option value="openfintech.io">openfintech.io</option>
+<option value="openindex.ai">openindex.ai</option>
+<option value="openlinksw.com">openlinksw.com</option>
+<option value="openpolicy.local">openpolicy.local</option>
+<option value="openstates.org">openstates.org</option>
+<option value="openstf.io">openstf.io</option>
+<option value="opensuse.org">opensuse.org</option>
+<option value="opentargets.io">opentargets.io</option>
+<option value="opentrials.local">opentrials.local</option>
+<option value="optimade.local">optimade.local</option>
+<option value="opto22.com">opto22.com</option>
+<option value="orbit.love">orbit.love</option>
+<option value="ornl.gov">ornl.gov</option>
+<option value="orthanc-server.com">orthanc-server.com</option>
+<option value="osf.io">osf.io</option>
+<option value="osisoft.com">osisoft.com</option>
+<option value="ote-godaddy.com">ote-godaddy.com</option>
+<option value="owler.com">owler.com</option>
+<option value="oxforddictionaries.com">oxforddictionaries.com</option>
+<option value="paccurate.io">paccurate.io</option>
+<option value="pandascore.co">pandascore.co</option>
+<option value="pandorabots.com">pandorabots.com</option>
+<option value="papinet.io">papinet.io</option>
+<option value="parliament.uk">parliament.uk</option>
+<option value="passwordutility.net">passwordutility.net</option>
+<option value="patrowl.local">patrowl.local</option>
+<option value="pay1.de">pay1.de</option>
+<option value="paylocity.com">paylocity.com</option>
+<option value="payments.service.gov.uk">payments.service.gov.uk</option>
+<option value="paypi.dev">paypi.dev</option>
+<option value="payrun.io">payrun.io</option>
+<option value="pdfblocks.com">pdfblocks.com</option>
+<option value="pdfbroker.io">pdfbroker.io</option>
+<option value="pdfgeneratorapi.com">pdfgeneratorapi.com</option>
+<option value="peel-ci.com">peel-ci.com</option>
+<option value="pendo.io">pendo.io</option>
+<option value="peoplefinderspro.com">peoplefinderspro.com</option>
+<option value="peoplegeneratorapi.live">peoplegeneratorapi.live</option>
+<option value="personio.de">personio.de</option>
+<option value="phila.gov">phila.gov</option>
+<option value="pims.io">pims.io</option>
+<option value="pinecone.io">pinecone.io</option>
+<option value="plaid.com">plaid.com</option>
+<option value="pocketsmith.com">pocketsmith.com</option>
+<option value="poemist.com">poemist.com</option>
+<option value="polygon.io">polygon.io</option>
+<option value="portfoliooptimizer.io">portfoliooptimizer.io</option>
+<option value="postmarkapp.com">postmarkapp.com</option>
+<option value="powerdns.local">powerdns.local</option>
+<option value="presalytics.io">presalytics.io</option>
+<option value="pressassociation.io">pressassociation.io</option>
+<option value="probely.com">probely.com</option>
+<option value="proxykingdom.com">proxykingdom.com</option>
+<option value="prss.org">prss.org</option>
+<option value="ptv.vic.gov.au">ptv.vic.gov.au</option>
+<option value="qualpay.com">qualpay.com</option>
+<option value="qualtrics.com">qualtrics.com</option>
+<option value="quarantine.country">quarantine.country</option>
+<option value="quickchart.io">quickchart.io</option>
+<option value="quicksold.co.uk">quicksold.co.uk</option>
+<option value="quotes.rest">quotes.rest</option>
+<option value="randomlovecraft.com">randomlovecraft.com</option>
+<option value="randommer.io">randommer.io</option>
+<option value="rapidapi.com">rapidapi.com</option>
+<option value="rawg.io">rawg.io</option>
+<option value="rbaskets.in">rbaskets.in</option>
+<option value="readme.io">readme.io</option>
+<option value="rebilly.com">rebilly.com</option>
+<option value="redeal.io">redeal.io</option>
+<option value="redhat.com">redhat.com</option>
+<option value="redhat.local">redhat.local</option>
+<option value="redirection.io">redirection.io</option>
+<option value="refugerestrooms.org">refugerestrooms.org</option>
+<option value="reloadly.com">reloadly.com</option>
+<option value="remove.bg">remove.bg</option>
+<option value="restful4up.local">restful4up.local</option>
+<option value="rev.ai">rev.ai</option>
+<option value="reverb.com">reverb.com</option>
+<option value="ritc.io">ritc.io</option>
+<option value="ritekit.com">ritekit.com</option>
+<option value="roaring.io">roaring.io</option>
+<option value="rottentomatoes.com">rottentomatoes.com</option>
+<option value="royalmail.com">royalmail.com</option>
+<option value="rudder.example.local">rudder.example.local</option>
+<option value="rumble.run">rumble.run</option>
+<option value="runscope.com">runscope.com</option>
+<option value="sakari.io">sakari.io</option>
+<option value="salesforce.local">salesforce.local</option>
+<option value="salesloft.com">salesloft.com</option>
+<option value="schooldigger.com">schooldigger.com</option>
+<option value="scrapewebsite.email">scrapewebsite.email</option>
+<option value="seldon.local">seldon.local</option>
+<option value="selectpdf.com">selectpdf.com</option>
+<option value="semantria.com">semantria.com</option>
+<option value="sendgrid.com">sendgrid.com</option>
+<option value="setlist.fm">setlist.fm</option>
+<option value="sheerseo.com">sheerseo.com</option>
+<option value="sheetlabs.com">sheetlabs.com</option>
+<option value="shipengine.com">shipengine.com</option>
+<option value="shipstation.com">shipstation.com</option>
+<option value="shop-pro.jp">shop-pro.jp</option>
+<option value="shop.app">shop.app</option>
+<option value="shorten.rest">shorten.rest</option>
+<option value="shotstack.io">shotstack.io</option>
+<option value="shutterstock.com">shutterstock.com</option>
+<option value="signl4.com">signl4.com</option>
+<option value="sinao.app">sinao.app</option>
+<option value="skynewz-api-fortnite.herokuapp.com">skynewz-api-fortnite.herokuapp.com</option>
+<option value="slack.com">slack.com</option>
+<option value="slicebox.local">slicebox.local</option>
+<option value="smart-me.com">smart-me.com</option>
+<option value="sms77.io">sms77.io</option>
+<option value="snyk.io">snyk.io</option>
+<option value="sonar.trading">sonar.trading</option>
+<option value="soundcloud.com">soundcloud.com</option>
+<option value="spectrocoin.com">spectrocoin.com</option>
+<option value="spinitron.com">spinitron.com</option>
+<option value="spoonacular.com">spoonacular.com</option>
+<option value="sportsdata.io">sportsdata.io</option>
+<option value="spotify.com">spotify.com</option>
+<option value="squareup.com">squareup.com</option>
+<option value="stackexchange.com">stackexchange.com</option>
+<option value="staging-ecotaco.com">staging-ecotaco.com</option>
+<option value="statsocial.com">statsocial.com</option>
+<option value="stoplight.io">stoplight.io</option>
+<option value="storecove.com">storecove.com</option>
+<option value="stormglass.io">stormglass.io</option>
+<option value="stripe.com">stripe.com</option>
+<option value="superset.apache.local">superset.apache.local</option>
+<option value="surevoip.co.uk">surevoip.co.uk</option>
+<option value="surrey.ca">surrey.ca</option>
+<option value="swagger.io">swagger.io</option>
+<option value="swaggerhub.com">swaggerhub.com</option>
+<option value="symanto.net">symanto.net</option>
+<option value="synq.fm">synq.fm</option>
+<option value="tafqit.herokuapp.com">tafqit.herokuapp.com</option>
+<option value="taggun.io">taggun.io</option>
+<option value="taxamo.com">taxamo.com</option>
+<option value="taxrates.io">taxrates.io</option>
+<option value="telegram.org">telegram.org</option>
+<option value="telematicssdk.com">telematicssdk.com</option>
+<option value="telnyx.com">telnyx.com</option>
+<option value="testfire.net">testfire.net</option>
+<option value="text2data.org">text2data.org</option>
+<option value="tfl.gov.uk">tfl.gov.uk</option>
+<option value="thebluealliance.com">thebluealliance.com</option>
+<option value="thenounproject.com">thenounproject.com</option>
+<option value="thesmsworks.co.uk">thesmsworks.co.uk</option>
+<option value="thetvdb.com">thetvdb.com</option>
+<option value="threatjammer.com">threatjammer.com</option>
+<option value="ticketmaster.com">ticketmaster.com</option>
+<option value="tinyuid.com">tinyuid.com</option>
+<option value="tisane.ai">tisane.ai</option>
+<option value="tokenjay.app">tokenjay.app</option>
+<option value="tokenmetrics.com">tokenmetrics.com</option>
+<option value="tomtom.com">tomtom.com</option>
+<option value="traccar.org">traccar.org</option>
+<option value="tradematic.com">tradematic.com</option>
+<option value="transavia.com">transavia.com</option>
+<option value="transitfeeds.com">transitfeeds.com</option>
+<option value="trapstreet.com">trapstreet.com</option>
+<option value="trashnothing.com">trashnothing.com</option>
+<option value="trello.com">trello.com</option>
+<option value="truanon.com">truanon.com</option>
+<option value="truesight.local">truesight.local</option>
+<option value="truora.com">truora.com</option>
+<option value="tsapi.net">tsapi.net</option>
+<option value="turbinelabs.io">turbinelabs.io</option>
+<option value="tvmaze.com">tvmaze.com</option>
+<option value="twilio.com">twilio.com</option>
+<option value="twinehealth.com">twinehealth.com</option>
+<option value="twitter.com">twitter.com</option>
+<option value="tyk.com">tyk.com</option>
+<option value="uebermaps.com">uebermaps.com</option>
+<option value="unicourt.com">unicourt.com</option>
+<option value="up.com.au">up.com.au</option>
+<option value="urlbox.io">urlbox.io</option>
+<option value="uscann.net">uscann.net</option>
+<option value="va.gov">va.gov</option>
+<option value="vatapi.com">vatapi.com</option>
+<option value="velopayments.com">velopayments.com</option>
+<option value="vercel.com">vercel.com</option>
+<option value="versioneye.com">versioneye.com</option>
+<option value="vestorly.com">vestorly.com</option>
+<option value="viator.com">viator.com</option>
+<option value="victorops.com">victorops.com</option>
+<option value="vimeo.com">vimeo.com</option>
+<option value="visagecloud.com">visagecloud.com</option>
+<option value="visiblethread.com">visiblethread.com</option>
+<option value="visualcrossing.com">visualcrossing.com</option>
+<option value="visualstudio.com">visualstudio.com</option>
+<option value="vmware.local">vmware.local</option>
+<option value="vocadb.net">vocadb.net</option>
+<option value="voodoomfg.com">voodoomfg.com</option>
+<option value="walmart.com">walmart.com</option>
+<option value="warwick.ac.uk">warwick.ac.uk</option>
+<option value="watchful.li">watchful.li</option>
+<option value="waterlinked.com">waterlinked.com</option>
+<option value="weatherbit.io">weatherbit.io</option>
+<option value="weber-gesamtausgabe.de">weber-gesamtausgabe.de</option>
+<option value="webscraping.ai">webscraping.ai</option>
+<option value="wellknown.ai">wellknown.ai</option>
+<option value="whapi.com">whapi.com</option>
+<option value="whatsapp.local">whatsapp.local</option>
+<option value="wheretocredit.com">wheretocredit.com</option>
+<option value="who-hosts-this.com">who-hosts-this.com</option>
+<option value="wikimedia.org">wikimedia.org</option>
+<option value="windows.net">windows.net</option>
+<option value="winsms.co.za">winsms.co.za</option>
+<option value="wiremock.org">wiremock.org</option>
+<option value="wmata.com">wmata.com</option>
+<option value="wolframalpha.com">wolframalpha.com</option>
+<option value="wordassociations.net">wordassociations.net</option>
+<option value="wordnik.com">wordnik.com</option>
+<option value="worldtimeapi.org">worldtimeapi.org</option>
+<option value="wowza.com">wowza.com</option>
+<option value="wso2apistore.com">wso2apistore.com</option>
+<option value="xero.com">xero.com</option>
+<option value="xkcd.com">xkcd.com</option>
+<option value="yodlee.com">yodlee.com</option>
+<option value="youneedabudget.com">youneedabudget.com</option>
+<option value="zalando.com">zalando.com</option>
+<option value="zapier.com">zapier.com</option>
+<option value="zappiti.com">zappiti.com</option>
+<option value="zeit.co">zeit.co</option>
+<option value="zeno.fm">zeno.fm</option>
+<option value="zenoti.com">zenoti.com</option>
+<option value="zoom.us">zoom.us</option>
+<option value="zoomconnect.com">zoomconnect.com</option>
+<option value="zuora.com">zuora.com</option></select>
+<script type="application/json" data-for="provider" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-context="sidebar">
+<div class="cell-output-display no-overflow-x">
+<div id="out2101170fd9728bd8" class="shiny-html-output"></div>
+</div>
+</div>
+<div class="cell" data-context="sidebar">
+<div class="cell-output-display no-overflow-x">
+<div id="out319baf2431685a61" class="shiny-html-output"></div>
+</div>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>©Copyright 2025, Steven Villalon</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:steven.villalon@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/stevenvillalon">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/steven-villalon/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

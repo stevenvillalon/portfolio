@@ -1,0 +1,102 @@
+---
+title: "Tidy Tuesday - API Spec Explorer"
+subtitle: "Type or select a provider name to learn more about APIs. For providers with multiple APIs, select a Service."
+author: "Made by Steven Villalon (June 17, 2025)"
+categories: ["Shiny", "R"]
+format:
+  html:
+    layout: sidebar
+runtime: shiny
+---
+
+```{=html}
+<!-- Custom styles for the API Explorer app -->
+
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    background-color: #e6f2f0;
+    font-family: 'Share Tech', sans-serif;
+    color: #2f4f4f;
+  }
+
+  h1, h2, h3, p {
+    color: #2f4f4f;
+  }
+
+  .form-control {
+    border-radius: 20px;
+  }
+</style>
+
+```
+
+
+```{r setup, message = FALSE, echo = FALSE}
+# Load dependencies and data
+library(tidyverse)
+library(shiny)
+df <- read_csv("data/data_for_api_app.csv")
+
+```
+
+```{r first_dropdown, context="sidebar", echo = FALSE}
+# First dropdown 
+selectInput("provider", "Provider Name",
+            choices = sort(unique(df$provider_name)),
+            selected = "nytimes.com"
+)
+
+```
+
+```{r second_dropdown, context="sidebar", echo = FALSE}
+# Second dropdown
+renderUI({
+  req(input$provider)
+  filtered_services <- df %>%
+    filter(provider_name == input$provider) %>%
+    pull(service_name) %>%
+    unique() %>%
+    sort()
+
+  default_choice <- if (length(filtered_services) == 1) filtered_services[1] else NULL
+
+  selectInput(
+    "service",
+    "Service Name",
+    choices = filtered_services,
+    selected = default_choice
+  )
+})
+
+```
+
+```{r results, context="sidebar", echo = FALSE}
+# Display API information
+renderUI({
+  req(input$provider, input$service)
+
+  row <- df %>%
+    filter(provider_name == input$provider,
+           service_name == input$service) %>%
+    slice(1)
+
+  tagList(
+    tags$img(src = row$url, 
+             height = "100px", 
+             style = "margin-bottom:1rem;",
+             onerror = "this.onerror=null;this.src='www/logo.png';"),
+    tags$h3(row$provider_name),
+    tags$p(tags$strong("API Name: "), row$service_name),
+    tags$p(tags$strong("Preferred Version: "), row$preferred_version),
+    tags$p(tags$strong("Description: "), row$description),
+    tags$p(tags$strong("Category: "), row$apisguru_category),
+    tags$p(tags$strong("Date Added: "), row$added),
+    tags$p(tags$strong("Latest Update: "), row$updated),
+    tags$p(tags$strong("Spec Version: "), row$openapi_ver),
+    tags$p(tags$strong("Format: "), row$format)
+  )
+})
+
+```
