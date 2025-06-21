@@ -2,9 +2,24 @@
 title: "API Explorer"
 author: "Steven Villalon"
 date: 2025-06-17
+categories: ["Shiny", "R"]
+subtitle: "Websites are often better than spreadsheets at presenting information."
+image: output/preview.png
+format:
+  html:
+    df-print: default
+    embed-resources: true
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-summary: "Show Code"
 ---
 
 ------------------------------------------------------------------------
+
+::: preview-banner
+<a href="https://stevenvillalon.shinyapps.io/2025-06-17-apis/" target="_blank"> <img src="output/preview.png" alt="Launch API Explorer App" style="border-radius: 12px; max-width: 100%; box-shadow: 0 0 10px rgba(0,0,0,0.2);"/> </a>
+:::
 
 # Question of Interest
 
@@ -53,7 +68,7 @@ rm(tuesdata)
 
 ## 3. Examine Data
 
-```{r df_heads}
+```{r data_headers}
 # View data
 head(categories)
 head(info)
@@ -135,7 +150,7 @@ str(df)
 
 ```
 
-```{r}
+```{r final_cleanup}
 # Fill NAs in service_name column
 df <- df |> 
   mutate(service_name = coalesce(service_name, title))
@@ -144,7 +159,7 @@ df <- df |>
 
 ## 5. Export to CSV
 
-```{r}
+```{r export_csv}
 # Create CSV file
 write_csv(df, "data/data_for_api_app.csv")
 
@@ -153,7 +168,7 @@ write_csv(df, "data/data_for_api_app.csv")
 ## 6. Session Info
 
 ::: {.callout-tip collapse="true" title="Expand for Session Info"}
-```{r, echo=FALSE, eval=TRUE, warning=FALSE}
+```{r session_info, echo=FALSE, eval=TRUE, warning=FALSE}
 sessionInfo()
 
 ```

@@ -54,10 +54,10 @@ selectInput("provider", "Provider Name",
 # Second dropdown
 renderUI({
   req(input$provider)
-  filtered_services <- df %>%
-    filter(provider_name == input$provider) %>%
-    pull(service_name) %>%
-    unique() %>%
+  filtered_services <- df |> 
+    filter(provider_name == input$provider) |> 
+    pull(service_name) |> 
+    unique() |> 
     sort()
 
   default_choice <- if (length(filtered_services) == 1) filtered_services[1] else NULL
@@ -77,9 +77,9 @@ renderUI({
 renderUI({
   req(input$provider, input$service)
 
-  row <- df %>%
+  row <- df |> 
     filter(provider_name == input$provider,
-           service_name == input$service) %>%
+           service_name == input$service) |> 
     slice(1)
 
   tagList(
