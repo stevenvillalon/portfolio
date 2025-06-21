@@ -7,6 +7,7 @@ format:
   html:
     layout: sidebar
 runtime: shiny
+include-in-site: false
 ---
 
 ```{=html}
@@ -29,9 +30,7 @@ runtime: shiny
     border-radius: 20px;
   }
 </style>
-
 ```
-
 
 ```{r setup, message = FALSE, echo = FALSE}
 # Load dependencies and data
