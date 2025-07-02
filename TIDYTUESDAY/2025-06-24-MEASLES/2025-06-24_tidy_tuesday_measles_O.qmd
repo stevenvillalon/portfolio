@@ -4,7 +4,7 @@ author: "Steven Villalon"
 date: 2025-06-24
 categories: ["Animation", "R"]
 subtitle: "Madagascar suffered a big measles outbreak in 2019."
-image: output/preview.png
+image: output/2025-06-24_tidy_tuesday_measles.gif
 format:
   html:
     df-print: default
@@ -130,9 +130,9 @@ p <- ggplot(df, aes(x = region, y = measles_total, color = region)) +
   annotate(
     geom = "label",
     x = 3.5,
-    y = 200000, 
+    y = 200000,
     label = "Each point is a country. Bigger\npoints have larger populations.\nCountries with spikes in measles\ncases are annotated.",
-    hjust = 0, 
+    hjust = 0,
     vjust = 1,
     fill = "beige",
     color = "black",
@@ -152,7 +152,7 @@ p <- ggplot(df, aes(x = region, y = measles_total, color = region)) +
     plot.subtitle = element_text(color = "gold", size = 40, hjust = 0),
     plot.caption = element_text(color = "white", size = 25, hjust = 0.5),
     panel.background = element_rect(fill = "#1e1e1e", color = NA),
-    axis.line = element_line(color = "gray70", size = 0.5),
+    axis.line = element_line(color = "gray70", linewidth = 0.5),
     axis.title = element_text(color = "white", size = 25),
     axis.title.x = element_text(margin = margin(t = 20, b = 20)),
     axis.title.y = element_text(margin = margin(l = 20, r = 20)),
@@ -160,31 +160,33 @@ p <- ggplot(df, aes(x = region, y = measles_total, color = region)) +
     axis.text.y = element_text(color = "white", size = 25)
   )
 
-# Display animation
-animate(
-  p,
-  renderer = gifski_renderer(),
-  fps = 10,
-  duration = 15,
-  width = 1080,
-  height = 1080
-)
+# # Uncomment to preview the gif
+# animate(
+#     p,
+#     renderer = gifski_renderer(),
+#     fps = 10,
+#     duration = 15,
+#     width = 1080,
+#     height = 1080
+# )
 
 ```
 
 ## 6. Export GIF
 
-```{r}
-# Render animation
-animate(
-  p,
-  renderer = gifski_renderer("output/2025-06-24_tidy_tuesday_measles.gif"),
-  fps = 10,
-  duration = 15,
-  width = 1080,
-  height = 1080
-)
+```{r export, fig.keep='none'}
 
+#Leaving comments on because animate causes render to fail
+
+# Render animation
+# animate(
+#     p,
+#     renderer = gifski_renderer("output/2025-06-24_tidy_tuesday_measles.gif"),
+#     fps = 10,
+#     duration = 15,
+#     width = 1080,
+#     height = 1080
+# )
 ```
 
 ## 7. Session Info
@@ -196,3 +198,10 @@ sessionInfo()
 ```
 :::
 
+## 8. Github
+
+::: {.callout-tip title="Files"}
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/f9de8bcbd008137dc4f7ef878ef6ba29e0f7d470/TIDYTUESDAY/2025-06-24-MEASLES/2025-06-17_tidy_tuesday_apis_explore_O.qmd">View the notebook</a>
+
+📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
+:::
