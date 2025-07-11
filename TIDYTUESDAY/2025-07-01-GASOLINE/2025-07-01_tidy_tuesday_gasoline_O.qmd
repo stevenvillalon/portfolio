@@ -1,10 +1,10 @@
 ---
-title: "Measles Cases Worldwide"
+title: "Weekly U.S. Gas Prices"
 author: "Steven Villalon"
 date: 2025-07-01
-categories: ["Animation", "R"]
-subtitle: "Madagascar suffered a big measles outbreak in 2019."
-image: output/2025-06-24_tidy_tuesday_measles.gif
+categories: ["Line chart", "R"]
+subtitle: "It's been a while since gas prices were below $2/gallon."
+image: 2025-07-01_tidy_tuesday_weekly_us_gas_prices.png
 format:
   html:
     df-print: default
