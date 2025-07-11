@@ -21,9 +21,9 @@ format:
 
 # Question of Interest
 
-How have measles cases changed over time?
+How have gas prices changed over time?
 
-**Goal:** Make an animated plot.
+**Goal:** Make a simple line plot.
 
 ## 1. Packages & Dependencies
 
@@ -186,7 +186,7 @@ final_plot <- ggplot(df) +
     axis.text = element_text(size = 14, color = "#2c3e50")
   )
 
-final_plot
+#final_plot
 
 ```
 
