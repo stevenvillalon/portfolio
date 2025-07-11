@@ -2,9 +2,9 @@
 title: "Weekly U.S. Gas Prices"
 author: "Steven Villalon"
 date: 2025-07-01
-categories: ["Line chart", "R"]
+categories: ["Time Series", "R"]
 subtitle: "It's been a while since gas prices were below $2/gallon."
-image: 2025-07-01_tidy_tuesday_weekly_us_gas_prices.png
+image: output/2025-07-01_tidy_tuesday_weekly_us_gas_prices.png
 format:
   html:
     df-print: default
@@ -79,7 +79,7 @@ head(df)
 
 ```
 
-# 5. Visualization Parameters
+## 5. Visualization Parameters
 
 ```{r}
 # Create recession date ranges
@@ -102,7 +102,7 @@ showtext_opts(dpi = 300)
 
 ```
 
-## 5. Visualization
+## 6. Visualization
 
 ```{r visualization, fig.height = 6.27, fig.width = 12, dpi = 300, message = FALSE}
 
@@ -190,7 +190,7 @@ final_plot
 
 ```
 
-## 6. Export GIF
+## 7. Export GIF
 
 ```{r file_export}
 # Select file formats to export to
@@ -210,7 +210,7 @@ save_tt_plots(
 
 ```
 
-## 7. Session Info
+## 8. Session Info
 
 ::: {.callout-tip collapse="true" title="Expand for Session Info"}
 ```{r session_info, echo=FALSE, eval=TRUE, warning=FALSE}
@@ -219,10 +219,10 @@ sessionInfo()
 ```
 :::
 
-## 8. Github
+## 9. Github
 
 ::: {.callout-tip title="Files"}
-📓 <a href="https://github.com/stevenvillalon/portfolio/blob/f9de8bcbd008137dc4f7ef878ef6ba29e0f7d470/TIDYTUESDAY/2025-06-24-MEASLES/2025-06-17_tidy_tuesday_apis_explore_O.qmd">View the notebook</a>
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/b5030d5c568a17a7ab909f2707e7d922e7a3e5a9/TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.qmd">View the notebook</a>
 
 📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
 :::
