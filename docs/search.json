@@ -488,5 +488,12 @@
     "title": "Weekly U.S. Gas Prices",
     "section": "5. Visualization Parameters",
     "text": "5. Visualization Parameters\n\n\nShow Code\n# Create recession date ranges\nrecessions &lt;- data.frame(\n  start = as.Date(c(\"2001-03-01\", \"2007-12-01\", \"2020-02-01\")),\n  end   = as.Date(c(\"2001-11-30\", \"2009-06-30\", \"2020-04-30\")),\n  label = c(\"Dot-com Bust\", \"Great Recession\", \"COVID\"),\n  label_date = as.Date(c(\"2001-07-01\", \"2008-09-01\", \"2020-03-01\")),  # middle\n  label_y = c(4.8, 4.8, 4.8)\n)\n\n# Load fonts\nfont_add(\n  family = \"Lato\",\n  regular = \"/Library/Fonts/Lato-Regular.ttf\",\n  bold = \"/Library/Fonts/Lato-Bold.ttf\"\n)\nshowtext_auto()\nshowtext_opts(dpi = 300)"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#export-file",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#export-file",
+    "title": "Weekly U.S. Gas Prices",
+    "section": "7. Export File",
+    "text": "7. Export File\n\n\nShow Code\n# Select file formats to export to\nformats_to_export &lt;- c(\"png\", \"svg\")\n\n# Save files to the output folder (uses custom R script)\nsave_tt_plots(\n  plot = final_plot, \n  title = title, \n  date = tt_date,\n  output_folder = \"output\", \n  formats = formats_to_export, \n  height = 6.27,\n  width = 12,\n  dpi = 300\n  )"
   }
 ]

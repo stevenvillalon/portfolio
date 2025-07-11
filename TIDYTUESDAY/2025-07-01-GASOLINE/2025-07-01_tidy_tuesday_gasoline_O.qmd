@@ -81,7 +81,7 @@ head(df)
 
 ## 5. Visualization Parameters
 
-```{r}
+```{r visualization_parameters}
 # Create recession date ranges
 recessions <- data.frame(
   start = as.Date(c("2001-03-01", "2007-12-01", "2020-02-01")),
@@ -190,7 +190,7 @@ final_plot <- ggplot(df) +
 
 ```
 
-## 7. Export GIF
+## 7. Export File
 
 ```{r file_export}
 # Select file formats to export to
