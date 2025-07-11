@@ -13,8 +13,6 @@ format:
     toc-location: left
     code-fold: true
     code-summary: "Show Code"
-params:
-  github_path: "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.qmd"
 ---
 
 ------------------------------------------------------------------------
