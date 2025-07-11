@@ -151,7 +151,7 @@
     "href": "tidytuesday.html",
     "title": "Tidy Tuesday Projects",
     "section": "",
-    "text": "Below are some of my Tidy Tuesday projects!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMeasles Cases Worldwide\n\n\n\nAnimation\n\nR\n\n\n\n\n\n\nJun 24, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Explorer\n\n\n\nShiny\n\nR\n\n\n\n\n\n\nJun 17, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nU.S. Judges\n\n\n\nSankey Diagram\n\nR\n\n\n\n\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nProject Gutenberg\n\n\n\nString Manipulation\n\nMaps\n\nR\n\n\n\n\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDungeons and Dragons Monsters\n\n\n\nFacet grid\n\nBarplot\n\nR\n\n\n\n\n\n\nMay 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality at Sydney Beaches\n\n\n\nLollipop Plot\n\nR\n\n\n\n\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSeismic Events at Mount Vesuvius\n\n\n\nHeatmap\n\nR\n\n\n\n\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nNSF Grant Terminations\n\n\n\nMap\n\nR\n\n\n\n\n\n\nMay 6, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nUse R! Conference\n\n\n\nBarplot\n\nText Analysis\n\nLDA\n\nR\n\n\n\n\n\n\nApr 29, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFatal Car Crashes on 4/20\n\n\n\nBarplot\n\nR\n\n\n\n\n\n\nApr 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nBase R Penguins\n\n\n\nScatterplot\n\nDecision Tree\n\nR\n\n\n\n\n\n\nApr 15, 2025\n\n\n\n\n\nNo matching items\n\n  \n\n Back to top"
+    "text": "Below are some of my Tidy Tuesday projects!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeekly U.S. Gas Prices\n\n\n\nLine chart\n\nR\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeasles Cases Worldwide\n\n\n\nAnimation\n\nR\n\n\n\n\n\n\nJun 24, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Explorer\n\n\n\nShiny\n\nR\n\n\n\n\n\n\nJun 17, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nU.S. Judges\n\n\n\nSankey Diagram\n\nR\n\n\n\n\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nProject Gutenberg\n\n\n\nString Manipulation\n\nMaps\n\nR\n\n\n\n\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDungeons and Dragons Monsters\n\n\n\nFacet grid\n\nBarplot\n\nR\n\n\n\n\n\n\nMay 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality at Sydney Beaches\n\n\n\nLollipop Plot\n\nR\n\n\n\n\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSeismic Events at Mount Vesuvius\n\n\n\nHeatmap\n\nR\n\n\n\n\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nNSF Grant Terminations\n\n\n\nMap\n\nR\n\n\n\n\n\n\nMay 6, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nUse R! Conference\n\n\n\nBarplot\n\nText Analysis\n\nLDA\n\nR\n\n\n\n\n\n\nApr 29, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFatal Car Crashes on 4/20\n\n\n\nBarplot\n\nR\n\n\n\n\n\n\nApr 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nBase R Penguins\n\n\n\nScatterplot\n\nDecision Tree\n\nR\n\n\n\n\n\n\nApr 15, 2025\n\n\n\n\n\nNo matching items\n\n  \n\n Back to top"
   },
   {
     "objectID": "tableau.html#sv-cruises",
@@ -423,6 +423,62 @@
     "objectID": "TIDYTUESDAY/2025-06-24-MEASLES/2025-06-24_tidy_tuesday_measles_O.html#github",
     "href": "TIDYTUESDAY/2025-06-24-MEASLES/2025-06-24_tidy_tuesday_measles_O.html#github",
     "title": "Measles Cases Worldwide",
+    "section": "8. Github",
+    "text": "8. Github\n\n\n\n\n\n\nFiles\n\n\n\n📓 View the notebook\n📁 Full Repository"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#packages-dependencies",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#packages-dependencies",
+    "title": "Weekly U.S. Gas Prices",
+    "section": "1. Packages & Dependencies",
+    "text": "1. Packages & Dependencies\n\n\nShow Code\n# Load packages\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(here)\nlibrary(showtext)\nlibrary(scales)\n\n# Load helper functions\nsource(here::here(\"R/utils/tidy_tuesday_helpers.R\"))\n\n# Set project title\ntitle &lt;- \"Weekly US Gas Prices\"\ntt_date &lt;- \"2025-07-01\""
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#load-data",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#load-data",
+    "title": "Weekly U.S. Gas Prices",
+    "section": "2. Load Data",
+    "text": "2. Load Data\n\n\nShow Code\n# Load data from tidytuesdayR package\ntuesdata &lt;- tidytuesdayR::tt_load(tt_date)\n\n# Extract elements from tuesdata\nweekly_gas_prices &lt;- tuesdata$weekly_gas_prices\n\n# Remove tuesdata file\nrm(tuesdata)"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#examine-data",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#examine-data",
+    "title": "Weekly U.S. Gas Prices",
+    "section": "3. Examine Data",
+    "text": "3. Examine Data\n\n\nShow Code\n# View data\nhead(weekly_gas_prices)\n\n\n# A tibble: 6 × 5\n  date       fuel     grade   formulation  price\n  &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1 1990-08-20 gasoline regular all           1.19\n2 1990-08-20 gasoline regular conventional  1.19\n3 1990-08-27 gasoline regular all           1.25\n4 1990-08-27 gasoline regular conventional  1.25\n5 1990-09-03 gasoline regular all           1.24\n6 1990-09-03 gasoline regular conventional  1.24"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#cleaning",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#cleaning",
+    "title": "Weekly U.S. Gas Prices",
+    "section": "4. Cleaning",
+    "text": "4. Cleaning\n\n\nShow Code\n# Remove diesel and limit to only the \"all\" grade and formulation\ndf &lt;- weekly_gas_prices |&gt; \n  filter(fuel == \"gasoline\",\n         grade == \"all\",\n         formulation == \"all\")\n  \nhead(df)\n\n\n# A tibble: 6 × 5\n  date       fuel     grade formulation price\n  &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;\n1 1993-04-05 gasoline all   all          1.07\n2 1993-04-12 gasoline all   all          1.08\n3 1993-04-19 gasoline all   all          1.08\n4 1993-04-26 gasoline all   all          1.09\n5 1993-05-03 gasoline all   all          1.09\n6 1993-05-10 gasoline all   all          1.10"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#visualization",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#visualization",
+    "title": "Weekly U.S. Gas Prices",
+    "section": "5. Visualization",
+    "text": "5. Visualization\n\n\nShow Code\n# Make plot\nfinal_plot &lt;- ggplot(df) +\n  aes(x = date, y = price) +\n  \n  # Shaded recession periods\n  geom_rect(\n    data = recessions, inherit.aes = FALSE,\n    aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),\n    fill = \"gray70\", alpha = 0.3\n  ) +\n  \n  # Price line\n  geom_line(color = \"#2c3e50\", linewidth = 1.1) +\n  \n  # Recession labels\n  geom_label(\n    data = recessions, inherit.aes = FALSE,\n    aes(x = label_date, y = label_y, label = label),\n    family = \"Lato\", size = 4.5, fontface = \"italic\", color = \"gray30\"\n  ) +\n  \n  # Annotation arrow\n  annotate(\n    \"curve\",\n    x = as.Date(\"2025-02-01\"), y = 4.7,\n    xend = as.Date(\"2022-09-01\"), yend = 5,\n    curvature = 0.3,\n    arrow = arrow(length = unit(0.02, \"npc\")),\n    color = \"red\", linewidth = 0.8\n  ) +\n  \n  # Annotation label\n  annotate(\n    \"text\",\n    x = as.Date(\"2025-01-01\"), y = 4.3,\n    label = \"Peaked at $5.11\\nin 2022\",\n    family = \"Lato\", size = 4.5,\n    color = \"red\", hjust = 0.5\n  ) +\n  \n  # Axes\n  scale_x_date(\n    breaks = as.Date(c(\n      \"1990-01-01\", \"1995-01-01\", \"2000-01-01\", \"2005-01-01\",\n      \"2010-01-01\", \"2015-01-01\", \"2020-01-01\", \"2025-01-01\"\n    )),\n    date_labels = \"%Y\"\n  ) +\n  scale_y_continuous(\n    breaks = 0:5,\n    limits = c(0, NA),\n    expand = c(0, 0),\n    labels = scales::label_dollar()\n  ) +\n  \n  # Labels\n  labs(\n    title = \"March 2016 was the last time the average price of gasoline was below $2 in a non-recession\",\n    subtitle = \"Average weekly gas prices in the U.S. (all grades/formulations, April 1993 to June 2025)\",\n    caption = \"\\nSOURCE: U.S. Energy Information Administration (EIA)\\nChart produced by Steven Villalon for Tidy Tuesday exercise on July 1, 2025.\",\n    x = \"Year\",\n    y = \"Average Gasoline Price\"\n  ) +\n  \n  # Theme\n  theme_classic(base_family = \"Lato\") +\n  theme(\n    plot.title.position = \"plot\",\n    plot.margin = margin(t = 20, r = 20, b = 20, l = 20),\n    plot.background = element_rect(fill = \"#e6f2ff\"),\n    panel.background = element_rect(fill = \"#e6f2ff\", color = NA),\n    plot.title = element_text(size = 20, face = \"bold\", color = \"#2c3e50\"),\n    plot.subtitle = element_text(size = 16, color = \"#2c3e50\", margin = margin(b = 20)),\n    plot.caption = element_text(size = 12, color = \"#2c3e50\", hjust = 0),\n    axis.title = element_text(size = 18, color = \"#2c3e50\"),\n    axis.title.x = element_text(margin = margin(t = 10)),\n    axis.title.y = element_text(margin = margin(r = 10)),\n    axis.text = element_text(size = 14, color = \"#2c3e50\")\n  )\n\nfinal_plot"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#export-gif",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#export-gif",
+    "title": "Weekly U.S. Gas Prices",
+    "section": "6. Export GIF",
+    "text": "6. Export GIF\n\n\nShow Code\n# Select file formats to export to\nformats_to_export &lt;- c(\"png\", \"svg\")\n\n# Save files to the output folder (uses custom R script)\nsave_tt_plots(\n  plot = final_plot, \n  title = title, \n  date = tt_date,\n  output_folder = \"output\", \n  formats = formats_to_export, \n  height = 6.27,\n  width = 12,\n  dpi = 300\n  )"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#session-info",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#session-info",
+    "title": "Weekly U.S. Gas Prices",
+    "section": "7. Session Info",
+    "text": "7. Session Info\n\n\n\n\n\n\nExpand for Session Info\n\n\n\n\n\n\n\nR version 4.5.1 (2025-06-13)\nPlatform: aarch64-apple-darwin20\nRunning under: macOS Sequoia 15.5\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: America/New_York\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] scales_1.4.0       showtext_0.9-7     showtextdb_3.0     sysfonts_0.8.9    \n [5] here_1.0.1         tidytuesdayR_1.2.1 lubridate_1.9.4    forcats_1.0.0     \n [9] stringr_1.5.1      dplyr_1.1.4        purrr_1.0.4        readr_2.1.5       \n[13] tidyr_1.3.1        tibble_3.3.0       ggplot2_3.5.2      tidyverse_2.0.0   \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.6         rappdirs_0.3.3     generics_0.1.4     xml2_1.3.8        \n [5] stringi_1.8.7      hms_1.1.3          digest_0.6.37      magrittr_2.0.3    \n [9] evaluate_1.0.4     grid_4.5.1         timechange_0.3.0   RColorBrewer_1.1-3\n[13] fastmap_1.2.0      rprojroot_2.0.4    jsonlite_2.0.0     textshaping_1.0.1 \n[17] httr2_1.1.2        cli_3.6.5          crayon_1.5.3       rlang_1.1.6       \n[21] gitcreds_0.1.2     bit64_4.6.0-1      withr_3.0.2        yaml_2.3.10       \n[25] parallel_4.5.1     tools_4.5.1        tzdb_0.5.0         curl_6.4.0        \n[29] vctrs_0.6.5        R6_2.6.1           lifecycle_1.0.4    bit_4.6.0         \n[33] htmlwidgets_1.6.4  vroom_1.6.5        ragg_1.4.0         pkgconfig_2.0.3   \n[37] pillar_1.10.2      gtable_0.3.6       glue_1.8.0         gh_1.5.0          \n[41] systemfonts_1.2.3  xfun_0.52          tidyselect_1.2.1   knitr_1.50        \n[45] farver_2.1.2       htmltools_0.5.8.1  svglite_2.2.1      rmarkdown_2.29    \n[49] compiler_4.5.1"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#github",
+    "href": "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.html#github",
+    "title": "Weekly U.S. Gas Prices",
     "section": "8. Github",
     "text": "8. Github\n\n\n\n\n\n\nFiles\n\n\n\n📓 View the notebook\n📁 Full Repository"
   }
