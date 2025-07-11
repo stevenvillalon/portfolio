@@ -13,6 +13,8 @@ format:
     toc-location: left
     code-fold: true
     code-summary: "Show Code"
+params:
+  github_path: "TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.qmd"
 ---
 
 ------------------------------------------------------------------------
@@ -222,7 +224,7 @@ sessionInfo()
 ## 9. Github
 
 ::: {.callout-tip title="Files"}
-📓 <a href="https://github.com/stevenvillalon/portfolio/blob/7bb273bffb2397f6cdb2a818f06243cfe5cde0c9/TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.qmd">View the notebook</a>
+📓 `<a href="https://github.com/stevenvillalon/portfolio/blob/main/TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.qmd"`{=html}View the notebook</a>
 
 📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
 :::
