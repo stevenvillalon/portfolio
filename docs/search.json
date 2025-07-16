@@ -151,7 +151,7 @@
     "href": "tidytuesday.html",
     "title": "Tidy Tuesday Projects",
     "section": "",
-    "text": "Below are some of my Tidy Tuesday projects!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeekly U.S. Gas Prices\n\n\n\nTime Series\n\nR\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeasles Cases Worldwide\n\n\n\nAnimation\n\nR\n\n\n\n\n\n\nJun 24, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Explorer\n\n\n\nShiny\n\nR\n\n\n\n\n\n\nJun 17, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nU.S. Judges\n\n\n\nSankey Diagram\n\nR\n\n\n\n\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nProject Gutenberg\n\n\n\nString Manipulation\n\nMaps\n\nR\n\n\n\n\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDungeons and Dragons Monsters\n\n\n\nFacet grid\n\nBarplot\n\nR\n\n\n\n\n\n\nMay 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality at Sydney Beaches\n\n\n\nLollipop Plot\n\nR\n\n\n\n\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSeismic Events at Mount Vesuvius\n\n\n\nHeatmap\n\nR\n\n\n\n\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nNSF Grant Terminations\n\n\n\nMap\n\nR\n\n\n\n\n\n\nMay 6, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nUse R! Conference\n\n\n\nBarplot\n\nText Analysis\n\nLDA\n\nR\n\n\n\n\n\n\nApr 29, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFatal Car Crashes on 4/20\n\n\n\nBarplot\n\nR\n\n\n\n\n\n\nApr 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nBase R Penguins\n\n\n\nScatterplot\n\nDecision Tree\n\nR\n\n\n\n\n\n\nApr 15, 2025\n\n\n\n\n\nNo matching items\n\n  \n\n Back to top"
+    "text": "Below are some of my Tidy Tuesday projects!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe xkcd Color Survey Results\n\n\n\nOther\n\nR\n\n\n\n\n\n\nJul 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeekly U.S. Gas Prices\n\n\n\nTime Series\n\nR\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeasles Cases Worldwide\n\n\n\nAnimation\n\nR\n\n\n\n\n\n\nJun 24, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Explorer\n\n\n\nShiny\n\nR\n\n\n\n\n\n\nJun 17, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nU.S. Judges\n\n\n\nSankey Diagram\n\nR\n\n\n\n\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nProject Gutenberg\n\n\n\nString Manipulation\n\nMaps\n\nR\n\n\n\n\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDungeons and Dragons Monsters\n\n\n\nFacet grid\n\nBarplot\n\nR\n\n\n\n\n\n\nMay 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality at Sydney Beaches\n\n\n\nLollipop Plot\n\nR\n\n\n\n\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSeismic Events at Mount Vesuvius\n\n\n\nHeatmap\n\nR\n\n\n\n\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nNSF Grant Terminations\n\n\n\nMap\n\nR\n\n\n\n\n\n\nMay 6, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nUse R! Conference\n\n\n\nBarplot\n\nText Analysis\n\nLDA\n\nR\n\n\n\n\n\n\nApr 29, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFatal Car Crashes on 4/20\n\n\n\nBarplot\n\nR\n\n\n\n\n\n\nApr 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nBase R Penguins\n\n\n\nScatterplot\n\nDecision Tree\n\nR\n\n\n\n\n\n\nApr 15, 2025\n\n\n\n\n\nNo matching items\n\n  \n\n Back to top"
   },
   {
     "objectID": "tableau.html#sv-cruises",
@@ -495,5 +495,68 @@
     "title": "Weekly U.S. Gas Prices",
     "section": "7. Export File",
     "text": "7. Export File\n\n\nShow Code\n# Select file formats to export to\nformats_to_export &lt;- c(\"png\", \"svg\")\n\n# Save files to the output folder (uses custom R script)\nsave_tt_plots(\n  plot = final_plot, \n  title = title, \n  date = tt_date,\n  output_folder = \"output\", \n  formats = formats_to_export, \n  height = 6.27,\n  width = 12,\n  dpi = 300\n  )"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#packages-dependencies",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#packages-dependencies",
+    "title": "The xkcd Color Survey Results",
+    "section": "1. Packages & Dependencies",
+    "text": "1. Packages & Dependencies\n\n\nShow Code\n# Load packages\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(here)\nlibrary(showtext)\nlibrary(scales)\nlibrary(patchwork)\n\n# Load helper functions\nsource(here::here(\"R/utils/tidy_tuesday_helpers.R\"))\n\n# Set project title\ntitle &lt;- \"xkcd Color Survey\"\ntt_date &lt;- \"2025-07-08\""
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#load-data",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#load-data",
+    "title": "The xkcd Color Survey Results",
+    "section": "2. Load Data",
+    "text": "2. Load Data\n\n\nShow Code\n# Load data from tidytuesdayR package\ntuesdata &lt;- tidytuesdayR::tt_load(tt_date)\n\n# Extract elements from tuesdata\nanswers &lt;- tuesdata$answers\ncolor_ranks &lt;- tuesdata$color_ranks\nusers &lt;- tuesdata$users\n\n# Remove tuesdata file\nrm(tuesdata)\n\n#color = \"#4B31EA\" color = \"#0343df\"\n#color = \"#584601\" color = \"#653700\"\n#color = \"#DA239C\" color = \"#ff81c0\""
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#examine-data",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#examine-data",
+    "title": "The xkcd Color Survey Results",
+    "section": "3. Examine Data",
+    "text": "3. Examine Data\n\n\nShow Code\n# View data\nhead(answers)\n\n\n# A tibble: 6 × 3\n  user_id hex      rank\n    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1       1 #8240EA     1\n2       2 #4B31EA     3\n3       2 #584601     5\n4       2 #DA239C     4\n5       2 #B343E5     1\n6       2 #45FF29     2\n\n\nShow Code\nhead(color_ranks)\n\n\n# A tibble: 6 × 3\n  color   rank hex    \n  &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;  \n1 purple     1 #7e1e9c\n2 green      2 #15b01a\n3 blue       3 #0343df\n4 pink       4 #ff81c0\n5 brown      5 #653700\n6 red        6 #e50000\n\n\nShow Code\nhead(users)\n\n\n# A tibble: 6 × 5\n  user_id monitor y_chromosome colorblind spam_prob\n    &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;\n1       1 LCD                1          0   0.00209\n2       2 LCD                1          0   0.0746 \n3       3 LCD                1          0   0.0164 \n4       4 LCD                0          0   0.00156\n5       5 LCD                1          0   0.00238\n6       6 LCD                1          0   0.0144"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#cleaning",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#cleaning",
+    "title": "The xkcd Color Survey Results",
+    "section": "4. Cleaning",
+    "text": "4. Cleaning\n\n\nShow Code\n# Join dataframes\ndf &lt;- answers |&gt; \n  left_join(color_ranks, by = \"rank\") |&gt; \n  left_join(users, by = \"user_id\") |&gt; \n  rename(\n    color_shown_hex = hex.x, \n    color_guessed_name = color,\n    color_guessed_hex = hex.y\n  ) |&gt; \n  filter(\n    spam_prob &lt;= 0.5,\n    !is.na(color_shown_hex), \n    !is.na(color_guessed_hex)\n  ) |&gt;\n  mutate(\n    monitor = if_else(monitor == \"monitor-other\", \"Other\", monitor),\n    y_chromosome = recode(y_chromosome, \"0\" = \"Female\", \"1\" = \"Male\"),\n    colorblind   = recode(colorblind,   \"0\" = \"No\",     \"1\" = \"Yes\")\n  ) |&gt; \n  mutate(\n    y_chromosome = replace_na(y_chromosome, \"NA\"),\n    colorblind   = replace_na(colorblind,   \"NA\")\n  )\n\n\n\n\nShow Code\n# Define functions\n# Convert hex to RGB\nhex_to_rgb &lt;- function(hex) {\n  rgb &lt;- col2rgb(hex)\n  return(as.numeric(rgb))\n}\n\n# Compute Euclidean distance\ncolor_distance_rgb &lt;- function(rgb1, rgb2) {\n  sqrt(sum((rgb1 - rgb2)^2))\n}\n\n\n\n\nShow Code\ndf &lt;- df |&gt; \n  mutate(\n    color_shown_rgb = map(color_shown_hex, hex_to_rgb),\n    color_guessed_rgb = map(color_guessed_hex, hex_to_rgb),\n    dist = map2_dbl(color_shown_rgb, color_guessed_rgb, color_distance_rgb),\n    across(c(monitor, y_chromosome, colorblind), as.factor)\n  )\n\n\n\n\nShow Code\nmonitor &lt;- df |&gt; \n  group_by(monitor) |&gt; \n  summarize(\n    avg_dist = mean(dist, na.rm = TRUE),\n    n_guesses = n()) |&gt; \n  mutate(monitor = fct_reorder(monitor, avg_dist, .desc = TRUE))\n\nmonitor\n\n\n# A tibble: 3 × 3\n  monitor avg_dist n_guesses\n  &lt;fct&gt;      &lt;dbl&gt;     &lt;int&gt;\n1 CRT         89.2     40329\n2 LCD         88.2   1002055\n3 Other       92.2      2650\n\n\nShow Code\ny_chromosome &lt;- df |&gt; \n  group_by(y_chromosome) |&gt; \n  summarize(\n    avg_dist = mean(dist, na.rm = TRUE),\n    n_guesses = n()) |&gt; \n  mutate(y_chromosome = fct_reorder(y_chromosome, avg_dist, .desc = TRUE))\n\ny_chromosome\n\n\n# A tibble: 3 × 3\n  y_chromosome avg_dist n_guesses\n  &lt;fct&gt;           &lt;dbl&gt;     &lt;int&gt;\n1 Female           87.3    323930\n2 Male             88.7    694101\n3 NA               90.7     27003\n\n\nShow Code\ncolorblindness &lt;- df |&gt; \n  group_by(colorblind) |&gt; \n  summarize(\n    avg_dist = mean(dist, na.rm = TRUE),\n    n_guesses = n()) |&gt; \nmutate(colorblind = fct_reorder(colorblind, avg_dist, .desc = TRUE))\n\n\ncolorblindness\n\n\n# A tibble: 3 × 3\n  colorblind avg_dist n_guesses\n  &lt;fct&gt;         &lt;dbl&gt;     &lt;int&gt;\n1 NA             91.0     44930\n2 No             87.7    949939\n3 Yes            96.5     50165"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#visualization-parameters",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#visualization-parameters",
+    "title": "The xkcd Color Survey Results",
+    "section": "5. Visualization Parameters",
+    "text": "5. Visualization Parameters\n\n\nShow Code\n# Load fonts\nfont_add(\n  family = \"Lato\",\n  regular = \"/Library/Fonts/Lato-Regular.ttf\",\n  bold = \"/Library/Fonts/Lato-Bold.ttf\"\n)\nshowtext_auto()\nshowtext_opts(dpi = 300)"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#visualization",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#visualization",
+    "title": "The xkcd Color Survey Results",
+    "section": "6. Visualization",
+    "text": "6. Visualization"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#export-file",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#export-file",
+    "title": "The xkcd Color Survey Results",
+    "section": "7. Export File",
+    "text": "7. Export File\n\n\nShow Code\n# Select file formats to export to\nformats_to_export &lt;- c(\"png\", \"svg\")\n\n# Save files to the output folder (uses custom R script)\nsave_tt_plots(\n  plot = final_plot, \n  title = title, \n  date = tt_date,\n  output_folder = \"output\", \n  formats = formats_to_export, \n  height = 5,\n  width = 7,\n  dpi = 300\n  )"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#session-info",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#session-info",
+    "title": "The xkcd Color Survey Results",
+    "section": "8. Session Info",
+    "text": "8. Session Info\n\n\n\n\n\n\nExpand for Session Info\n\n\n\n\n\n\n\nR version 4.5.1 (2025-06-13)\nPlatform: aarch64-apple-darwin20\nRunning under: macOS Sequoia 15.5\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: America/New_York\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] patchwork_1.3.1    scales_1.4.0       showtext_0.9-7     showtextdb_3.0    \n [5] sysfonts_0.8.9     here_1.0.1         tidytuesdayR_1.2.1 lubridate_1.9.4   \n [9] forcats_1.0.0      stringr_1.5.1      dplyr_1.1.4        purrr_1.0.4       \n[13] readr_2.1.5        tidyr_1.3.1        tibble_3.3.0       ggplot2_3.5.2     \n[17] tidyverse_2.0.0   \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.6         rappdirs_0.3.3     generics_0.1.4     xml2_1.3.8        \n [5] stringi_1.8.7      hms_1.1.3          digest_0.6.37      magrittr_2.0.3    \n [9] evaluate_1.0.4     grid_4.5.1         timechange_0.3.0   RColorBrewer_1.1-3\n[13] fastmap_1.2.0      rprojroot_2.0.4    jsonlite_2.0.0     textshaping_1.0.1 \n[17] httr2_1.1.2        cli_3.6.5          crayon_1.5.3       rlang_1.1.6       \n[21] gitcreds_0.1.2     bit64_4.6.0-1      withr_3.0.2        yaml_2.3.10       \n[25] parallel_4.5.1     tools_4.5.1        tzdb_0.5.0         curl_6.4.0        \n[29] vctrs_0.6.5        R6_2.6.1           lifecycle_1.0.4    bit_4.6.0         \n[33] htmlwidgets_1.6.4  vroom_1.6.5        ragg_1.4.0         pkgconfig_2.0.3   \n[37] pillar_1.10.2      gtable_0.3.6       glue_1.8.0         gh_1.5.0          \n[41] systemfonts_1.2.3  xfun_0.52          tidyselect_1.2.1   knitr_1.50        \n[45] farver_2.1.2       htmltools_0.5.8.1  svglite_2.2.1      rmarkdown_2.29    \n[49] compiler_4.5.1"
+  },
+  {
+    "objectID": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#github",
+    "href": "TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.html#github",
+    "title": "The xkcd Color Survey Results",
+    "section": "9. Github",
+    "text": "9. Github\n\n\n\n\n\n\nFiles\n\n\n\n📓 View the notebook\n📁 Full Repository"
   }
 ]

@@ -1,0 +1,296 @@
+---
+title: "The xkcd Color Survey Results"
+author: "Steven Villalon"
+date: 2025-07-08
+categories: ["Other", "R"]
+subtitle: "abc."
+image: output/2025-07-01_tidy_tuesday_weekly_us_gas_prices.png
+format:
+  html:
+    df-print: default
+    embed-resources: true
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-summary: "Show Code"
+---
+
+------------------------------------------------------------------------
+
+![](output/2025-07-01_tidy_tuesday_weekly_us_gas_prices.png){fig-alt="Final plot"}
+
+# Question of Interest
+
+How have gas prices changed over time?
+
+**Goal:** Make a simple line plot.
+
+## 1. Packages & Dependencies
+
+```{r packages, message = FALSE}
+# Load packages
+library(tidyverse)
+library(tidytuesdayR)
+library(here)
+library(showtext)
+library(scales)
+library(patchwork)
+
+# Load helper functions
+source(here::here("R/utils/tidy_tuesday_helpers.R"))
+
+# Set project title
+title <- "xkcd Color Survey"
+tt_date <- "2025-07-08"
+
+```
+
+## 2. Load Data
+
+```{r data_load, message = FALSE}
+# Load data from tidytuesdayR package
+tuesdata <- tidytuesdayR::tt_load(tt_date)
+
+# Extract elements from tuesdata
+answers <- tuesdata$answers
+color_ranks <- tuesdata$color_ranks
+users <- tuesdata$users
+
+# Remove tuesdata file
+rm(tuesdata)
+
+#color = "#4B31EA" color = "#0343df"
+#color = "#584601" color = "#653700"
+#color = "#DA239C" color = "#ff81c0"
+
+```
+
+## 3. Examine Data
+
+```{r data_headers}
+# View data
+head(answers)
+head(color_ranks)
+head(users)
+
+```
+
+## 4. Cleaning
+
+```{r cleaning}
+# Join dataframes
+df <- answers |> 
+  left_join(color_ranks, by = "rank") |> 
+  left_join(users, by = "user_id") |> 
+  rename(
+    color_shown_hex = hex.x, 
+    color_guessed_name = color,
+    color_guessed_hex = hex.y
+  ) |> 
+  filter(
+    spam_prob <= 0.5,
+    !is.na(color_shown_hex), 
+    !is.na(color_guessed_hex)
+  ) |>
+  mutate(
+    monitor = if_else(monitor == "monitor-other", "Other", monitor),
+    y_chromosome = recode(y_chromosome, "0" = "Female", "1" = "Male"),
+    colorblind   = recode(colorblind,   "0" = "No",     "1" = "Yes")
+  ) |> 
+  mutate(
+    y_chromosome = replace_na(y_chromosome, "NA"),
+    colorblind   = replace_na(colorblind,   "NA")
+  )
+
+```
+
+```{r}
+# Define functions
+# Convert hex to RGB
+hex_to_rgb <- function(hex) {
+  rgb <- col2rgb(hex)
+  return(as.numeric(rgb))
+}
+
+# Compute Euclidean distance
+color_distance_rgb <- function(rgb1, rgb2) {
+  sqrt(sum((rgb1 - rgb2)^2))
+}
+
+```
+
+```{r}
+df <- df |> 
+  mutate(
+    color_shown_rgb = map(color_shown_hex, hex_to_rgb),
+    color_guessed_rgb = map(color_guessed_hex, hex_to_rgb),
+    dist = map2_dbl(color_shown_rgb, color_guessed_rgb, color_distance_rgb),
+    across(c(monitor, y_chromosome, colorblind), as.factor)
+  )
+
+```
+
+```{r}
+monitor <- df |> 
+  group_by(monitor) |> 
+  summarize(
+    avg_dist = mean(dist, na.rm = TRUE),
+    n_guesses = n()) |> 
+  mutate(monitor = fct_reorder(monitor, avg_dist, .desc = TRUE))
+
+monitor
+
+y_chromosome <- df |> 
+  group_by(y_chromosome) |> 
+  summarize(
+    avg_dist = mean(dist, na.rm = TRUE),
+    n_guesses = n()) |> 
+  mutate(y_chromosome = fct_reorder(y_chromosome, avg_dist, .desc = TRUE))
+
+y_chromosome
+
+colorblindness <- df |> 
+  group_by(colorblind) |> 
+  summarize(
+    avg_dist = mean(dist, na.rm = TRUE),
+    n_guesses = n()) |> 
+mutate(colorblind = fct_reorder(colorblind, avg_dist, .desc = TRUE))
+
+
+colorblindness
+
+```
+
+## 5. Visualization Parameters
+
+```{r visualization_parameters}
+# Load fonts
+font_add(
+  family = "Lato",
+  regular = "/Library/Fonts/Lato-Regular.ttf",
+  bold = "/Library/Fonts/Lato-Bold.ttf"
+)
+showtext_auto()
+showtext_opts(dpi = 300)
+
+```
+
+## 6. Visualization
+
+```{r echo=FALSE}
+
+# P1: Monitor
+p1 <- ggplot(monitor, aes(x = monitor, y = avg_dist)) +
+  geom_col(fill = "#4E5166") +
+  geom_text(aes(label = round(avg_dist)), color = "#4E5166", vjust = -0.75) +
+  scale_y_continuous(breaks = c(0, 25, 50, 75, 100), limits = c(0, 110)) +
+  labs(x = "Monitor Type", y = "Average Euclidean Distance") +
+  theme_classic(base_family = "Lato") +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.background = element_rect(fill = "#F8F5F2", color = NA),
+    panel.background = element_rect(fill = "#F8F5F2", color = NA),
+    plot.margin = margin(0, 0, 0, 0),
+    axis.text.x = element_text(margin = margin(t = -5)),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line = element_blank()
+  )
+
+# P2: Gender
+p2 <- ggplot(y_chromosome, aes(x = y_chromosome, y = avg_dist)) +
+  geom_col(fill = "#9A8C98") +
+  geom_text(aes(label = round(avg_dist)), color = "#4E5166", vjust = -0.75) +
+  labs(x = "Gender") +
+  scale_y_continuous(breaks = c(0, 25, 50, 75, 100), limits = c(0, 110)) +
+  annotate("text", x = 1.5, y = 107, label = "Shorter bar = less error", color = "#4B6F44", hjust = 0.5, size = 3, fontface = "bold") +
+  annotate("curve", 
+           x = 2.6, xend = 3, 
+           y = 107, yend = 98, 
+           curvature = -0.4, 
+           arrow = arrow(length = unit(0.1, "inches")),
+           color = "#4B6F44") +
+  theme_classic(base_family = "Lato") +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.background = element_rect(fill = "#F8F5F2", color = NA),
+    panel.background = element_rect(fill = "#F8F5F2", color = NA),
+    axis.title.y = element_blank(),
+    axis.text.x = element_text(margin = margin(t = -5)),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line = element_blank()
+  )
+
+# P3: Colorblindness
+p3 <- ggplot(colorblindness, aes(x = colorblind, y = avg_dist)) +
+  geom_col(fill = "#C9ADA7") +
+  geom_text(aes(label = round(avg_dist)), color = "#4E5166", vjust = -0.75) +
+  labs(x = "Colorblindness") +
+  scale_y_continuous(breaks = c(0, 25, 50, 75, 100), limits = c(0, 110)) +
+  theme_classic(base_family = "Lato") +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.background = element_rect(fill = "#F8F5F2", color = NA),
+    panel.background = element_rect(fill = "#F8F5F2", color = NA),
+    axis.title.y = element_blank(),
+    axis.text.x = element_text(margin = margin(t = -5)),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line = element_blank()
+  )
+
+# Final plot
+final_plot <- (p1 + p2 + p3) +
+  plot_layout(ncol = 3, widths = c(1, 1, 1)) +
+  plot_annotation(
+    title = "Which users were most accurate in naming colors?",
+    subtitle = "Your instincts are correct: women are better at identifying colors.",
+    caption = "\nSOURCE: XKCD Color Survey\nChart produced by Steven Villalon for Tidy Tuesday exercise on July 8, 2025.",
+    theme = theme(
+      plot.background = element_rect(fill = "#F8F5F2", color = NA),
+      plot.title = element_text(size = 20, color = "#4E5166", face = "bold"),
+      plot.subtitle = element_text(size = 14, color = "#4E5166"),
+      plot.caption = element_text(size = 10, hjust = 0),
+      plot.margin = margin(t = 10, r = 10, b = 10, l = 10)
+    )
+  )
+
+```
+
+## 7. Export File
+
+```{r file_export}
+# Select file formats to export to
+formats_to_export <- c("png", "svg")
+
+# Save files to the output folder (uses custom R script)
+save_tt_plots(
+  plot = final_plot, 
+  title = title, 
+  date = tt_date,
+  output_folder = "output", 
+  formats = formats_to_export, 
+  height = 5,
+  width = 7,
+  dpi = 300
+  )
+
+```
+
+## 8. Session Info
+
+::: {.callout-tip collapse="true" title="Expand for Session Info"}
+```{r session_info, echo=FALSE, eval=TRUE, warning=FALSE}
+sessionInfo()
+
+```
+:::
+
+## 9. Github
+
+::: {.callout-tip title="Files"}
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/main/TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.qmd">View the notebook</a>
+
+📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
+:::
