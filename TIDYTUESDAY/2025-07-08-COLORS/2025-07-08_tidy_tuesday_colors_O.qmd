@@ -2,9 +2,9 @@
 title: "The xkcd Color Survey Results"
 author: "Steven Villalon"
 date: 2025-07-08
-categories: ["Other", "R"]
+categories: ["Barplot", "Patchwork", "R"]
 subtitle: "abc."
-image: output/2025-07-01_tidy_tuesday_weekly_us_gas_prices.png
+image: output/2025-07-08_tidy_tuesday_xkcd_color_survey.png
 format:
   html:
     df-print: default
@@ -17,13 +17,13 @@ format:
 
 ------------------------------------------------------------------------
 
-![](output/2025-07-01_tidy_tuesday_weekly_us_gas_prices.png){fig-alt="Final plot"}
+![](output/2025-07-08_tidy_tuesday_xkcd_color_survey.png){fig-alt="Final plot"}
 
 # Question of Interest
 
-How have gas prices changed over time?
+Which users were most accurate in naming colors?
 
-**Goal:** Make a simple line plot.
+**Goal:** Calculate differences between colors presented and guessed. Plot using a bar chart.
 
 ## 1. Packages & Dependencies
 
@@ -104,7 +104,7 @@ df <- answers |>
 
 ```
 
-```{r}
+```{r functions}
 # Define functions
 # Convert hex to RGB
 hex_to_rgb <- function(hex) {
@@ -119,7 +119,7 @@ color_distance_rgb <- function(rgb1, rgb2) {
 
 ```
 
-```{r}
+```{r cleaning2}
 df <- df |> 
   mutate(
     color_shown_rgb = map(color_shown_hex, hex_to_rgb),
@@ -130,7 +130,7 @@ df <- df |>
 
 ```
 
-```{r}
+```{r summary_dfs}
 monitor <- df |> 
   group_by(monitor) |> 
   summarize(
@@ -177,7 +177,7 @@ showtext_opts(dpi = 300)
 
 ## 6. Visualization
 
-```{r echo=FALSE}
+```{r visualiation, echo=FALSE, include=FALSE}
 
 # P1: Monitor
 p1 <- ggplot(monitor, aes(x = monitor, y = avg_dist)) +
@@ -290,7 +290,7 @@ sessionInfo()
 ## 9. Github
 
 ::: {.callout-tip title="Files"}
-📓 <a href="https://github.com/stevenvillalon/portfolio/blob/main/TIDYTUESDAY/2025-07-01-GASOLINE/2025-07-01_tidy_tuesday_gasoline_O.qmd">View the notebook</a>
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/main/TIDYTUESDAY/2025-07-08-COLORS/2025-07-08_tidy_tuesday_colors_O.qmd">View the notebook</a>
 
 📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
 :::
