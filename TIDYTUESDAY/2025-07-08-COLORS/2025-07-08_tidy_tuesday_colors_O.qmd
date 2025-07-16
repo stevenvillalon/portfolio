@@ -3,7 +3,7 @@ title: "The xkcd Color Survey Results"
 author: "Steven Villalon"
 date: 2025-07-08
 categories: ["Barplot", "Patchwork", "R"]
-subtitle: "abc."
+subtitle: "Women rock at identifying colors."
 image: output/2025-07-08_tidy_tuesday_xkcd_color_survey.png
 format:
   html:
