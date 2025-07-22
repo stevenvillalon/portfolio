@@ -151,7 +151,7 @@
     "href": "tidytuesday.html",
     "title": "Tidy Tuesday Projects",
     "section": "",
-    "text": "Below are some of my Tidy Tuesday projects!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBritish Library Funding (1998 to 2023\n\n\n\nForecast\n\nBarplot\n\nR\n\n\n\n\n\n\nJul 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nThe xkcd Color Survey Results\n\n\n\nBarplot\n\nPatchwork\n\nR\n\n\n\n\n\n\nJul 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeekly U.S. Gas Prices\n\n\n\nTime Series\n\nR\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeasles Cases Worldwide\n\n\n\nAnimation\n\nR\n\n\n\n\n\n\nJun 24, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Explorer\n\n\n\nShiny\n\nR\n\n\n\n\n\n\nJun 17, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nU.S. Judges\n\n\n\nSankey Diagram\n\nR\n\n\n\n\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nProject Gutenberg\n\n\n\nString Manipulation\n\nMaps\n\nR\n\n\n\n\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDungeons and Dragons Monsters\n\n\n\nFacet grid\n\nBarplot\n\nR\n\n\n\n\n\n\nMay 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality at Sydney Beaches\n\n\n\nLollipop Plot\n\nR\n\n\n\n\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSeismic Events at Mount Vesuvius\n\n\n\nHeatmap\n\nR\n\n\n\n\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nNSF Grant Terminations\n\n\n\nMap\n\nR\n\n\n\n\n\n\nMay 6, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nUse R! Conference\n\n\n\nBarplot\n\nText Analysis\n\nLDA\n\nR\n\n\n\n\n\n\nApr 29, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFatal Car Crashes on 4/20\n\n\n\nBarplot\n\nR\n\n\n\n\n\n\nApr 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nBase R Penguins\n\n\n\nScatterplot\n\nDecision Tree\n\nR\n\n\n\n\n\n\nApr 15, 2025\n\n\n\n\n\nNo matching items\n\n  \n\n Back to top"
+    "text": "Below are some of my Tidy Tuesday projects!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBritish Library Funding (1998 to 2023)\n\n\n\nForecast\n\nBarplot\n\nR\n\n\n\n\n\n\nJul 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nThe xkcd Color Survey Results\n\n\n\nBarplot\n\nPatchwork\n\nR\n\n\n\n\n\n\nJul 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeekly U.S. Gas Prices\n\n\n\nTime Series\n\nR\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeasles Cases Worldwide\n\n\n\nAnimation\n\nR\n\n\n\n\n\n\nJun 24, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Explorer\n\n\n\nShiny\n\nR\n\n\n\n\n\n\nJun 17, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nU.S. Judges\n\n\n\nSankey Diagram\n\nR\n\n\n\n\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nProject Gutenberg\n\n\n\nString Manipulation\n\nMaps\n\nR\n\n\n\n\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDungeons and Dragons Monsters\n\n\n\nFacet grid\n\nBarplot\n\nR\n\n\n\n\n\n\nMay 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality at Sydney Beaches\n\n\n\nLollipop Plot\n\nR\n\n\n\n\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSeismic Events at Mount Vesuvius\n\n\n\nHeatmap\n\nR\n\n\n\n\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nNSF Grant Terminations\n\n\n\nMap\n\nR\n\n\n\n\n\n\nMay 6, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nUse R! Conference\n\n\n\nBarplot\n\nText Analysis\n\nLDA\n\nR\n\n\n\n\n\n\nApr 29, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFatal Car Crashes on 4/20\n\n\n\nBarplot\n\nR\n\n\n\n\n\n\nApr 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nBase R Penguins\n\n\n\nScatterplot\n\nDecision Tree\n\nR\n\n\n\n\n\n\nApr 15, 2025\n\n\n\n\n\nNo matching items\n\n  \n\n Back to top"
   },
   {
     "objectID": "tableau.html#sv-cruises",
@@ -562,77 +562,77 @@
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#packages-dependencies",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#packages-dependencies",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "1. Packages & Dependencies",
     "text": "1. Packages & Dependencies\n\n\nShow Code\n# Load packages\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(here)\nlibrary(showtext)\nlibrary(scales)\nlibrary(tsibble)\nlibrary(forecast)\nlibrary(prophet)\n\n# Load helper functions\nsource(here::here(\"R/utils/tidy_tuesday_helpers.R\"))\n\n# Set project title\ntitle &lt;- \"British Library\"\ntt_date &lt;- \"2025-07-15\""
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#load-data",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#load-data",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "2. Load Data",
     "text": "2. Load Data\n\n\nShow Code\n# Load data from tidytuesdayR package\ntuesdata &lt;- tidytuesdayR::tt_load(tt_date)\n\n# Extract elements from tuesdata\nbl_funding &lt;- tuesdata$bl_funding\n\n# Remove tuesdata file\nrm(tuesdata)"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#examine-data",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#examine-data",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "3. Examine Data",
     "text": "3. Examine Data\n\n\nShow Code\n# View data\nhead(bl_funding)\n\n\n# A tibble: 6 × 17\n   year nominal_gbp_millions gia_gbp_millions voluntary_gbp_millions\n  &lt;dbl&gt;                &lt;dbl&gt;            &lt;dbl&gt;                  &lt;dbl&gt;\n1  2023                 152.            128.                    8.2 \n2  2022                 148.            116.                   14.9 \n3  2021                 141.            110.                   20.1 \n4  2020                 126.            108.                    9.52\n5  2019                 121.             96.9                   8.63\n6  2018                 122.             93.4                  10.8 \n# ℹ 13 more variables: investment_gbp_millions &lt;dbl&gt;,\n#   services_gbp_millions &lt;dbl&gt;, other_gbp_millions &lt;dbl&gt;,\n#   year_2000_gbp_millions &lt;dbl&gt;, inflation_adjustment &lt;dbl&gt;,\n#   total_y2000_gbp_millions &lt;dbl&gt;, percentage_of_y2000_income &lt;dbl&gt;,\n#   gia_y2000_gbp_millions &lt;dbl&gt;, voluntary_y2000_gbp_millions &lt;dbl&gt;,\n#   investment_y2000_gbp_millions &lt;dbl&gt;, services_y2000_gbp_millions &lt;dbl&gt;,\n#   other_y2000_gbp_millions &lt;dbl&gt;, gia_as_percent_of_peak_gia &lt;dbl&gt;"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#cleaning",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#cleaning",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "4. Cleaning",
-    "text": "4. Cleaning\n\n\nShow Code\n# Prophet requires a dataframe input; create a time series dataframe\ndf_ts &lt;- bl_funding |&gt; \n  select(year, total_y2000_gbp_millions) |&gt; \n  arrange(year) |&gt;\n  mutate(year = as.Date(paste0(year, \"-01-01\"))) |&gt; \n  rename(ds = year, y = total_y2000_gbp_millions)\n\ndf_ts\n\n\n# A tibble: 26 × 2\n   ds             y\n   &lt;date&gt;     &lt;dbl&gt;\n 1 1998-01-01  123.\n 2 1999-01-01  113.\n 3 2000-01-01  110.\n 4 2001-01-01  119.\n 5 2002-01-01  116.\n 6 2003-01-01  115.\n 7 2004-01-01  115.\n 8 2005-01-01  127.\n 9 2006-01-01  145.\n10 2007-01-01  125.\n# ℹ 16 more rows\n\n\n\n\nShow Code\n# Extract initial and final values\ninitial_value &lt;- df_ts$y[1]\nfinal_value &lt;- df_ts$y[nrow(df_ts)]\n\n# Number of years (assuming one row per year)\nn_years &lt;- nrow(df_ts)\n\n# Calculate average annual rate\naar &lt;- (final_value / initial_value)^(1 / (n_years - 1)) - 1\n\n# Format as percentage\npercent_change &lt;- scales::percent(aar, accuracy = 0.1)\n\ncat(\"Average Annual Rate of Change:\", percent_change, \"\\n\")\n\n\nAverage Annual Rate of Change: -1.5%"
+    "text": "4. Cleaning\n\n\nShow Code\n# Prophet requires a dataframe input; create a time series dataframe\ndf_ts &lt;- bl_funding |&gt; \n  select(year, total_y2000_gbp_millions) |&gt; \n  arrange(year) |&gt;\n  mutate(year = as.Date(paste0(year, \"-01-01\"))) |&gt; \n  rename(ds = year, y = total_y2000_gbp_millions)\n\ndf_ts\n\n\n# A tibble: 26 × 2\n   ds             y\n   &lt;date&gt;     &lt;dbl&gt;\n 1 1998-01-01  123.\n 2 1999-01-01  113.\n 3 2000-01-01  110.\n 4 2001-01-01  119.\n 5 2002-01-01  116.\n 6 2003-01-01  115.\n 7 2004-01-01  115.\n 8 2005-01-01  127.\n 9 2006-01-01  145.\n10 2007-01-01  125.\n# ℹ 16 more rows\n\n\n\n\nShow Code\n# Extract initial and final values\ninitial_value &lt;- df_ts$y[1]\nfinal_value &lt;- df_ts$y[nrow(df_ts)]\n\n# Number of years\nn_years &lt;- nrow(df_ts)\n\n# Calculate average annual rate\naar &lt;- (final_value / initial_value)^(1 / (n_years - 1)) - 1\n\n# Format as percentage\npercent_change &lt;- scales::percent(aar, accuracy = 0.1)\n\n# Print AAR\ncat(\"Average Annual Rate of Change:\", percent_change, \"\\n\")\n\n\nAverage Annual Rate of Change: -1.5%"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#model",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#model",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "5. Model",
     "text": "5. Model\n\n\nShow Code\n# Fit prophet model\nmodel &lt;- prophet(df_ts,\n                 yearly.seasonality = FALSE,\n                 weekly.seasonality = FALSE,\n                 daily.seasonality = FALSE,\n                 n.changepoints = 10,\n                 changepoint.prior.scale = 0.01  # &lt;&lt;-- THIS smooths the trend\n)\n\n# Forecast\ndf_forecast &lt;- make_future_dataframe(model, periods = 5, freq = \"year\")\nmodel_forecast &lt;- predict(model, df_forecast)"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#visualization-parameters",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#visualization-parameters",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "6. Visualization Parameters",
     "text": "6. Visualization Parameters\n\n\nShow Code\n# Load fonts\nfont_add(\n  family = \"Lato\",\n  regular = \"/Library/Fonts/Lato-Regular.ttf\",\n  bold = \"/Library/Fonts/Lato-Bold.ttf\"\n)\nshowtext_auto()\nshowtext_opts(dpi = 300)"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#visualization",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#visualization",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "7. Visualization",
     "text": "7. Visualization\n\n\nShow Code\n# Convert model forecast column to date\nmodel_forecast$ds &lt;- as.Date(model_forecast$ds)\n\nfinal_plot &lt;- ggplot(df_ts) + \n  aes(x = ds, y = y) +\n  geom_bar(stat = \"identity\", fill = \"gray80\") +\n  geom_bar(data = (model_forecast |&gt; filter(ds &gt;= \"2024-01-01\")),\n           stat = \"identity\",\n             aes(x=ds, y = yhat),\n             fill = \"steelblue\") + \n  scale_x_date(\n    breaks = seq(as.Date(\"1998-01-01\"), as.Date(\"2030-01-01\"), by = \"5 years\"),\n    date_labels = \"%Y\") +\n  scale_y_continuous(limits = c(0,150),\n                     labels = label_number(suffix = \"M\", prefix = \"£\", accuracy = 1)) +\n  labs(title = paste(\"Funding for the British Library decreased\", percent_change, \"annually\\nbetween 1998 and 2023 after adjusting for inflation\"),\n  subtitle = \"Adjusted using Y2000 Great British Pounds (GBP)\",\n       y = \"Millions of British Pounds (£)\",\n      caption = \"\\nSOURCE: Andy Jackson & David S.H. Rosenthal\\nChart produced by Steven Villalon for Tidy Tuesday exercise on July 15, 2025\",) +\n  theme_minimal(base_family = \"Lato\") +\n  theme(plot.title = element_text(size = 16, color = \"#90EE90\", face = \"bold\"),\n        #plot.title.position = \"plot\",\n        plot.subtitle = element_text(color = \"white\"),\n        plot.caption = element_text(color = \"white\"),\n        axis.title.x = element_blank(),\n        axis.title.y = element_text(color = \"white\"),\n        axis.text = element_text(color = \"white\"),\n        axis.text.x = element_text(margin = margin(t = -5)),\n        plot.background = element_rect(fill = \"#1B1F23\"),\n        panel.grid.major.x = element_blank(),\n        panel.grid.minor.x = element_blank(),\n        plot.margin = margin(t = 20, r = 20, b = 20, l = 20)\n) +\n  \n  annotate(\"curve\",\n           x = as.Date(\"2021-01-01\"), y = 115,\n           xend = as.Date(\"2026-01-01\"), yend = 80,\n           arrow = arrow(length = unit(0.2, \"cm\")),\n           curvature = -0.4,\n           color = \"white\") +\n  \n  annotate(\"text\",\n           x = as.Date(\"2013-01-01\"), y = 112.5,\n           label = \"Funding forecasted to\\ndrop below £75M by 2028\",\n           hjust = 0,\n           family = \"Lato\",\n           size = 3,\n           color = \"white\")\n\nfinal_plot"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#export-file",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#export-file",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "8. Export File",
     "text": "8. Export File\n\n\nShow Code\n# Select file formats to export to\nformats_to_export &lt;- c(\"png\", \"svg\")\n\n# Save files to the output folder (uses custom R script)\nsave_tt_plots(\n  plot = final_plot, \n  title = title, \n  date = tt_date,\n  output_folder = \"output\", \n  formats = formats_to_export, \n  height = 5,\n  width = 7,\n  dpi = 300\n  )"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#session-info",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#session-info",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "9. Session Info",
     "text": "9. Session Info\n\n\n\n\n\n\nExpand for Session Info\n\n\n\n\n\n\n\nR version 4.5.1 (2025-06-13)\nPlatform: aarch64-apple-darwin20\nRunning under: macOS Sequoia 15.5\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: America/New_York\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] prophet_1.0        rlang_1.1.6        Rcpp_1.1.0         forecast_8.24.0   \n [5] tsibble_1.1.6      scales_1.4.0       showtext_0.9-7     showtextdb_3.0    \n [9] sysfonts_0.8.9     here_1.0.1         tidytuesdayR_1.2.1 lubridate_1.9.4   \n[13] forcats_1.0.0      stringr_1.5.1      dplyr_1.1.4        purrr_1.1.0       \n[17] readr_2.1.5        tidyr_1.3.1        tibble_3.3.0       ggplot2_3.5.2     \n[21] tidyverse_2.0.0   \n\nloaded via a namespace (and not attached):\n [1] tidyselect_1.2.1    timeDate_4041.110   farver_2.1.2       \n [4] loo_2.8.0           fastmap_1.2.0       gh_1.5.0           \n [7] digest_0.6.37       timechange_0.3.0    lifecycle_1.0.4    \n[10] StanHeaders_2.32.10 ellipsis_0.3.2      magrittr_2.0.3     \n[13] compiler_4.5.1      tools_4.5.1         yaml_2.3.10        \n[16] knitr_1.50          labeling_0.4.3      htmlwidgets_1.6.4  \n[19] bit_4.6.0           pkgbuild_1.4.8      curl_6.4.0         \n[22] xml2_1.3.8          TTR_0.24.4          RColorBrewer_1.1-3 \n[25] withr_3.0.2         nnet_7.3-20         grid_4.5.1         \n[28] stats4_4.5.1        xts_0.14.1          colorspace_2.1-1   \n[31] inline_0.3.21       gitcreds_0.1.2      cli_3.6.5          \n[34] anytime_0.3.12      rmarkdown_2.29      crayon_1.5.3       \n[37] ragg_1.4.0          generics_0.1.4      RcppParallel_5.1.10\n[40] tzdb_0.5.0          rstan_2.32.7        parallel_4.5.1     \n[43] urca_1.3-4          matrixStats_1.5.0   vctrs_0.6.5        \n[46] V8_6.0.4            jsonlite_2.0.0      hms_1.1.3          \n[49] tseries_0.10-58     bit64_4.6.0-1       systemfonts_1.2.3  \n[52] quantmod_0.4.28     glue_1.8.0          codetools_0.2-20   \n[55] stringi_1.8.7       gtable_0.3.6        QuickJSR_1.8.0     \n[58] quadprog_1.5-8      lmtest_0.9-40       pillar_1.11.0      \n[61] rappdirs_0.3.3      htmltools_0.5.8.1   R6_2.6.1           \n[64] httr2_1.2.0         textshaping_1.0.1   rprojroot_2.1.0    \n[67] vroom_1.6.5         evaluate_1.0.4      lattice_0.22-7     \n[70] extraDistr_1.10.0   fracdiff_1.5-3      svglite_2.2.1      \n[73] gridExtra_2.3       nlme_3.1-168        xfun_0.52          \n[76] zoo_1.8-14          pkgconfig_2.0.3"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#github",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#github",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "10. Github",
     "text": "10. Github\n\n\n\n\n\n\nFiles\n\n\n\n📓 View the notebook\n📁 Full Repository"
   },
   {
     "objectID": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#other",
     "href": "TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.html#other",
-    "title": "British Library Funding (1998 to 2023",
+    "title": "British Library Funding (1998 to 2023)",
     "section": "Other",
     "text": "Other"
   }

@@ -1,5 +1,5 @@
 ---
-title: "British Library Funding (1998 to 2023"
+title: "British Library Funding (1998 to 2023)"
 author: "Steven Villalon"
 date: 2025-07-15
 categories: ["Forecast", "Barplot", "R"]
@@ -83,12 +83,12 @@ df_ts
 
 ```
 
-```{r}
+```{r avg_rate_return}
 # Extract initial and final values
 initial_value <- df_ts$y[1]
 final_value <- df_ts$y[nrow(df_ts)]
 
-# Number of years (assuming one row per year)
+# Number of years
 n_years <- nrow(df_ts)
 
 # Calculate average annual rate
@@ -97,6 +97,7 @@ aar <- (final_value / initial_value)^(1 / (n_years - 1)) - 1
 # Format as percentage
 percent_change <- scales::percent(aar, accuracy = 0.1)
 
+# Print AAR
 cat("Average Annual Rate of Change:", percent_change, "\n")
 
 ```
