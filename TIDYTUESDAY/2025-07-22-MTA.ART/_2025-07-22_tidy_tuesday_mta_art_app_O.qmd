@@ -1,0 +1,308 @@
+---
+title: "MTA Art in NYC"
+subtitle: "A visual exploration of subway art across boroughs."
+author: "Made by Steven Villalon (July 22, 2025)"
+categories: ["Shiny", "R"]
+format:
+  html:
+    layout: sidebar
+    toc: false
+runtime: shiny
+---
+
+```{r setup, message = FALSE, echo = FALSE}
+# Load dependencies and data
+library(tidyverse)
+library(shiny)
+library(htmltools)
+df <- read_csv("data/mta_art.csv")
+
+```
+
+```{=html}
+<!--Style sheet -->
+
+<style>
+
+/* ==========================
+   HEADER SECTION
+=========================== */
+
+.custom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(10, 10, 10, 0.7); /* dark glass effect */
+  backdrop-filter: blur(6px);
+  color: #111111;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  margin-bottom: 2rem;
+}
+
+.custom-header-logo {
+  height: 80px;
+  margin-right: 1.5rem;
+}
+
+.custom-header-text {
+  flex: 1;
+}
+
+.custom-header-text h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.custom-header-text h3 {
+  margin-top: 0.25rem;
+  font-weight: 400;
+}
+
+.custom-header-text h4 {
+  margin-top: 0.9rem;
+  font-style: italic;
+  font-size: 1rem;
+  color: #d4af37; /* gold */
+}
+
+
+/* ==========================
+   BODY SECTION
+=========================== */
+
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #f4f4f4;
+    background: radial-gradient(circle at center, #3a3a3a, #1a1a1a, #000000);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .title, .subtitle, .author {
+    display:none;
+  }
+
+  h1, h2 {
+    color: #ffffff;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: #888888;
+    font-weight: 600;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #2a2a2a;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+
+  @media (max-width: 768px) {
+    .form-control {
+      width: 100%;
+    }
+  }
+
+
+/* ==========================
+   UI SECTION
+=========================== */
+
+.art-info-box {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin-top: 1rem;
+}
+
+.art-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.art-title {
+  border-bottom: 2px solid #0039A6;
+  padding-bottom: 0.5rem;
+}
+
+.art-meta {
+  border-left: 4px solid #0039A6;
+  padding-left: 1rem;
+}
+
+  .hover-img {
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem auto;
+  }
+
+  .hover-img:hover {
+    transform: scale(1.02);
+  }
+
+
+/* ==========================
+   FOOTER SECTION
+=========================== */
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 1.1rem;
+  color: #aaaaaa;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid #444;
+}
+
+.footer a {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+
+</style>
+
+<!-- BaguetteBox.js Lightbox -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/baguettebox.js@1.11.1/dist/baguetteBox.min.css">
+<script 
+src="https://cdn.jsdelivr.net/npm/baguettebox.js@1.11.1/dist/baguetteBox.min.js">
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    baguetteBox.run('.lightbox-gallery');
+  });
+
+</script>
+```
+
+```{r header, echo = FALSE}
+# Header
+div(
+  class = "custom-header",
+  
+  # Logo
+  tags$img(
+    src = 'misc/images/MTA_NYC_logo.svg',
+    class = "custom-header-logo",
+    alt = "MTA logo"
+  ),
+  
+  # Title + Subtitle + Author
+  div(
+    class = "custom-header-text",
+    tags$h1("Permanent Art Catalog"),
+    tags$h3("A visual exploration of subway art across New York City"),
+    tags$h4("Last updated: July 22, 2025")
+  )
+)
+```
+
+```{r first_dropdown, context="sidebar", echo = FALSE}
+# First dropdown 
+selectInput("agency", "Transportation Authority",
+            choices = sort(unique(df$agency)),
+            selected = "NYCT"
+)
+
+```
+
+```{r second_dropdown, context="sidebar", echo = FALSE}
+# Second dropdown
+renderUI({
+  req(input$agency)
+
+  filtered_services <- df |> 
+    filter(agency == input$agency) |> 
+    pull(station_name) |> 
+    unique() |> 
+    sort()
+
+  selectInput(
+    "station_name",
+    "Station Name",
+    choices = filtered_services,
+    selected = "Fulton Center"
+  )
+})
+
+```
+
+```{r results, context="server", echo = FALSE}
+# Display Artwork and Metadata
+renderUI({
+  req(input$agency, input$station_name)
+
+  row <- df |> 
+    filter(agency == input$agency, station_name == input$station_name) |> 
+    slice(1)
+
+  img_urls <- strsplit(row$art_img_direct, ";")[[1]]
+
+  div(
+    class = "art-info-box",
+    tagList(
+      # Image gallery
+      tags$div(class = "lightbox-gallery",
+        lapply(img_urls, function(img_url) {
+          tags$a(href = img_url, target = "_blank",
+            tags$img(
+              src = img_url,
+              class = "hover-img art-image",
+              onerror = "this.onerror=null;this.src='www/logo.png';"
+            )
+          )
+        })
+      ),
+
+      # Art metadata
+      tags$h3(class = "art-title", row$art_title),
+      tags$p(class = "art-meta", tags$strong("Artist:"), tags$br(), row$artist),
+      tags$p(class = "art-meta", tags$strong("Date:"), tags$br(), row$art_date),
+      tags$p(class = "art-meta", tags$strong("Materials:"), tags$br(), row$art_material),
+      tags$p(class = "art-meta", tags$strong("Serving Lines:"), tags$br(), row$line),
+      tags$p(tags$strong("Description:"), tags$br(), row$art_description)
+    )
+  )
+})
+
+```
+
+```{r footer, echo = FALSE}
+# Footer
+div(
+  class = "footer",
+  HTML("
+    Made with ❤️ by a Florida kid who was born in NY &middot; 
+    <a href='https://stevenvillalon.github.io/portfolio/' target='_blank'>
+       View my Data Science Portfolio
+    </a> &middot; 
+    Data courtesy of Georgios Karamanis and 
+    <a href='https://new.mta.info/agency/arts-design' target='_blank'>
+       MTA Arts & Design
+    </a>
+  ")
+)
+
+```
