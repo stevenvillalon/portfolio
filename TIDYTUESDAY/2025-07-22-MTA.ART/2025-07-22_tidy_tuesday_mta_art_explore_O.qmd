@@ -4,7 +4,7 @@ author: "Steven Villalon"
 date: 2025-07-22
 categories: ["Shiny", "R"]
 subtitle: "Forget going to the museum, there's beautiful art all over New York."
-image: output/preview.png
+image: misc/images/thumbnail.png
 format:
   html:
     df-print: default
