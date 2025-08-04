@@ -272,7 +272,7 @@ sessionInfo()
 ## 10. Github
 
 ::: {.callout-tip title="Files"}
-📓 <a href="https://github.com/stevenvillalon/portfolio/blob/main/TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-29_tidy_tuesday_netflix_O.qmd">View the notebook</a>
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/main/TIDYTUESDAY/2025-07-29-NETFLIX/2025-07-29_tidy_tuesday_netflix_O.qmd">View the notebook</a>
 
 📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
 :::
