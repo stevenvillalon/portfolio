@@ -91,7 +91,7 @@ format_millions <- function(x) {
 
 ## 5. Exploration
 
-```{r}
+```{r exploration}
 reports <- unique(movies$report)
 
 top10s <- lapply(reports, function(i) {
@@ -121,7 +121,7 @@ movies_clean
 
 ```
 
-```{r}
+```{r mean_runtimes}
 # Mean Runtime for Movies >50M views
 movies_clean %>%
   mutate(group = ifelse(views > 50000000, "Greater than 50M", "Less than 50M")) %>%
@@ -272,7 +272,7 @@ sessionInfo()
 ## 10. Github
 
 ::: {.callout-tip title="Files"}
-📓 <a href="https://github.com/stevenvillalon/portfolio/blob/main/TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-15_tidy_tuesday_british_library_O.qmd">View the notebook</a>
+📓 <a href="https://github.com/stevenvillalon/portfolio/blob/main/TIDYTUESDAY/2025-07-15-BRITISH.LIBRARY/2025-07-29_tidy_tuesday_netflix_O.qmd">View the notebook</a>
 
 📁 <a href="https://github.com/stevenvillalon/portfolio/tree/main/TIDYTUESDAY" target="_blank" rel="noopener noreferrer">Full Repository</a>
 :::
