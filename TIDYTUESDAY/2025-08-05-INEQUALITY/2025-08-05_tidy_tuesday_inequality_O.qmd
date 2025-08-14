@@ -17,7 +17,7 @@ format:
 
 ------------------------------------------------------------------------
 
-![](output/2025-08-05_tidy_tuesday_british_library.png){fig-alt="Final plot"}
+![](output/2025-08-05_tidy_tuesday_inequality.png){fig-alt="Final plot"}
 
 # Question of Interest
 
@@ -34,13 +34,13 @@ library(tidytuesdayR)
 library(here)
 library(showtext)
 library(scales)
-library(grid)   # for arrow()
+library(grid)
 
 # Load helper functions
 source(here::here("R/utils/tidy_tuesday_helpers.R"))
 
 # Set project title
-title <- "British Library"
+title <- "Inequality"
 tt_date <- "2025-08-05"
 
 ```
@@ -165,8 +165,8 @@ final_plot <- ggplot(df) +
     linewidth = 0.6,
     inherit.aes = FALSE
   ) +
-  annotate("text", x = 0.6, y = "Romania",
-           label = "Longer segments =\nHigher Income\nRedistribution", size = 3.5)
+  annotate("text", x = 0.6, y = "Canada",
+           label = "Longer segments =\nhigher income\nredistribution via\ntaxes", size = 3.5)
 
 #final_plot
 
