@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "089f88c3",
+   "id": "51fe23b4",
    "metadata": {},
    "source": [
     "---\n",
@@ -33,7 +33,7 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "139737f3",
+   "id": "ea07dbf5",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -49,7 +49,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d229cf53",
+   "id": "d23d44c5",
    "metadata": {},
    "source": [
     "## 2. Load Data"
@@ -58,7 +58,7 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "e8a9e72f",
+   "id": "1989ddd4",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -69,7 +69,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "43d8c0c9",
+   "id": "32c01f82",
    "metadata": {},
    "source": [
     "## 3. Examine Data"
@@ -78,7 +78,7 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "84e23fdb",
+   "id": "274292fb",
    "metadata": {},
    "outputs": [
     {
@@ -194,7 +194,7 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "7f918abd",
+   "id": "1098f8cf",
    "metadata": {},
    "outputs": [
     {
@@ -218,7 +218,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5ed6bc67",
+   "id": "de85a9e3",
    "metadata": {},
    "source": [
     "## 4. Cleaning"
@@ -227,7 +227,7 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "01c46096",
+   "id": "46646b72",
    "metadata": {},
    "outputs": [
     {
@@ -358,7 +358,7 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "95961ca1",
+   "id": "a633d087",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -372,7 +372,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "ec78d224",
+   "id": "e057960a",
    "metadata": {},
    "source": [
     "## 5. Visualization"
@@ -381,7 +381,7 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "c91881b8",
+   "id": "b7b1f624",
    "metadata": {},
    "outputs": [
     {
@@ -444,7 +444,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "330506b2",
+   "id": "b1c19096",
    "metadata": {},
    "source": [
     "## 6. Export"
@@ -453,7 +453,7 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "717a1c5f",
+   "id": "4089e38b",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -470,7 +470,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "bef0ff02",
+   "id": "6d152aea",
    "metadata": {},
    "source": [
     "## 7. Session Info"
@@ -479,7 +479,7 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "dbe3ad88",
+   "id": "c78c4b48",
    "metadata": {},
    "outputs": [
     {
@@ -598,7 +598,7 @@
        "Python 3.10.13 (main, Jul 29 2025, 00:00:46) [Clang 17.0.0 (clang-1700.0.13.5)]\n",
        "macOS-15.6.1-arm64-arm-64bit\n",
        "-----\n",
-       "Session information updated at 2025-09-01 16:05\n",
+       "Session information updated at 2025-09-01 16:08\n",
        "</pre>\n",
        "</details>"
       ],
@@ -619,7 +619,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "60007c8e",
+   "id": "5e94a399",
    "metadata": {},
    "source": [
     "## 8. Github\n",

@@ -91,7 +91,7 @@ df["lon"], df["lat"] = transformer.transform(df["xcoord"].values, df["ycoord"].v
 
 ## 5. Visualization
 
-```{python visualization, message=FALSE, fig-width=8, fig-height=8, include=FALSE}
+```{python visualization, message=FALSE, fig-width=8, fig-height=8, include=FALSE, echo=FALSE}
 # Set font
 plt.rcParams['font.family'] = 'Lato'
 
@@ -136,7 +136,7 @@ plt.tight_layout()
 
 ## 6. Export
 
-```{python include=FALSE, echo=FALSE}
+```{python export, include=FALSE, echo=FALSE}
 # Save visualization as png
 fig.savefig("output/2025-08-19_tidy_tuesday_scottish_munros.png",
             dpi=300,
@@ -151,7 +151,7 @@ plt.close()
 
 ## 7. Session Info
 
-```{python}
+```{python session_info}
 # Show session and package info
 warnings.filterwarnings("ignore", message="The '__version__' attribute is deprecated")
 session_info.show()
