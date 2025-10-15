@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,13 +33,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./assets/favicon/favicon_for_sv_portfolio.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-061a66dfc06aff5f2a9c81275e88bdd4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ac6fa3b583e84f64cc2c0e73ea96057c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -89,7 +90,8 @@ gtag('config', 'G-TREEKW9YP3', { 'anonymize_ip': true});
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/logos/sv_logo_blue_on_white.png" alt="" class="navbar-logo">
+    <img src="./assets/logos/sv_logo_blue_on_white.png" alt="" class="navbar-logo light-content">
+    <img src="./assets/logos/sv_logo_blue_on_white.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Steven Villalon Data Science Portfolio</span>
@@ -147,15 +149,15 @@ gtag('config', 'G-TREEKW9YP3', { 'anonymize_ip': true});
 <div class="quarto-title-meta">
   </div>
 </header><main class="content" id="quarto-document-content">
-<p>I’m a former Product Marketing Manager at AT&amp;T. Currently studying data science at the University of Notre Dame.</p>
-<p>Created this site to share my Tidy Tuesday work and other data projects.</p>
+<p>Hi, I’m Steve! I’m a Sr.&nbsp;Marketing Analyst at FedEx.</p>
+<p>In addition to my day job, I’m studying data science at the University of Notre Dame. I created this site to share my Tidy Tuesday work and other data projects.</p>
 <p>Based in Miami, FL.</p>
 <p>#DataScience #RStats #Python #Marketing #Analytics</p>
 <section id="interests" class="level2">
 <h2 data-anchor-id="interests">Interests</h2>
 <section id="marketing" class="level4">
 <h4 data-anchor-id="marketing"><span class="bullet-label">Marketing</span></h4>
-<p>Pricing, Email/SMS, Product</p>
+<p>Strategy, Long-range Planning, Pricing, Email/SMS, Product</p>
 </section>
 <section id="coding" class="level4">
 <h4 data-anchor-id="coding"><span class="bullet-label">Coding</span></h4>
@@ -163,7 +165,7 @@ gtag('config', 'G-TREEKW9YP3', { 'anonymize_ip': true});
 </section>
 <section id="data-visualization" class="level4">
 <h4 data-anchor-id="data-visualization"><span class="bullet-label">Data Visualization</span></h4>
-<p>ggplot, matplotlib, seaborn</p>
+<p>ggplot, matplotlib</p>
 </section>
 <section id="dashboarding" class="level4">
 <h4 data-anchor-id="dashboarding"><span class="bullet-label">Dashboarding</span></h4>
@@ -171,11 +173,11 @@ gtag('config', 'G-TREEKW9YP3', { 'anonymize_ip': true});
 </section>
 <section id="modeling" class="level4">
 <h4 data-anchor-id="modeling"><span class="bullet-label">Modeling</span></h4>
-<p>Linear Regression, Logistic Regression, Random Forests</p>
+<p>Linear &amp; Logistic Regression, Random Forests, XGBoost</p>
 </section>
 <section id="time-series-and-forecasting" class="level4">
 <h4 data-anchor-id="time-series-and-forecasting"><span class="bullet-label">Time Series and Forecasting</span></h4>
-<p>ARIMA, ETS</p>
+<p>Prophet, Nixtla-verse</p>
 
 
 </section>
@@ -227,13 +229,14 @@ gtag('config', 'G-TREEKW9YP3', { 'anonymize_ip': true});
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

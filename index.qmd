@@ -9,9 +9,9 @@ format:
     toc: false
 ---
 
-I'm a former Product Marketing Manager at AT&T. Currently studying data science at the University of Notre Dame.
+Hi, I'm Steve! I'm a Sr. Marketing Analyst at FedEx.
 
-Created this site to share my Tidy Tuesday work and other data projects.
+In addition to my day job, I'm studying data science at the University of Notre Dame. I created this site to share my Tidy Tuesday work and other data projects.
 
 Based in Miami, FL.
 
@@ -21,7 +21,7 @@ Based in Miami, FL.
 
 #### [Marketing]{.bullet-label}
 
-Pricing, Email/SMS, Product
+Strategy, Long-range Planning, Pricing, Email/SMS, Product
 
 #### [Coding]{.bullet-label}
 
@@ -29,7 +29,7 @@ SQL, R, Python
 
 #### [Data Visualization]{.bullet-label}
 
-ggplot, matplotlib, seaborn
+ggplot, matplotlib
 
 #### [Dashboarding]{.bullet-label}
 
@@ -37,8 +37,8 @@ Tableau, Shiny, Streamlit
 
 #### [Modeling]{.bullet-label}
 
-Linear Regression, Logistic Regression, Random Forests
+Linear & Logistic Regression, Random Forests, XGBoost
 
 #### [Time Series and Forecasting]{.bullet-label}
 
-ARIMA, ETS
+Prophet, Nixtla-verse
